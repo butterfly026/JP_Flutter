@@ -57,6 +57,7 @@ dependencies:
   android_id: ^0.4.0
   package_info: ^2.0.2
   flutter_bloc: ^8.1.6
+  extended_image: ^8.2.1
 
 dev_dependencies:
   flutter_test:

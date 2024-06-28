@@ -10,7 +10,7 @@ class AppRouter {
 
   static const login = '/login';
   static const register = '/register';
-  static const mypage = '/mypage';
+  static const profile = '/profile';
   static const chat = '/chat';
   static const chat_message = '/chat/messages';
   static const chat_group = '/chat/group';
@@ -26,22 +26,22 @@ class AppRouter {
   GetPage(
     name: mainPath,
     page: () => MainPage(),
-    binding: MainBindings(),
   ),
   GetPage(
     name: homePath,
     page: () => MainPage(),
-    binding: MainBindings(),
   ),
   GetPage(
     name: login,
     page: () => const LoginScreen(),
-    binding: MainBindings(),
   ),
   GetPage(
     name: register,
     page: () => const SignUpScreen(),
-    binding: MainBindings(),
+  ),
+  GetPage(
+    name: profile,
+    page: () => MainPage(),
   ),
     // GetPage(
     //   name: login,
