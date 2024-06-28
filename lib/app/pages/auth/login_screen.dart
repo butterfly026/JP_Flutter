@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:fpg_flutter/app/controllers/auth_controller.dart';
 import 'package:fpg_flutter/app/controllers/global_controller.dart';
+import 'package:fpg_flutter/app/pages/main/main_home_controller.dart';
 import 'package:fpg_flutter/public/define/appDefine.dart';
 import 'package:fpg_flutter/public/router/router.dart';
 import 'package:fpg_flutter/public/widgets/button.dart';
@@ -24,8 +25,7 @@ class _LoginPageState extends State<LoginScreen> {
   Future handleLogin() async {
     print(userName);
     print(password);
-    await Get.offAndToNamed(AppRouter.profile,
-        arguments: {'curIndex': AppDefine.TAB_PROFILE_INDEX});
+    await Get.offAndToNamed(AppRouter.profile);
   }
 
   Future handleRegister() async {

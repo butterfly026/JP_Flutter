@@ -32,7 +32,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     super.initState();
     controller = MainHomeController.to;
     ever(
-      controller.currentIndex,
+      controller.currentTabIndex,
       (callback) {
         if (mounted) {
           setState(() {});
@@ -48,7 +48,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    final tabData = _tabs[controller.currentIndex.value];    
+    final tabData = _tabs[controller.currentTabIndex.value];    
     backgroundColor = Colors.white.withOpacity(0.75);
     return Container(
       height: Dimens.gap_dp60,
@@ -64,7 +64,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       child: BottomTab(
         data: tabData,
         encrypted: true,
-        selected: controller.currentIndex.value == _tabs.indexOf(tabData),
+        selected: controller.currentTabIndex.value == _tabs.indexOf(tabData),
         onTap: (value) {
           final int newIndex = _tabs.indexOf(value);
           if (null != widget.onTap) {

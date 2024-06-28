@@ -32,8 +32,7 @@ class MainHomeController extends GetxController {
     BottomTabModel(name: "報酬", icon: 'tab_credit'),
     BottomTabModel(name: "マイページ", icon: 'tab_profile'),
   ]);
-  var currentIndex = 0.obs;
-  final activeIndex = 0.obs;
+  var currentTabIndex = 0.obs;
 
   @override
   void onReady() async {
@@ -41,7 +40,7 @@ class MainHomeController extends GetxController {
   }
 
   Widget getCurrentPage() {
-    switch (activeIndex.value) {
+    switch (currentTabIndex.value) {
       case 0:
         return HomeView();
       case 1:
@@ -58,6 +57,6 @@ class MainHomeController extends GetxController {
   }
 
   void changeIndex(int index) {
-    currentIndex.value = index;
+    currentTabIndex.value = index;
   }
 }

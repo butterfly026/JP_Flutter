@@ -26,12 +26,7 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    final argCurIdx = Get.parameters['curIndex'];
-    if (argCurIdx != null && AppTool.isNotEmpty(argCurIdx)) {
-      _controller.currentIndex.value = int.tryParse(argCurIdx) ?? 0;
-    } else {
-      _controller.currentIndex.value = widget.curIndex;
-    }
+    _controller.currentTabIndex.value = widget.curIndex;
   }
 
   @override
@@ -55,7 +50,7 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
                 return Expanded(
                   child: GestureDetector(
                     onTap: () {
-                      _controller.activeIndex.value = index;
+                      _controller.currentTabIndex.value = index;
                     },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -64,14 +59,14 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
                           'tabbar/${nav.icon}.svg',
                           width: 30.w,
                           height: 30.w,
-                          color: _controller.activeIndex.value == index
+                          color: _controller.currentTabIndex.value == index
                               ? Color(0xff0277BD)
                               : Color(0xffffffff),
                         ),
                         Text(
                           '${nav.name}',
                           style: TextStyle(
-                            color: _controller.activeIndex.value == index
+                            color: _controller.currentTabIndex.value == index
                                 ? Color(0xff0277BD)
                                 : Color(0xffffffff),
                             fontSize: 22.sp,

@@ -41,7 +41,7 @@ class AppRouter {
   ),
   GetPage(
     name: profile,
-    page: () => MainPage(),
+    page: () => MainPage(curIndex: AppDefine.TAB_PROFILE_INDEX),
   ),
     // GetPage(
     //   name: login,
