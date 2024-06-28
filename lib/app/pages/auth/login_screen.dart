@@ -34,7 +34,8 @@ class _LoginPageState extends State<LoginPage> {
   Future handleLogin() async {
     print(userName);
     print(password);
-    GlobalController.to.gotoMainPageByIndex(AppDefine.TAB_PROFILE_INDEX);
+    Get.offNamed(AppRouter.homePath);
+    // GlobalController.to.gotoMainPageByIndex(AppDefine.TAB_PROFILE_INDEX);
   }
 
   Future handleRegister() async {

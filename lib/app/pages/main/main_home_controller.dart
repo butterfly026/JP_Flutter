@@ -47,12 +47,10 @@ class MainHomeController extends GetxController {
       case 1:
         return HuntingView();
       case 2:
-        return InformationView();
+        return InformationView();      
       case 3:
-        return SizedBox();
-      case 4:
         return ChessCardView();
-      case 5:
+      case 4:
         return ChatRoomPage();
       default:
         return AccountView();
