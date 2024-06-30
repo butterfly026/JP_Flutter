@@ -97,16 +97,11 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
                           style: AppTheme.body2,
                         )
                       ]),
-                      Row(children: [
-                        Transform.translate(
-                          offset: Offset(-Dimens.gap_dp20,
-                              0.0), // Adjust this offset as needed
-                          child: CheckboxWithText(
-                              isChecked: false,
-                              label: '高齢者に確認しましたか？',
-                              textStyle: AppTheme.body1),
-                        )
-                      ])
+                      SizedBox(height: Dimens.gap_dp10),
+                      CheckboxWithText(
+                          isChecked: false,
+                          label: '高齢者に確認しましたか？',
+                          textStyle: AppTheme.body2.copyWith(fontWeight: FontWeight.bold))
                     ],
                   )),
               Expanded(
