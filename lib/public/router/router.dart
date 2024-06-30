@@ -2,7 +2,7 @@ library router;
 
 import 'package:fpg_flutter/app/pages/auth/login_screen.dart';
 import 'package:fpg_flutter/app/pages/auth/signup_screen.dart';
-import 'package:fpg_flutter/app/pages/business/components/request_detail.dart';
+import 'package:fpg_flutter/app/pages/business/request_detail.dart';
 import 'package:fpg_flutter/app/pages/main/main_home.dart';
 import 'package:fpg_flutter/main_bindings.dart';
 import 'package:fpg_flutter/public/define/appDefine.dart';

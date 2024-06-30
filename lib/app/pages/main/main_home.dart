@@ -37,25 +37,26 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
     return Scaffold(
         appBar: CustomAppBar(
           titleSpacing: 0,
-        title: Obx(
-          () {
-            return Padding(
-              padding: EdgeInsets.only(left: Dimens.gap_dp20),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  // ignore: invalid_use_of_protected_member
-                  _controller.bottomNavs.value[_controller.currentTabIndex.value].name,
-                  style: TextStyle(
-                    fontSize: Dimens.font_sp28,
-                    fontWeight: FontWeight.bold,
+          title: Obx(
+            () {
+              return Padding(
+                padding: EdgeInsets.only(left: Dimens.gap_dp20),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    // ignore: invalid_use_of_protected_member
+                    _controller.bottomNavs
+                        .value[_controller.currentTabIndex.value].name,
+                    style: TextStyle(
+                      fontSize: Dimens.font_sp28,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
-            );
-          },
-        ),
-        centerTitle: false,
+              );
+            },
+          ),
+          centerTitle: false,
         ),
         body: Obx(() => Center(
               child: _controller.getCurrentPage(),
