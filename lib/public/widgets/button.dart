@@ -11,6 +11,7 @@ class Button extends StatelessWidget {
   final Color textColor;
   final double borderRadius;
   final double paddingHorizontal;
+  final double paddingVertical;
   final double minWidth;
   final bool isFullToWidth;
   final bool disabled;
@@ -23,6 +24,7 @@ class Button extends StatelessWidget {
       this.borderRadius = 4.0,
       this.minWidth = 0.0,
       this.paddingHorizontal = 0,
+      this.paddingVertical = 0,
       this.disabled = false,
       this.isFullToWidth = false});
   Widget _getButtonContainer() {
@@ -33,7 +35,9 @@ class Button extends StatelessWidget {
         alignment: Alignment.center,
         child: Padding(
           padding: EdgeInsets.symmetric(
-              vertical: Dimens.gap_dp8, horizontal: paddingHorizontal == 0 ? Dimens.gap_dp12 : paddingHorizontal),
+              vertical: paddingVertical == 0 ? Dimens.gap_dp8 : paddingVertical,
+              horizontal:
+                  paddingHorizontal == 0 ? Dimens.gap_dp12 : paddingHorizontal),
           child: Text(
             text,
             style: TextStyle(
@@ -51,7 +55,9 @@ class Button extends StatelessWidget {
           minWidth: minWidth), // Adjust the minimum width as needed
       child: Padding(
         padding: EdgeInsets.symmetric(
-            vertical: Dimens.gap_dp8, horizontal: Dimens.gap_dp12),
+            vertical: paddingVertical == 0 ? Dimens.gap_dp8 : paddingVertical,
+            horizontal:
+                paddingHorizontal == 0 ? Dimens.gap_dp12 : paddingHorizontal),
         child: Center(
           child: Text(
             text,
@@ -71,7 +77,8 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
-          backgroundColor: WidgetStateProperty.all<Color>(disabled ? AppTheme.buttonDisabledBack : backgroundColor),
+          backgroundColor: WidgetStateProperty.all<Color>(
+              disabled ? AppTheme.buttonDisabledBack : backgroundColor),
           textStyle: WidgetStateProperty.all<TextStyle>(
             TextStyle(color: textColor),
           ),

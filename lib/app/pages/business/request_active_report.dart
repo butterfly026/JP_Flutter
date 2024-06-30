@@ -1,15 +1,24 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:fpg_flutter/app/controllers/global_controller.dart';
 import 'package:fpg_flutter/app/pages/business/components/request_confirmed_detail.dart';
 import 'package:fpg_flutter/app/pages/business/components/request_new_detail.dart';
 import 'package:fpg_flutter/app/pages/business/controllers/request_detail_controller.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/public/config/images.dart';
+import 'package:fpg_flutter/public/define/appDefine.dart';
+import 'package:fpg_flutter/public/define/request_info.dart';
 import 'package:fpg_flutter/public/models/business/request_list_data.dart';
+import 'package:fpg_flutter/public/router/router.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
+import 'package:fpg_flutter/public/widgets/button.dart';
+import 'package:fpg_flutter/public/widgets/checkbox_text.dart';
 import 'package:fpg_flutter/public/widgets/image.dart';
+import 'package:fpg_flutter/public/widgets/labeled_rich_text.dart';
+import 'package:fpg_flutter/public/widgets/radio_button.dart';
 import 'package:fpg_flutter/public/widgets/table-cell.dart';
+import 'package:fpg_flutter/public/widgets/text_info_title.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +26,8 @@ class RequestActiveReportPage extends StatefulWidget {
   const RequestActiveReportPage({super.key});
 
   @override
-  _RequestActiveReportPageState createState() => _RequestActiveReportPageState();
+  _RequestActiveReportPageState createState() =>
+      _RequestActiveReportPageState();
 }
 
 class _RequestActiveReportPageState extends State<RequestActiveReportPage>
@@ -31,7 +41,7 @@ class _RequestActiveReportPageState extends State<RequestActiveReportPage>
   void initState() {
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-    
+
     _controller = RequestDetailController();
     super.initState();
   }
@@ -42,7 +52,6 @@ class _RequestActiveReportPageState extends State<RequestActiveReportPage>
     super.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,20 +60,198 @@ class _RequestActiveReportPageState extends State<RequestActiveReportPage>
           Column(
             children: [
               SubPageAppBar(
-                titleText: '活動報告',                
+                titleText: '活動報告',
+              ),
+              Divider(
+                height: 1,
+                color: AppTheme.dark_grey.withOpacity(0.2),
               ),
               Expanded(
-                child: GetBuilder<RequestDetailController>(
-                    init: _controller,
-                    builder: (controller) {
-                      return Padding(
-                        padding: EdgeInsets.all(Dimens.gap_dp10),
-                        child: Column(
-                          children: <Widget>[],
-                        ),
-                      );
-                    }),
-              ),
+                  child: SingleChildScrollView(
+                      child: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: Dimens.gap_dp20,
+                              vertical: Dimens.gap_dp10),
+                          child: Column(
+                            children: [
+                              TextInfoTitle(
+                                  title: '【依頼後の自己評価】',
+                                  type: RequestInfo.SECTION_TITLE),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    top: Dimens.gap_dp20,
+                                    left: Dimens.gap_dp20),
+                                child: Column(children: [
+                                  Column(children: [
+                                    Text(
+                                      '訪問マナーで出来た項目全てにチェックをしてください',
+                                      style: AppTheme.body2,
+                                    )
+                                  ]),
+                                  SizedBox(height: Dimens.gap_dp10),
+                                  Row(children: [
+                                    Text(
+                                      '以下を確認して送信してください',
+                                      style: AppTheme.body2,
+                                    )
+                                  ]),
+                                  CheckboxWithText(
+                                      isChecked: false,
+                                      label: '現場まで遅刻せずに到着出来た',
+                                      textStyle: AppTheme.body2),
+                                  CheckboxWithText(
+                                      isChecked: false,
+                                      label: '玄関先での上着の脱ぎ方・靴の置き方を正しく行えた',
+                                      textStyle: AppTheme.body2),
+                                  CheckboxWithText(
+                                      isChecked: false,
+                                      label: '自己紹介など明るくハキハキお話しすることが出来た',
+                                      textStyle: AppTheme.body2),
+                                  CheckboxWithText(
+                                      isChecked: false,
+                                      label:
+                                          'コミュニケーションをとる際、「傾聴」を意識して相手のお話に耳を傾け、相槌をうったり会話を弾ませることが出来た',
+                                      textStyle: AppTheme.body2),
+                                  CheckboxWithText(
+                                      isChecked: false,
+                                      label: '作業をする際、一声かけてから動くことを実践できた',
+                                      textStyle: AppTheme.body2),
+                                  CheckboxWithText(
+                                      isChecked: false,
+                                      label:
+                                          '体調や暮らしの様子を観察し、状況に応じて身体を支えたり荷物を持ったりといった気配りができた',
+                                      textStyle: AppTheme.body2),
+                                  SizedBox(height: Dimens.gap_dp30),
+                                ]),
+                              ),
+                              TextInfoTitle(
+                                  title: '【活動報告】',
+                                  type: RequestInfo.SECTION_TITLE),
+                              Padding(
+                                  padding: EdgeInsets.only(
+                                      top: Dimens.gap_dp20,
+                                      left: Dimens.gap_dp20),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      LabeledRichText(
+                                          label: '訪問マナーで出来た項目全てにチェックをしてください',
+                                          value: ''),
+                                      SizedBox(height: Dimens.gap_dp20),
+                                      LabeledRichText(
+                                          label:
+                                              '今回の依頼以外に、利用者様もしくは施設担当者やケアマネージャーさんから要望はありましたか？*',
+                                          value: ''),
+                                      SizedBox(height: Dimens.gap_dp20),
+                                      Column(children: [
+                                        Text(
+                                          '貴方から見た利用者様の人柄を教えてください(3つまで選択可能)',
+                                          style: AppTheme.body2,
+                                        )
+                                      ]),
+                                      CheckboxWithText(
+                                          isChecked: false,
+                                          label: '優しい',
+                                          textStyle: AppTheme.body2),
+                                      CheckboxWithText(
+                                          isChecked: false,
+                                          label: '謙虚',
+                                          textStyle: AppTheme.body2),
+                                      CheckboxWithText(
+                                          isChecked: false,
+                                          label: '大人しい',
+                                          textStyle: AppTheme.body2),
+                                      CheckboxWithText(
+                                          isChecked: false,
+                                          label: '感受性豊か',
+                                          textStyle: AppTheme.body2),
+                                      CheckboxWithText(
+                                          isChecked: false,
+                                          label: 'マイペース',
+                                          textStyle: AppTheme.body2),
+                                      CheckboxWithText(
+                                          isChecked: false,
+                                          label: '心配性',
+                                          textStyle: AppTheme.body2),
+                                      CheckboxWithText(
+                                          isChecked: false,
+                                          label: '知的',
+                                          textStyle: AppTheme.body2),
+                                      CheckboxWithText(
+                                          isChecked: false,
+                                          label: '社交的',
+                                          textStyle: AppTheme.body2),
+                                      SizedBox(height: Dimens.gap_dp20),
+                                      LabeledRichText(
+                                          label:
+                                              '今回の依頼以外に、利用者様もしくは施設担当者やケアマネージャーさんから要望はありましたか？*',
+                                          value: ''),
+                                      SizedBox(height: Dimens.gap_dp20),
+                                      Column(children: [
+                                        Text(
+                                          '利用者様と金品のやり取りはありましたか？(買い物などの業務以外)*',
+                                          style: AppTheme.body2,
+                                        )
+                                      ]),
+                                      RadioButton(
+                                        options: [
+                                          {'label': 'はい', 'value': 1},
+                                          {'label': 'いいえ', 'value': 0},
+                                        ],
+                                      ),
+                                      SizedBox(height: Dimens.gap_dp20),
+                                      Column(children: [
+                                        Text(
+                                          'もし次回同じ利用者様からご依頼がありましたらご対応は可能ですか？*',
+                                          style: AppTheme.body2,
+                                        )
+                                      ]),
+                                      RadioButton(
+                                        options: [
+                                          {'label': 'はい', 'value': 1},
+                                          {'label': 'いいえ', 'value': 0},
+                                        ],
+                                      ),
+                                      SizedBox(height: Dimens.gap_dp20),
+                                      Align(
+                                          alignment: Alignment.topLeft,
+                                          child: Column(children: [
+                                            Text(
+                                              '利用者様から物や食事をいただきましたか？*',
+                                              style: AppTheme.body2,
+                                            )
+                                          ])),
+                                      RadioButton(
+                                        options: [
+                                          {'label': 'はい', 'value': 1},
+                                          {'label': 'いいえ', 'value': 0},
+                                        ],
+                                      ),
+                                      SizedBox(height: Dimens.gap_dp20),
+                                      LabeledRichText(
+                                          label:
+                                              '利用者様からありがたくいただいた物を以下に記載してください*',
+                                          value: ''),
+                                      SizedBox(height: Dimens.gap_dp100),
+                                      Button(
+                                        text: "送信",
+                                        onPressed: () {
+                                          Get.back();
+                                          Get.back();
+                                          GlobalController.to
+                                              .gotoMainPageByIndex(
+                                                  AppDefine.TAB_PROFILE_INDEX);
+                                        },
+                                        borderRadius: 16.0,
+                                        backgroundColor: Colors.black,
+                                        minWidth: 200.0,
+                                      ),
+                                      SizedBox(height: Dimens.gap_dp20),
+                                    ],
+                                  )),
+                              SizedBox(height: Dimens.gap_dp10),
+                            ],
+                          ))))
             ],
           )
         ]));

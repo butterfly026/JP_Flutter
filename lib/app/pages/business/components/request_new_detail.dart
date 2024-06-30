@@ -1,11 +1,19 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:fpg_flutter/app/pages/business/controllers/request_detail_controller.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/public/config/images.dart';
+import 'package:fpg_flutter/public/define/request_info.dart';
 import 'package:fpg_flutter/public/models/business/request_list_data.dart';
+import 'package:fpg_flutter/public/router/router.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
+import 'package:fpg_flutter/public/widgets/button.dart';
+import 'package:fpg_flutter/public/widgets/checkbox_text.dart';
 import 'package:fpg_flutter/public/widgets/image.dart';
 import 'package:fpg_flutter/public/widgets/table-cell.dart';
+import 'package:fpg_flutter/public/widgets/text_info_title.dart';
+import 'package:fpg_flutter/public/widgets/text_subtitle_value.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
 
@@ -43,23 +51,26 @@ class _RequestNewDetailPageState extends State<RequestNewDetailPage>
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: GetBuilder<RequestDetailController>(
-          init: _controller,
-          builder: (controller) {
-            return Padding(
-              padding: EdgeInsets.all(Dimens.gap_dp10),
-              child: Column(
-                children: [
-                  if (selectedData != null && selectedData!.status == '募集中')
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10.0, vertical: 5.0),
+    return GetBuilder<RequestDetailController>(
+        init: _controller,
+        builder: (controller) {
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(Dimens.gap_dp20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: IntrinsicWidth(
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: Dimens.gap_dp30,
+                              vertical: Dimens.gap_dp2,
+                            ),
+                            margin: EdgeInsets.only(bottom: Dimens.gap_dp30),
                             decoration: BoxDecoration(
                               border: Border.all(
                                 width: 1.0,
@@ -67,49 +78,97 @@ class _RequestNewDetailPageState extends State<RequestNewDetailPage>
                                 style: BorderStyle.solid,
                               ),
                             ),
-                            child: Text(selectedData!.status,
+                            child: Align(
+                              alignment: Alignment.topLeft,
+                              child: Text(
+                                selectedData!.status,
                                 textAlign: TextAlign.center,
-                                style: TextStyle(color: AppTheme.info)),
+                                style: AppTheme.body2
+                                    .copyWith(color: AppTheme.info),
+                              ),
+                            ),
                           ),
-                        ],
+                        ),
                       ),
-                    ),
-                  if (selectedData != null && selectedData!.status == '依頼確定')
-                    Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text('メニュー', style: AppTheme.body2),
-                    ),
-                  Padding(
-                      padding: const EdgeInsets.only(left: 16.0),
-                      child: Column(
-                        children: [
-                          TableCellSettings(
-                              title: "シフト",
-                              onTap: () {
-                                Navigator.pushNamed(context, '/pro');
-                              }),
-                          TableCellSettings(
-                              title: "お知らせ",
-                              onTap: () {
-                                Navigator.pushNamed(context, '/pro');
-                              }),
-                          TableCellSettings(
-                              title: "個人情報編集",
-                              onTap: () {
-                                Navigator.pushNamed(context, '/pro');
-                              }),
-                          TableCellSettings(
-                              title: "アカウント設定",
-                              onTap: () {
-                                Navigator.pushNamed(context, '/pro');
-                              }),
-                        ],
-                      ))
-                ],
-              ),
-            );
-          }),
-    );
+                      TextSubitleValue(title: '■性別', value: '男性'),
+                      TextSubitleValue(
+                        title: '■住所',
+                        value: '〒777-2222　秋田県秋田市1111-3',
+                      ),
+                      TextSubitleValue(title: '■依頼内容', value: '病院付き添い'),
+                      TextSubitleValue(title: '■所要時間', value: '1h'),
+                      TextSubitleValue(title: '■身体的特徴', value: ''),
+                      SizedBox(height: Dimens.gap_dp100),
+                      TextSubitleValue(title: '■精神的特徴', value: ''),
+                      SizedBox(height: Dimens.gap_dp100),
+                      TextSubitleValue(title: '■運営からのコメント', value: ''),
+                      SizedBox(height: Dimens.gap_dp100),
+                      SizedBox(height: Dimens.gap_dp100),
+                      Container(
+                        margin: EdgeInsets.only(bottom: Dimens.gap_dp6),
+                        child: TextInfoTitle(
+                          title: '■候補日',
+                          type: RequestInfo.SUB_TITLE,
+                        ),
+                      ),
+                      Padding(
+                          padding: EdgeInsets.only(left: Dimens.gap_dp30),
+                          child: CheckboxWithText(
+                              isChecked: false,
+                              label: '2024-03-03  14:00 ~ 15:00',
+                              textStyle: AppTheme.body2)),
+                      Padding(
+                          padding: EdgeInsets.only(left: Dimens.gap_dp30),
+                          child: CheckboxWithText(
+                              isChecked: false,
+                              label: '2024-03-03  14:00 ~ 15:00',
+                              textStyle: AppTheme.body2)),
+                      Padding(
+                          padding: EdgeInsets.only(left: Dimens.gap_dp30),
+                          child: CheckboxWithText(
+                              isChecked: false,
+                              label: '2024-03-03  14:00 ~ 15:00',
+                              textStyle: AppTheme.body2)),
+                    ],
+                  ),
+                ),
+                Divider(
+                  height: 1,
+                  color: AppTheme.dark_grey.withOpacity(0.2),
+                ),
+                SizedBox(height: Dimens.gap_dp10),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Button(
+                        text: "依頼拒否",
+                        onPressed: () {
+                          selectedData?.status = '依頼確定';
+                          Get.toNamed(AppRouter.requestDetail,
+                              parameters: {
+                                'request_info':
+                                    jsonEncode(selectedData?.toJson())
+                              });
+                        },
+                        borderRadius: Dimens.gap_dp16,
+                        paddingVertical: Dimens.gap_dp2,
+                        backgroundColor: AppTheme.error,
+                        textColor: AppTheme.black,
+                      ),
+                      Button(
+                        text: "依頼応募",
+                        onPressed: () {},
+                        borderRadius: Dimens.gap_dp16,
+                        paddingVertical: Dimens.gap_dp2,
+                        backgroundColor: AppTheme.warning,
+                        textColor: AppTheme.black,
+                      )
+                    ]),
+                SizedBox(height: Dimens.gap_dp20),
+              ],
+            ),
+          );
+        });
   }
 
   Future<bool> getData() async {

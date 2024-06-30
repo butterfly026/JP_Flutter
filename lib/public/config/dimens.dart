@@ -110,6 +110,8 @@ class Dimens {
   static double get gap_dp96 => ScreenUtil().setWidth(96.0).toDouble();
 
   static double get gap_dp100 => ScreenUtil().setWidth(100.0).toDouble();
-  
+
+  static double get gap_dp150 => ScreenUtil().setWidth(150.0).toDouble();
+
   static double get gap_dp200 => ScreenUtil().setWidth(200.0).toDouble();
 }

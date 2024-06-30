@@ -100,7 +100,7 @@ class AppTheme extends ChangeNotifier {
   static const TextStyle title = TextStyle(
     // h6 -> title
     fontFamily: fontName,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w600,
     fontSize: 16,
     letterSpacing: 0.18,
     color: darkerText,
@@ -116,6 +116,15 @@ class AppTheme extends ChangeNotifier {
   );
 
   static const TextStyle body2 = TextStyle(
+    // body1 -> body2
+    fontFamily: fontName,
+    fontWeight: FontWeight.w200,
+    fontSize: 12,
+    letterSpacing: 0.2,
+    color: mainDark,
+  );
+
+  static const TextStyle body3 = TextStyle(
     // body1 -> body2
     fontFamily: fontName,
     fontWeight: FontWeight.w200,

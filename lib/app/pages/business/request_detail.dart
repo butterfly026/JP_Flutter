@@ -52,7 +52,7 @@ class _RequestDetailPageState extends State<RequestDetailPage>
       if (selectedData!.status == '募集中') {
         return RequestNewDetailPage(selectedData: selectedData);
       } else if (selectedData!.status == '依頼確定') {
-        return RequestNewDetailPage(selectedData: selectedData);
+        return RequestConfirmedDetailPage(selectedData: selectedData);
       }
     }
     return Container();
@@ -66,20 +66,13 @@ class _RequestDetailPageState extends State<RequestDetailPage>
           Column(
             children: [
               SubPageAppBar(
-                titleText: '依頼詳細',                
+                titleText: '依頼詳細',
               ),
-              Expanded(
-                child: GetBuilder<RequestDetailController>(
-                    init: _controller,
-                    builder: (controller) {
-                      return Padding(
-                        padding: EdgeInsets.all(Dimens.gap_dp10),
-                        child: Column(
-                          children: <Widget>[_getPageByStatus()],
-                        ),
-                      );
-                    }),
+              Divider(
+                height: 1,
+                color: AppTheme.dark_grey.withOpacity(0.2),
               ),
+              Expanded(child: _getPageByStatus()),
             ],
           )
         ]));
