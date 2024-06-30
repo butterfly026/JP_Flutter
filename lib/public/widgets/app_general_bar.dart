@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fpg_flutter/public/config/dimens.dart';
+import 'package:fpg_flutter/utils/theme/app_theme.dart';
 
 class AppGeneralBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget? titleWidget;
@@ -18,17 +20,16 @@ class AppGeneralBar extends StatelessWidget implements PreferredSizeWidget {
   });
 
   @override
-  Size get preferredSize => Size(double.infinity, 50.h);
+  Size get preferredSize => Size(double.infinity, 70.h);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: backgroundColor ?? Color(0xff609AC5),
+      backgroundColor: backgroundColor ?? AppTheme.white,
       leading: leading,
       title: titleWidget,
       actions: actionWidgets,
       centerTitle: centerTitle,
-      
     );
   }
 }

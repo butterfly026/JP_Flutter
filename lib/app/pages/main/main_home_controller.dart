@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fpg_flutter/public/apis/api_notices.dart';
-import 'package:fpg_flutter/public/global/global.dart';
-import 'package:fpg_flutter/public/repositories/app_info_repository.dart';
-import 'package:fpg_flutter/app/pages/account/account_view.dart';
+import 'package:fpg_flutter/app/pages/business/request_list.dart';
+import 'package:fpg_flutter/app/pages/account/profile_page.dart';
 import 'package:fpg_flutter/app/pages/chat_room/chat_room_page.dart';
-import 'package:fpg_flutter/app/pages/chess/chess_card_view.dart';
-import 'package:fpg_flutter/app/pages/home/home_view.dart';
 import 'package:fpg_flutter/app/pages/hunting/hunting_view.dart';
 import 'package:fpg_flutter/app/pages/information/Information_view.dart';
 import 'package:fpg_flutter/public/widgets/bottom_navigation_bar/bottom_tab_model.dart';
@@ -42,17 +38,17 @@ class MainHomeController extends GetxController {
   Widget getCurrentPage() {
     switch (currentTabIndex.value) {
       case 0:
-        return HomeView();
+        return const RequestListPage();
       case 1:
         return HuntingView();
       case 2:
         return InformationView();      
       case 3:
-        return ChessCardView();
+        return ProfilePage();
       case 4:
         return ChatRoomPage();
       default:
-        return AccountView();
+        return ProfilePage();
     }
   }
 

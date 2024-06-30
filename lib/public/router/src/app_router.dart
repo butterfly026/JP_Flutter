@@ -15,7 +15,7 @@ class AppRouter {
   static const chat_message = '/chat/messages';
   static const chat_group = '/chat/group';
   static const request_list = '/request/list';
-  static const request_detail = '/request/detail';
+  static const requestDetail = '/request/detail';
   static const accountPath = '/ucenter';
   static const profileChangePasswordPath = '/change-password';
   static const homePath = '/home';
@@ -42,6 +42,10 @@ class AppRouter {
   GetPage(
     name: profile,
     page: () => MainPage(curIndex: AppDefine.TAB_PROFILE_INDEX),
+  ),
+  GetPage(
+    name: requestDetail,
+    page: () => const RequestDetailPage(),
   ),
     // GetPage(
     //   name: login,

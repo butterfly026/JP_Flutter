@@ -55,6 +55,7 @@ class AppTheme extends ChangeNotifier {
   static const Color socialTwitter = Color.fromRGBO(91, 192, 222, 1.0);
   static const Color socialDribbble = Color.fromRGBO(234, 76, 137, 1.0);
 
+  static const margin = 16.0;
   // static const TextTheme textTheme = TextTheme(
   //   headline4: display1,
   //   headline5: headline,
