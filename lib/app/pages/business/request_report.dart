@@ -115,18 +115,19 @@ class _RequestReportPageState extends State<RequestReportPage>
                         backgroundColor: AppTheme.buttonDisabledBack,
                         textColor: AppTheme.buttonDisabledText,
                         minWidth: Dimens.gap_dp200,
-                        isFullToWidth: true,                        
+                        isFullToWidth: true,
                       ),
                       SizedBox(height: Dimens.gap_dp40),
                       Button(
                         text: "活動報告",
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.toNamed(AppRouter.requestActive);
+                        },
                         borderRadius: Dimens.gap_dp16,
                         backgroundColor: AppTheme.buttonDisabledBack,
                         textColor: AppTheme.buttonDisabledText,
                         minWidth: Dimens.gap_dp200,
                         isFullToWidth: true,
-                        disabled: true,
                       ),
                       SizedBox(height: Dimens.gap_dp40),
                     ],
