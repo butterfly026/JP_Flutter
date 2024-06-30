@@ -14,6 +14,8 @@ class AppTheme extends ChangeNotifier {
   static const Color primary = Color(0xFF1A76D2);
   static const Color secondary = Color(0xFF6C757D);
   static const Color button = Color(0xFFFFA800);
+  static const Color buttonDisabledBack = Color(0xFFA0A0A0);
+  static const Color buttonDisabledText = Color(0xFF616161);
 
   static const Color notWhite = Color(0xFFEDF0F2);
   static const Color nearlyWhite = Color(0xFFFEFEFE);

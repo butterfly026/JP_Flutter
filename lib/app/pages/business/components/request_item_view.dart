@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/public/models/business/request_list_data.dart';
 import 'package:fpg_flutter/public/widgets/button.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
@@ -9,10 +10,12 @@ class RequestItemView extends StatelessWidget {
       this.requestData,
       this.animationController,
       this.animation,
-      this.callback})
+      this.onPressItem,
+      this.onPressReport})
       : super(key: key);
 
-  final VoidCallback? callback;
+  final VoidCallback? onPressItem;
+  final VoidCallback? onPressReport;
   final RequestListData? requestData;
   final AnimationController? animationController;
   final Animation<double>? animation;
@@ -28,11 +31,10 @@ class RequestItemView extends StatelessWidget {
             transform: Matrix4.translationValues(
                 0.0, 50 * (1.0 - animation!.value), 0.0),
             child: Padding(
-              padding:
-                  const EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 16),
+              padding: EdgeInsets.only(left: Dimens.gap_dp10, right: Dimens.gap_dp10, top: Dimens.gap_dp10, bottom: Dimens.gap_dp20),
               child: InkWell(
                 splashColor: Colors.white,
-                onTap: callback,
+                onTap: onPressItem,
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: const BorderRadius.all(Radius.circular(16.0)),
@@ -40,8 +42,8 @@ class RequestItemView extends StatelessWidget {
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.6),
                         // color: Colors.grey.withOpacity(0.6),
-                        offset: const Offset(4, 4),
-                        blurRadius: 16,
+                        offset: Offset(Dimens.gap_dp4, Dimens.gap_dp4),
+                        blurRadius: Dimens.gap_dp16,
                       ),
                     ],
                   ),
@@ -60,8 +62,9 @@ class RequestItemView extends StatelessWidget {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10.0, vertical: 5.0),
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: Dimens.gap_dp18,
+                                        vertical: Dimens.gap_dp6),
                                     decoration: BoxDecoration(
                                       border: Border.all(
                                         width: 1.0,
@@ -76,10 +79,8 @@ class RequestItemView extends StatelessWidget {
                                   ),
                                   Button(
                                       text: "出発報告",
-                                      onPressed: () {
-                                        print('pressed');
-                                      },
-                                      borderRadius: 8.0,
+                                      onPressed: onPressReport,
+                                      borderRadius: Dimens.gap_dp8,
                                       backgroundColor: Colors.black),
                                 ],
                               ),

@@ -13,6 +13,26 @@ class RequestListData {
   String request_user_gender;
   String status;
 
+  dynamic toJson() {
+    return {
+      'request_user_address': request_user_address,
+      'worktime': worktime,
+      'request_content': request_content,
+      'request_user_gender': request_user_gender,
+      'status': status,
+    };
+  }
+
+  static RequestListData fromJson(Map<String, dynamic> data) {
+    RequestListData ret = RequestListData();
+    ret.request_user_address = data['request_user_address'] ?? '';
+    ret.worktime = data['worktime'] ?? '';
+    ret.request_content = data['request_content'] ?? '';
+    ret.request_user_gender = data['request_user_gender'] ?? '';
+    ret.status = data['status'] ?? '';
+    return ret;
+  }
+
   static List<RequestListData> requestList = <RequestListData>[
     RequestListData(
       request_user_address: 'テスト',

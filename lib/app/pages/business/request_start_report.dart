@@ -13,18 +13,17 @@ import 'package:fpg_flutter/public/widgets/table-cell.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
 
-class RequestDetailPage extends StatefulWidget {
-  const RequestDetailPage({super.key});
+class RequestStartReportPage extends StatefulWidget {
+  const RequestStartReportPage({super.key});
 
   @override
-  _RequestDetailPageState createState() => _RequestDetailPageState();
+  _RequestStartReportPageState createState() => _RequestStartReportPageState();
 }
 
-class _RequestDetailPageState extends State<RequestDetailPage>
+class _RequestStartReportPageState extends State<RequestStartReportPage>
     with TickerProviderStateMixin {
   AnimationController? animationController;
   late RequestDetailController _controller;
-  RequestListData? selectedData;
 
   // List<TabIconData> tabIconsList = TabIconData.tabIconsList;
 
@@ -32,11 +31,7 @@ class _RequestDetailPageState extends State<RequestDetailPage>
   void initState() {
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-    // tabBody = MyDiaryScreen(animationController: animationController);
-    selectedData = RequestListData.fromJson(
-        jsonDecode(Get.parameters['request_info'] ?? '{}'));
-    // int curIndex = int.tryParse(Get.parameters['index'] ?? '') ?? 0;
-    // selectedData = RequestListData.requestList[curIndex];
+    
     _controller = RequestDetailController();
     super.initState();
   }
@@ -47,16 +42,6 @@ class _RequestDetailPageState extends State<RequestDetailPage>
     super.dispose();
   }
 
-  Widget _getPageByStatus() {
-    if (selectedData != null) {
-      if (selectedData!.status == '募集中') {
-        return RequestNewDetailPage(selectedData: selectedData);
-      } else if (selectedData!.status == '依頼確定') {
-        return RequestNewDetailPage(selectedData: selectedData);
-      }
-    }
-    return Container();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +51,7 @@ class _RequestDetailPageState extends State<RequestDetailPage>
           Column(
             children: [
               SubPageAppBar(
-                titleText: '依頼詳細',                
+                titleText: '開始報告',                
               ),
               Expanded(
                 child: GetBuilder<RequestDetailController>(
@@ -75,7 +60,7 @@ class _RequestDetailPageState extends State<RequestDetailPage>
                       return Padding(
                         padding: EdgeInsets.all(Dimens.gap_dp10),
                         child: Column(
-                          children: <Widget>[_getPageByStatus()],
+                          children: <Widget>[],
                         ),
                       );
                     }),

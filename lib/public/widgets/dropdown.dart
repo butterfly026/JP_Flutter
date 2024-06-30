@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 
 class CustomDropdownMenu extends StatefulWidget {
   final List<String> items;
-  final String selectedItem;
+  final String? selectedItem;
   final ValueChanged<String?> onChanged;
 
   const CustomDropdownMenu({
     Key? key,
     required this.items,
-    this.selectedItem = 'すべて',
+    this.selectedItem,
     required this.onChanged,
   }) : super(key: key);
 
@@ -19,56 +20,47 @@ class CustomDropdownMenu extends StatefulWidget {
 
 class _CustomDropdownMenuState extends State<CustomDropdownMenu> {
   final TextEditingController dropdownController = TextEditingController();
+  String? _selectedItem;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedItem = widget.selectedItem;
+  }
 
   @override
   Widget build(BuildContext context) {
-    return DropdownMenu<String>(
-      initialSelection: widget.selectedItem,
-      controller: dropdownController,
-      // inputDecorationTheme: InputDecorationTheme(
-      //     border: OutlineInputBorder(
-      //       borderSide: BorderSide(
-      //         color: AppTheme
-      //             .mainLightGrey, // Set the border color of the dropdown button
-      //         width: 2.0,
-      //       ),
-      //     ),
-      //     fillColor: Colors.white,
-      //     filled: true),
-      // requestFocusOnTap is enabled/disabled by platforms when it is null.
-      // On mobile platforms, this is false by default. Setting this to true will
-      // trigger focus request on the text field and virtual keyboard will appear
-      // afterward. On desktop platforms however, this defaults to true.
-      requestFocusOnTap: true,
-      // label: const Text('Color'),
-      onSelected: (String? newValue) {
-        // setState(() {
-        //   _selectedItem = newValue;
-        // });
-        widget.onChanged(newValue);
-      },
-      width: 200,
-      dropdownMenuEntries:
-          widget.items.map<DropdownMenuEntry<String>>((String item) {
-        return DropdownMenuEntry<String>(
+    return Container(
+      width: MediaQuery.of(context).size.width / 2, // Half of the screen width
+      height: Dimens.gap_dp70,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.0), // Rounded corners
+        border: Border.all(
+          color: Colors.grey, // Border color
+          width: 2.0, // Border width
+        ),
+      ),
+      child: DropdownButton<String>(
+        value: _selectedItem,
+        items: widget.items.map((String item) {
+          return DropdownMenuItem<String>(
             value: item,
-            label: item,
-            labelWidget: Text(item, style: AppTheme.body2),
-            leadingIcon:
-                Icon(Icons.double_arrow, color: AppTheme.mainDark, size: 10.0),
-            // enabled: color.label != 'Grey',
-            style: MenuItemButton.styleFrom(
-              foregroundColor: AppTheme.mainLightGrey,
-              backgroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                  side: BorderSide(
-                      color: AppTheme.mainLightGrey,
-                      style: BorderStyle.solid,
-                      width: 2.0),
-                  borderRadius: BorderRadius.all(Radius.circular(6.0))),
-            ));
-      }).toList(),
-      // menuBui
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              child: Text(item, style: TextStyle(fontSize: 16.0)),
+            ),
+          );
+        }).toList(),
+        onChanged: (String? newValue) {
+          setState(() {
+            _selectedItem = newValue;
+            widget.onChanged(newValue);
+          });
+        },
+        isExpanded:
+            true, // Make the dropdown take the full width of the container
+        underline: Container(), // Remove the underline
+      ),
     );
   }
 }
