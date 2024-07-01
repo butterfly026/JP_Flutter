@@ -10,6 +10,7 @@ class AppRouter {
   static const login = '/login';
   static const register = '/register';
   static const profile = '/profile';
+  static const profileEdit = '/profile/edit';
   static const chat = '/chat';
   static const chatMessage = '/chat/messages';
   static const chatGroup = '/chat/group';
@@ -18,7 +19,11 @@ class AppRouter {
   static const requestStart = '/request/start';
   static const requestActive = '/request/active';
   static const requestDetail = '/request/detail';
-  static const accountPath = '/ucenter';
+  static const authSettings = '/auth_settings';
+  static const userShift = '/user/shift';
+  static const notices = '/notices';
+  static const noticeDetail = '/notices/detail';
+  static const cardDetail = '/cards/detail';
   static const profileChangePasswordPath = '/change-password';
   static const homePath = '/home';
   static const mainPath = '/';
@@ -59,6 +64,30 @@ class AppRouter {
     GetPage(
       name: requestActive,
       page: () => const RequestActiveReportPage(),
+    ),
+    GetPage(
+      name: notices,
+      page: () => const NoticesPage(),
+    ),
+    GetPage(
+      name: noticeDetail,
+      page: () => const NoticeDetailPage(),
+    ),
+    GetPage(
+      name: profileEdit,
+      page: () => const ProfileEditPage(),
+    ),
+    GetPage(
+      name: authSettings,
+      page: () => const AuthSettingsPage(),
+    ),
+    GetPage(
+      name: userShift,
+      page: () => const UserShiftPage(),
+    ),
+    GetPage(
+      name: cardDetail,
+      page: () => const CardInfoPage(),
     ),
   ];
 }

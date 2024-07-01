@@ -16,6 +16,8 @@ class AppTheme extends ChangeNotifier {
   static const Color button = Color(0xFFFFA800);
   static const Color buttonDisabledBack = Color(0xFFA0A0A0);
   static const Color buttonDisabledText = Color(0xFF616161);
+  static const Color lightGreyText = Color(0xFF616161);
+  static const Color lightGreyBack = Color(0xFFE0E0E0);
 
   static const Color notWhite = Color(0xFFEDF0F2);
   static const Color nearlyWhite = Color(0xFFFEFEFE);
@@ -82,7 +84,7 @@ class AppTheme extends ChangeNotifier {
     // h4 -> display1
     fontFamily: fontName,
     fontWeight: FontWeight.bold,
-    fontSize: 36,
+    fontSize: 23,
     letterSpacing: 0.4,
     height: 0.9,
     color: darkerText,

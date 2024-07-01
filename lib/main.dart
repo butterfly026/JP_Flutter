@@ -9,6 +9,7 @@ import 'package:fpg_flutter/public/global/global.dart';
 import 'package:fpg_flutter/utils/storage/index.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'public/router/router.dart';
 import 'package:provider/provider.dart';
 
@@ -21,12 +22,12 @@ void main() async {
   await Storage.instance.init();
   await Global.init();
   await AppInfoUtils.instance.fetchAppInfo();
-  runApp(
-    ChangeNotifierProvider(
-      create: (_) => AppTheme(),
-      child: MyApp(),
-    ),
-  );
+  initializeDateFormatting().then((_) => runApp(
+        ChangeNotifierProvider(
+          create: (_) => AppTheme(),
+          child: MyApp(),
+        ),
+      ));
 }
 
 class MyApp extends StatelessWidget {

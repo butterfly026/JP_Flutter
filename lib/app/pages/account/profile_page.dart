@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fpg_flutter/app/controllers/auth_controller.dart';
+import 'package:fpg_flutter/public/router/router.dart';
 import 'package:fpg_flutter/public/widgets/table-cell.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
@@ -15,6 +16,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: AppTheme.white,
       child: (Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -30,22 +32,22 @@ class _ProfilePageState extends State<ProfilePage> {
                       TableCellSettings(
                           title: "シフト",
                           onTap: () {
-                            Navigator.pushNamed(context, '/pro');
+                            Get.toNamed(AppRouter.userShift);
                           }),
                       TableCellSettings(
                           title: "お知らせ",
                           onTap: () {
-                            Navigator.pushNamed(context, '/pro');
+                            Get.toNamed(AppRouter.notices);
                           }),
                       TableCellSettings(
                           title: "個人情報編集",
                           onTap: () {
-                            Navigator.pushNamed(context, '/pro');
+                            Get.toNamed(AppRouter.profileEdit);
                           }),
                       TableCellSettings(
                           title: "アカウント設定",
                           onTap: () {
-                            Navigator.pushNamed(context, '/pro');
+                            Get.toNamed(AppRouter.authSettings);
                           }),
                     ],
                   ))

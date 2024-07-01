@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fpg_flutter/app/pages/business/request_list.dart';
 import 'package:fpg_flutter/app/pages/account/profile_page.dart';
+import 'package:fpg_flutter/app/pages/cards/cards.dart';
 import 'package:fpg_flutter/app/pages/chat_room/chat_room_page.dart';
 import 'package:fpg_flutter/app/pages/hunting/hunting_view.dart';
 import 'package:fpg_flutter/app/pages/information/Information_view.dart';
@@ -40,13 +41,11 @@ class MainHomeController extends GetxController {
       case 0:
         return const RequestListPage();
       case 1:
-        return HuntingView();
+        return ChatRoomPage();
       case 2:
-        return InformationView();      
+        return CardsPage();      
       case 3:
         return ProfilePage();
-      case 4:
-        return ChatRoomPage();
       default:
         return ProfilePage();
     }
