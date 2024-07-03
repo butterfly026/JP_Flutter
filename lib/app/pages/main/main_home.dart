@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fpg_flutter/app/controllers/auth_controller.dart';
 import 'package:fpg_flutter/app/pages/main/main_home_controller.dart';
@@ -37,6 +38,7 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
     return Scaffold(
         appBar: CustomAppBar(
           titleSpacing: 0,
+          backgroundColor: AppTheme.white,
           title: Obx(
             () {
               return Padding(

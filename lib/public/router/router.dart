@@ -12,6 +12,8 @@ import 'package:fpg_flutter/app/pages/business/request_report.dart';
 import 'package:fpg_flutter/app/pages/business/request_start_report.dart';
 import 'package:fpg_flutter/app/pages/cards/card_info.dart';
 import 'package:fpg_flutter/app/pages/cards/cards.dart';
+import 'package:fpg_flutter/app/pages/chat_room/chat_group.dart';
+import 'package:fpg_flutter/app/pages/chat_room/chat_message.dart';
 import 'package:fpg_flutter/app/pages/main/main_home.dart';
 import 'package:fpg_flutter/app/pages/notices/notice_detail.dart';
 import 'package:fpg_flutter/app/pages/notices/notices.dart';

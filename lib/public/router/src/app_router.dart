@@ -89,5 +89,13 @@ class AppRouter {
       name: cardDetail,
       page: () => const CardInfoPage(),
     ),
+    GetPage(
+      name: chatMessage,
+      page: () => const ChatMessagePage(),
+    ),
+    GetPage(
+      name: chatGroup,
+      page: () => const ChatGroupPage(),
+    ),
   ];
 }

@@ -19,6 +19,8 @@ class CustomAppBar extends AppBar {
     super.bottom,
   }) : super(
           actions: _buildActions(actions),
+          shadowColor: Colors.transparent,
+          surfaceTintColor: Colors.transparent
         );
 
   @override
@@ -62,7 +64,7 @@ class SubPageAppBar extends CustomAppBar {
                   titleText ?? '',
                   style: TextStyle(
                     fontSize: Dimens
-                        .font_sp28, // Replace with Dimens.font_sp28 if defined
+                        .font_sp24, // Replace with Dimens.font_sp28 if defined
                   ),
                 ),
               ),
