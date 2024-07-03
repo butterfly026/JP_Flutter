@@ -54,7 +54,7 @@ class _UserShiftPageState extends State<UserShiftPage>
               ),
               Divider(
                 height: 1,
-                color: AppTheme.black,
+                color: AppTheme.mainLightGrey,
               ),
               Expanded(
                   child: SingleChildScrollView(

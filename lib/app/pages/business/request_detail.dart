@@ -70,7 +70,7 @@ class _RequestDetailPageState extends State<RequestDetailPage>
               ),
               Divider(
                 height: 1,
-                color: AppTheme.dark_grey.withOpacity(0.2),
+                color: AppTheme.mainLightGrey,
               ),
               Expanded(child: _getPageByStatus()),
             ],

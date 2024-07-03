@@ -35,7 +35,7 @@ class _ChatInputWidgetState extends State<ChatInputWidget> {
             child: Row(children: [
               IconButton(
                 visualDensity: VisualDensity(
-                    horizontal: -Dimens.gap_dp6, vertical: -Dimens.gap_dp2),
+                    horizontal: -Dimens.gap_dp5, vertical: -Dimens.gap_dp2),
                 icon: Icon(Icons.add),
                 onPressed: () {
                   // Handle attachment button press
@@ -78,7 +78,7 @@ class _ChatInputWidgetState extends State<ChatInputWidget> {
           )),
           IconButton(
             visualDensity: VisualDensity(
-                horizontal: -Dimens.gap_dp6, vertical: -Dimens.gap_dp2),
+                horizontal: -Dimens.gap_dp5, vertical: -Dimens.gap_dp2),
             icon: Icon(Icons.send),
             onPressed: () {
               // Handle send button press

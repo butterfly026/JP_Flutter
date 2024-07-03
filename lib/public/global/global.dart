@@ -4,6 +4,7 @@ import 'package:fpg_flutter/app/controllers/auth_controller.dart';
 import 'package:fpg_flutter/app/controllers/global_controller.dart';
 import 'package:fpg_flutter/app/pages/main/main_home_controller.dart';
 import 'package:fpg_flutter/public/repositories/app_info_repository.dart';
+import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 

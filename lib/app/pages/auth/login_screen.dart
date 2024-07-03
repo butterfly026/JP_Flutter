@@ -93,6 +93,7 @@ class _LoginPageState extends State<LoginScreen> {
                             padding: const EdgeInsets.all(6.0),
                             child: Input(
                               placeholder: "パスワード",
+                              isPassword: true,
                               onChanged: (value) {
                                 setState(() {
                                   password = value ?? '';

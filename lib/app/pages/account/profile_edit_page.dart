@@ -278,24 +278,50 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                                 label: '可動範囲（何駅）', value: '')),
                                       ],
                                     )),
-                                Container(
-                                    width: width3_2,
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                            child: TopLabeledTextField(
-                                                label: 'OKな依頼', value: '')),
-                                      ],
-                                    )),
-                                Container(
-                                    width: width3_2,
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                            child: TopLabeledTextField(
-                                                label: 'NGな依頼　選択', value: '')),
-                                      ],
-                                    )),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Container(
+                                      width: width3_2,
+                                      child: TopLabeledTextField(
+                                        label: 'OKな依頼',
+                                        value: '',
+                                      ),
+                                    ),
+                                    Container(
+                                        padding: EdgeInsets.only(
+                                            left: Dimens.gap_dp6),
+                                        child: Button(
+                                          text: '選択',
+                                          paddingVertical: 0,
+                                          paddingHorizontal: 0,
+                                          borderRadius: 0,
+                                          backgroundColor: AppTheme.secondary,
+                                        ))
+                                  ],
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Container(
+                                      width: width3_2,
+                                      child: TopLabeledTextField(
+                                        label: 'NGな依頼　選択',
+                                        value: '',
+                                      ),
+                                    ),
+                                    Container(
+                                        padding: EdgeInsets.only(
+                                            left: Dimens.gap_dp6),
+                                        child: Button(
+                                          text: '選択',
+                                          paddingVertical: 0,
+                                          paddingHorizontal: 0,
+                                          borderRadius: 0,
+                                          backgroundColor: AppTheme.secondary,
+                                        ))
+                                  ],
+                                ),
                                 SizedBox(height: Dimens.gap_dp50),
                                 Text('稼働可能な曜日', style: AppTheme.body2),
                                 for (var item in weekDays)
@@ -306,9 +332,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                         Text(item, style: AppTheme.body2),
                                         SizedBox(height: Dimens.gap_dp8),
                                         CustomDropdownMenu(
-                                          items: [
-                                            '',
-                                          ],
+                                          items: ['可能', '不可能'],
                                           selectedItem: null,
                                           height: Dimens.gap_dp50,
                                           width: width3_2,
@@ -368,7 +392,8 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                   width: double.infinity,
                                   child: Container(
                                     margin: EdgeInsets.only(
-                                        left: Dimens.gap_dp60, right: Dimens.gap_dp60),
+                                        left: Dimens.gap_dp60,
+                                        right: Dimens.gap_dp60),
                                     child: Button(
                                       text: "便新",
                                       onPressed: () {},

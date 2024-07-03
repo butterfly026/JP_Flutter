@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -70,7 +71,7 @@ class AppTheme extends ChangeNotifier {
   //   bodyText1: body1,
   //   caption: caption,
   // );
-  static const TextTheme textTheme = TextTheme(
+  static TextTheme textTheme = TextTheme(
     headlineLarge: display1,
     headlineMedium: headline,
     headlineSmall: title,
@@ -80,75 +81,84 @@ class AppTheme extends ChangeNotifier {
     bodySmall: caption,
   );
 
-  static const TextStyle display1 = TextStyle(
+  static TextStyle display1 = TextStyle(
     // h4 -> display1
     fontFamily: fontName,
     fontWeight: FontWeight.bold,
-    fontSize: 23,
+    fontSize: 27.sp,
     letterSpacing: 0.4,
     height: 0.9,
     color: darkerText,
   );
 
-  static const TextStyle headline = TextStyle(
+  static TextStyle headline = TextStyle(
     // h5 -> headline
     fontFamily: fontName,
     fontWeight: FontWeight.bold,
-    fontSize: 18,
+    fontSize: 24.sp,
     letterSpacing: 0.27,
     color: mainDark,
   );
 
-  static const TextStyle title = TextStyle(
+  static TextStyle title = TextStyle(
     // h6 -> title
     fontFamily: fontName,
-    fontWeight: FontWeight.w600,
-    fontSize: 16,
+    fontWeight: FontWeight.bold,
+    fontSize: 21.sp,
     letterSpacing: 0.18,
     color: darkerText,
   );
 
-  static const TextStyle subtitle = TextStyle(
+  static TextStyle titleRegular = TextStyle(
+    // h6 -> title
+    fontFamily: fontName,
+    fontWeight: FontWeight.normal,
+    fontSize: 21.sp,
+    letterSpacing: 0.18,
+    color: darkerText,
+  );
+
+  static TextStyle subtitle = TextStyle(
     // subtitle2 -> subtitle
     fontFamily: fontName,
-    fontWeight: FontWeight.w600,
-    fontSize: 14,
+    fontWeight: FontWeight.bold,
+    fontSize: 19.sp,
     letterSpacing: -0.04,
     color: mainDark,
   );
 
-  static const TextStyle body2 = TextStyle(
+  static TextStyle body2 = TextStyle(
     // body1 -> body2
     fontFamily: fontName,
-    fontWeight: FontWeight.w200,
-    fontSize: 12,
+    fontWeight: FontWeight.normal,
+    fontSize: 19.sp,
     letterSpacing: 0.2,
     color: mainDark,
   );
 
-  static const TextStyle body3 = TextStyle(
+  static TextStyle body3 = TextStyle(
     // body1 -> body2
     fontFamily: fontName,
-    fontWeight: FontWeight.w200,
-    fontSize: 14,
+    fontWeight: FontWeight.normal,
+    fontSize: 16.sp,
     letterSpacing: 0.2,
     color: mainDark,
   );
 
-  static const TextStyle body1 = TextStyle(
+  static TextStyle body1 = TextStyle(
     // body2 -> body1
     fontFamily: fontName,
     fontWeight: FontWeight.w400,
-    fontSize: 16,
+    fontSize: 16.sp,
     letterSpacing: -0.05,
     color: darkText,
   );
 
-  static const TextStyle caption = TextStyle(
+  static TextStyle caption = TextStyle(
     // Caption -> caption
     fontFamily: fontName,
     fontWeight: FontWeight.w400,
-    fontSize: 12,
+    fontSize: 12.sp,
     letterSpacing: 0.2,
     color: lightText, // was lightText
   );
@@ -196,5 +206,14 @@ class AppTheme extends ChangeNotifier {
       prefs.setString('themeMode', 'dark');
     }
     notifyListeners();
+  }
+
+  static void initFontStyle() {
+    headline = headline.copyWith(fontSize: 24.sp);
+    title = title.copyWith(fontSize: 21.sp);
+    titleRegular = titleRegular.copyWith(fontSize: 21.sp);
+    subtitle = subtitle.copyWith(fontSize: 19.sp);
+    body2 = body2.copyWith(fontSize: 19.sp);
+    display1 = display1.copyWith(fontSize: 27.sp);
   }
 }

@@ -49,7 +49,7 @@ class _NoticeDetailPageState extends State<NoticeDetailPage>
               ),
               Divider(
                 height: 1,
-                color: AppTheme.black,
+                color: AppTheme.mainLightGrey,
               ),
               Expanded(
                   child: SingleChildScrollView(

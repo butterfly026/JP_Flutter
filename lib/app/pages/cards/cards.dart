@@ -126,7 +126,7 @@ class _CardsPageState extends State<CardsPage> {
                                                   visualDensity: VisualDensity(
                                                       vertical: -Dimens.gap_dp2,
                                                       horizontal:
-                                                          -Dimens.gap_dp6),
+                                                          -Dimens.gap_dp5),
                                                   icon: Icon(
                                                       Icons.chevron_right,
                                                       size: Dimens.gap_dp16),
@@ -194,7 +194,7 @@ class _CardsPageState extends State<CardsPage> {
                                                           vertical:
                                                               -Dimens.gap_dp2,
                                                           horizontal:
-                                                              -Dimens.gap_dp6,
+                                                              -Dimens.gap_dp5,
                                                         ),
                                                         icon: Icon(
                                                             Icons.chevron_right,

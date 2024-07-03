@@ -52,7 +52,7 @@ class _NoticesPageState extends State<NoticesPage>
               ),
               Divider(
                 height: 1,
-                color: AppTheme.black,
+                color: AppTheme.mainLightGrey,
               ),
               Expanded(
                 child: Container(

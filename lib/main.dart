@@ -39,6 +39,7 @@ class MyApp extends StatelessWidget {
       return ScreenUtilInit(
         designSize: const Size(540, 960),
         builder: (context, child) {
+          AppTheme.initFontStyle();
           return GetMaterialApp(
             title: 'FPG-t002',
             debugShowCheckedModeBanner: false,

@@ -19,6 +19,25 @@ class RequestItemView extends StatelessWidget {
   final RequestListData? requestData;
   final AnimationController? animationController;
   final Animation<double>? animation;
+  Color getColorByReqStatus() {
+    if (requestData != null) {
+      switch (requestData!.status) {
+        case '依頼確定':
+          return AppTheme.success;
+        case '募集中':
+          return AppTheme.info;
+        case '依頼拒否':
+          return AppTheme.error;
+        case '申請中':
+          return AppTheme.primary;
+        case '募集終了':
+          return AppTheme.warning;
+        default:
+          return AppTheme.black;
+      }
+    }
+    return AppTheme.black;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +50,11 @@ class RequestItemView extends StatelessWidget {
             transform: Matrix4.translationValues(
                 0.0, 50 * (1.0 - animation!.value), 0.0),
             child: Padding(
-              padding: EdgeInsets.only(left: Dimens.gap_dp10, right: Dimens.gap_dp10, top: Dimens.gap_dp10, bottom: Dimens.gap_dp20),
+              padding: EdgeInsets.only(
+                  left: Dimens.gap_dp10,
+                  right: Dimens.gap_dp10,
+                  top: Dimens.gap_dp10,
+                  bottom: Dimens.gap_dp20),
               child: InkWell(
                 splashColor: Colors.white,
                 onTap: onPressItem,
@@ -55,126 +78,33 @@ class RequestItemView extends StatelessWidget {
                         padding: const EdgeInsets.all(10.0),
                         child: Column(
                           children: <Widget>[
-                            if (requestData != null &&
-                                requestData!.status == '依頼確定')
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal: Dimens.gap_dp18,
-                                        vertical: Dimens.gap_dp6),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        width: 1.0,
-                                        color: AppTheme.success,
-                                        style: BorderStyle.solid,
-                                      ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10.0, vertical: 5.0),
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      width: 1.0,
+                                      color: getColorByReqStatus(),
+                                      style: BorderStyle.solid,
                                     ),
-                                    child: Text(requestData!.status,
-                                        textAlign: TextAlign.center,
-                                        style:
-                                            TextStyle(color: AppTheme.success)),
                                   ),
-                                  Button(
+                                  child: Text(requestData!.status,
+                                      textAlign: TextAlign.center,
+                                      style: AppTheme.subtitle.copyWith(color: getColorByReqStatus())),
+                                ),
+                                if (requestData!.status == '依頼確定')
+                                Button(
                                       text: "出発報告",
                                       onPressed: onPressReport,
-                                      borderRadius: Dimens.gap_dp8,
+                                      borderRadius: Dimens.gap_dp18,
+                                      paddingHorizontal: Dimens.gap_dp28,
+                                      paddingVertical: Dimens.gap_dp2,
                                       backgroundColor: Colors.black),
-                                ],
-                              ),
-                            if (requestData != null &&
-                                requestData!.status == '募集中')
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10.0, vertical: 5.0),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        width: 1.0,
-                                        color: AppTheme.info,
-                                        style: BorderStyle.solid,
-                                      ),
-                                    ),
-                                    child: Text(requestData!.status,
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(color: AppTheme.info)),
-                                  ),
-                                ],
-                              ),
-                            if (requestData != null &&
-                                requestData!.status == '依頼拒否')
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10.0, vertical: 5.0),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        width: 1.0,
-                                        color: AppTheme.error,
-                                        style: BorderStyle.solid,
-                                      ),
-                                    ),
-                                    child: Text(requestData!.status,
-                                        textAlign: TextAlign.center,
-                                        style:
-                                            TextStyle(color: AppTheme.error)),
-                                  ),
-                                ],
-                              ),
-                            if (requestData != null &&
-                                requestData!.status == '申請中')
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10.0, vertical: 5.0),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        width: 1.0,
-                                        color: AppTheme.primary,
-                                        style: BorderStyle.solid,
-                                      ),
-                                    ),
-                                    child: Text(requestData!.status,
-                                        textAlign: TextAlign.center,
-                                        style:
-                                            TextStyle(color: AppTheme.primary)),
-                                  ),
-                                ],
-                              ),
-                            if (requestData != null &&
-                                requestData!.status == '募集終了')
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 10.0, vertical: 5.0),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                        width: 1.0,
-                                        color: AppTheme.warning,
-                                        style: BorderStyle.solid,
-                                      ),
-                                    ),
-                                    child: Text(requestData!.status,
-                                        textAlign: TextAlign.center,
-                                        style:
-                                            TextStyle(color: AppTheme.warning)),
-                                  ),
-                                ],
-                              ),
+                              ],
+                            ),
                             SizedBox(height: 16.0),
                             Row(
                               children: [

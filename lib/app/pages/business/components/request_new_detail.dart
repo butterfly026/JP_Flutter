@@ -54,119 +54,119 @@ class _RequestNewDetailPageState extends State<RequestNewDetailPage>
     return GetBuilder<RequestDetailController>(
         init: _controller,
         builder: (controller) {
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(Dimens.gap_dp20),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: IntrinsicWidth(
-                          child: Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: Dimens.gap_dp30,
-                              vertical: Dimens.gap_dp2,
+          return Column(
+            children: [
+              Expanded(
+                  child: SingleChildScrollView(
+                      child: Padding(
+                padding: EdgeInsets.all(Dimens.gap_dp20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: IntrinsicWidth(
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: Dimens.gap_dp30,
+                            vertical: Dimens.gap_dp2,
+                          ),
+                          margin: EdgeInsets.only(bottom: Dimens.gap_dp30),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 1.0,
+                              color: AppTheme.info,
+                              style: BorderStyle.solid,
                             ),
-                            margin: EdgeInsets.only(bottom: Dimens.gap_dp30),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                width: 1.0,
-                                color: AppTheme.info,
-                                style: BorderStyle.solid,
-                              ),
-                            ),
-                            child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                selectedData!.status,
-                                textAlign: TextAlign.center,
-                                style: AppTheme.body2
-                                    .copyWith(color: AppTheme.info),
-                              ),
+                          ),
+                          child: Align(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              selectedData!.status,
+                              textAlign: TextAlign.center,
+                              style: AppTheme.titleRegular
+                                  .copyWith(color: AppTheme.info),
                             ),
                           ),
                         ),
                       ),
-                      TextSubitleValue(title: '■性別', value: '男性'),
-                      TextSubitleValue(
-                        title: '■住所',
-                        value: '〒777-2222　秋田県秋田市1111-3',
+                    ),
+                    TextSubitleValue(title: '■性別', value: '男性'),
+                    TextSubitleValue(
+                      title: '■住所',
+                      value: '〒777-2222　秋田県秋田市1111-3',
+                    ),
+                    TextSubitleValue(title: '■依頼内容', value: '病院付き添い'),
+                    TextSubitleValue(title: '■所要時間', value: '1h'),
+                    TextSubitleValue(title: '■身体的特徴', value: ''),
+                    SizedBox(height: Dimens.gap_dp100),
+                    TextSubitleValue(title: '■精神的特徴', value: ''),
+                    SizedBox(height: Dimens.gap_dp100),
+                    TextSubitleValue(title: '■運営からのコメント', value: ''),
+                    SizedBox(height: Dimens.gap_dp100),
+                    SizedBox(height: Dimens.gap_dp100),
+                    Container(
+                      margin: EdgeInsets.only(bottom: Dimens.gap_dp6),
+                      child: TextInfoTitle(
+                        title: '■候補日',
+                        type: RequestInfo.SUB_TITLE,
                       ),
-                      TextSubitleValue(title: '■依頼内容', value: '病院付き添い'),
-                      TextSubitleValue(title: '■所要時間', value: '1h'),
-                      TextSubitleValue(title: '■身体的特徴', value: ''),
-                      SizedBox(height: Dimens.gap_dp100),
-                      TextSubitleValue(title: '■精神的特徴', value: ''),
-                      SizedBox(height: Dimens.gap_dp100),
-                      TextSubitleValue(title: '■運営からのコメント', value: ''),
-                      SizedBox(height: Dimens.gap_dp100),
-                      SizedBox(height: Dimens.gap_dp100),
-                      Container(
-                        margin: EdgeInsets.only(bottom: Dimens.gap_dp6),
-                        child: TextInfoTitle(
-                          title: '■候補日',
-                          type: RequestInfo.SUB_TITLE,
-                        ),
-                      ),
-                      Padding(
-                          padding: EdgeInsets.only(left: Dimens.gap_dp30),
-                          child: CheckboxWithText(
-                              isChecked: false,
-                              label: '2024-03-03  14:00 ~ 15:00',
-                              textStyle: AppTheme.body2)),
-                      Padding(
-                          padding: EdgeInsets.only(left: Dimens.gap_dp30),
-                          child: CheckboxWithText(
-                              isChecked: false,
-                              label: '2024-03-03  14:00 ~ 15:00',
-                              textStyle: AppTheme.body2)),
-                      Padding(
-                          padding: EdgeInsets.only(left: Dimens.gap_dp30),
-                          child: CheckboxWithText(
-                              isChecked: false,
-                              label: '2024-03-03  14:00 ~ 15:00',
-                              textStyle: AppTheme.body2)),
-                    ],
-                  ),
+                    ),
+                    Padding(
+                        padding: EdgeInsets.only(left: Dimens.gap_dp30),
+                        child: CheckboxWithText(
+                            isChecked: false,
+                            label: '2024-03-03  14:00 ~ 15:00',
+                            textStyle: AppTheme.body2)),
+                    Padding(
+                        padding: EdgeInsets.only(left: Dimens.gap_dp30),
+                        child: CheckboxWithText(
+                            isChecked: false,
+                            label: '2024-03-03  14:00 ~ 15:00',
+                            textStyle: AppTheme.body2)),
+                    Padding(
+                        padding: EdgeInsets.only(left: Dimens.gap_dp30),
+                        child: CheckboxWithText(
+                            isChecked: false,
+                            label: '2024-03-03  14:00 ~ 15:00',
+                            textStyle: AppTheme.body2)),
+                  ],
                 ),
-                Divider(
-                  height: 1,
-                  color: AppTheme.dark_grey.withOpacity(0.2),
+              ))),
+              Divider(
+                height: 1,
+                color: AppTheme.mainLightGrey,
+              ),
+              SizedBox(height: Dimens.gap_dp10),
+              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                Button(
+                  text: "依頼拒否",
+                  onPressed: () {
+                    selectedData?.status = '依頼確定';
+                    Get.toNamed(AppRouter.requestDetail, parameters: {
+                      'request_info': jsonEncode(selectedData?.toJson())
+                    });
+                  },
+                  borderRadius: Dimens.gap_dp16,
+                  paddingVertical: Dimens.gap_dp16,
+                  paddingHorizontal: Dimens.gap_dp28,
+                  minWidth: Dimens.gap_dp100 * 1.6,
+                  backgroundColor: AppTheme.error,
+                  textColor: AppTheme.black,
                 ),
-                SizedBox(height: Dimens.gap_dp10),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Button(
-                        text: "依頼拒否",
-                        onPressed: () {
-                          selectedData?.status = '依頼確定';
-                          Get.toNamed(AppRouter.requestDetail,
-                              parameters: {
-                                'request_info':
-                                    jsonEncode(selectedData?.toJson())
-                              });
-                        },
-                        borderRadius: Dimens.gap_dp16,
-                        paddingVertical: Dimens.gap_dp2,
-                        backgroundColor: AppTheme.error,
-                        textColor: AppTheme.black,
-                      ),
-                      Button(
-                        text: "依頼応募",
-                        onPressed: () {},
-                        borderRadius: Dimens.gap_dp16,
-                        paddingVertical: Dimens.gap_dp2,
-                        backgroundColor: AppTheme.warning,
-                        textColor: AppTheme.black,
-                      )
-                    ]),
-                SizedBox(height: Dimens.gap_dp20),
-              ],
-            ),
+                Button(
+                  text: "依頼応募",
+                  onPressed: () {},
+                  borderRadius: Dimens.gap_dp16,
+                  paddingVertical: Dimens.gap_dp16,
+                  paddingHorizontal: Dimens.gap_dp28,
+                  minWidth: Dimens.gap_dp100 * 1.6,
+                  backgroundColor: AppTheme.warning,
+                  textColor: AppTheme.black,
+                )
+              ]),
+              SizedBox(height: Dimens.gap_dp20),
+            ],
           );
         });
   }

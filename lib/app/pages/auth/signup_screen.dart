@@ -85,6 +85,7 @@ class RegisterScreenState extends State<SignUpPage> {
                           top: 4.0, bottom: 4.0, left: 8.0, right: 8.0),
                       child: Input(
                         placeholder: "ユーザー名 (半角英数字で6字以上20字以内)",
+                        isPassword: true,
                         onChanged: (value) {
                           setState(() {
                             userName = value ?? '';
@@ -99,6 +100,7 @@ class RegisterScreenState extends State<SignUpPage> {
                       padding: const EdgeInsets.all(6.0),
                       child: Input(
                         placeholder: "パスワード (半角英数字で8字以上20字以内)",
+                        isPassword: true,
                         onChanged: (value) {
                           setState(() {
                             password = value ?? '';

@@ -46,7 +46,7 @@ class _ChatGroupPageState extends State<ChatGroupPage>
               ),
               Divider(
                 height: 1,
-                color: AppTheme.black,
+                color: AppTheme.mainLightGrey,
               ),
               Expanded(
                   child: SingleChildScrollView(

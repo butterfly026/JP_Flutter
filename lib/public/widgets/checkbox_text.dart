@@ -37,7 +37,7 @@ class _CheckboxWithTextState extends State<CheckboxWithText> {
             children:  <Widget>[
               Checkbox(
                 value: _isChecked,
-                visualDensity: VisualDensity(horizontal: -Dimens.gap_dp6, vertical: -Dimens.gap_dp6),
+                visualDensity: VisualDensity(horizontal: -Dimens.gap_dp5, vertical: -Dimens.gap_dp6),
                 onChanged: (bool? value) {
                   setState(() {
                     _isChecked = value!;

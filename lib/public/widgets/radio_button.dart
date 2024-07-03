@@ -21,14 +21,14 @@ class _RadioButtonState extends State<RadioButton> {
       children: widget.options.map((option) {
         return ListTile(
           visualDensity:
-              VisualDensity(horizontal: -Dimens.gap_dp2, vertical: -Dimens.gap_dp6),
+              VisualDensity(horizontal: -Dimens.gap_dp2, vertical: -Dimens.gap_dp5),
           horizontalTitleGap: Dimens.gap_dp2,
           contentPadding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 0.0),
           title:
               Text(option['label'], style: widget.textStyle ?? AppTheme.body2),
           leading: Radio<int>(
             visualDensity: VisualDensity(
-                horizontal: -Dimens.gap_dp6, vertical: -Dimens.gap_dp6),
+                horizontal: -Dimens.gap_dp5, vertical: -Dimens.gap_dp6),
             value: option['value'],
             groupValue: _selectedValue,
             onChanged: (int? value) {

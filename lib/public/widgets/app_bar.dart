@@ -15,11 +15,11 @@ class CustomAppBar extends AppBar {
     super.titleSpacing,
     super.leading,
     super.backgroundColor,
-    super.systemOverlayStyle,
     super.bottom,
   }) : super(
           actions: _buildActions(actions),
           shadowColor: Colors.transparent,
+          systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: AppTheme.white),
           surfaceTintColor: Colors.transparent
         );
 
@@ -52,7 +52,6 @@ class SubPageAppBar extends CustomAppBar {
     super.actions,
     super.titleSpacing,
     Widget? leading,
-    super.systemOverlayStyle,
     PreferredSizeWidget? bottom,
   }) : super(
             title: Align(
@@ -62,10 +61,7 @@ class SubPageAppBar extends CustomAppBar {
                     -Dimens.gap_dp34, 0.0), // Adjust this offset as needed
                 child: Text(
                   titleText ?? '',
-                  style: TextStyle(
-                    fontSize: Dimens
-                        .font_sp24, // Replace with Dimens.font_sp28 if defined
-                  ),
+                  style: AppTheme.headline,
                 ),
               ),
             ),

@@ -48,7 +48,7 @@ class _ChatMessagePageState extends State<ChatMessagePage>
               ),
               Divider(
                 height: 1,
-                color: AppTheme.black,
+                color: AppTheme.mainLightGrey,
               ),
               Spacer(),
               

@@ -8,6 +8,7 @@ class CustomDropdownMenu extends StatefulWidget {
   final ValueChanged<String?> onChanged;
   final double? height;
   final double? width;
+  final double? borderRadius;
 
   const CustomDropdownMenu({
     Key? key,
@@ -15,6 +16,7 @@ class CustomDropdownMenu extends StatefulWidget {
     this.selectedItem,
     this.height,
     this.width,
+    this.borderRadius,
     required this.onChanged,
   }) : super(key: key);
 
@@ -38,20 +40,21 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu> {
       width: widget.width ?? MediaQuery.of(context).size.width / 2, // Half of the screen width
       height: widget.height ?? Dimens.gap_dp70,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8.0), // Rounded corners
+        borderRadius: BorderRadius.circular(widget.borderRadius ?? Dimens.gap_dp12), // Rounded corners
         border: Border.all(
           color: Colors.grey, // Border color
-          width: 2.0, // Border width
+          width: Dimens.gap_dp1, // Border width
         ),
       ),
       child: DropdownButton<String>(
         value: _selectedItem,
+        dropdownColor: AppTheme.white,
         items: widget.items.map((String item) {
           return DropdownMenuItem<String>(
             value: item,
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: Dimens.gap_dp10, vertical: Dimens.gap_dp10),
-              child: Text(item, style: TextStyle(fontSize: Dimens.font_sp18)),
+              child: Text(item, style: TextStyle(fontSize: Dimens.font_sp20)),
             ),
           );
         }).toList(),

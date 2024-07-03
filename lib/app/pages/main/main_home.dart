@@ -49,10 +49,7 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
                     // ignore: invalid_use_of_protected_member
                     _controller.bottomNavs
                         .value[_controller.currentTabIndex.value].name,
-                    style: TextStyle(
-                      fontSize: Dimens.font_sp28,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: AppTheme.headline,
                   ),
                 ),
               );
@@ -65,16 +62,16 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
             )),
         bottomNavigationBar: Obx(
           () => BottomAppBar(
-            padding: EdgeInsets.symmetric(vertical: 10.w, horizontal: 0.w),
+            padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 0.w),
             height: 110.h,
             color: Color.fromARGB(255, 253, 253, 253),
             child: Column(children: <Widget>[
               Divider(
-                height: 1,
-                color: AppTheme.grey.withOpacity(0.6),
+                height: Dimens.gap_dp1,
+                color: AppTheme.mainLightGrey,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 12.h),
+                padding: EdgeInsets.only(left: 10.w, right: 10.w, top: 18.h, bottom: 5.h),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children:
@@ -90,8 +87,8 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
                           children: [
                             AppImage.svgByAsset(
                               'tabbar/${nav.icon}.svg',
-                              width: 30.w,
-                              height: 30.w,
+                              width: 30.h,
+                              height: 30.h,
                               color: _controller.currentTabIndex.value == index
                                   ? AppTheme.primary
                                   : AppTheme.black,
@@ -103,7 +100,8 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
                                     _controller.currentTabIndex.value == index
                                         ? AppTheme.primary
                                         : AppTheme.black,
-                                fontSize: 22.sp,
+                                fontSize: 18.sp,
+                                fontFamily: 'Arial'
                               ),
                               overflow: TextOverflow.ellipsis,
                             ),

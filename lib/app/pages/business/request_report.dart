@@ -27,6 +27,7 @@ class _RequestReportPageState extends State<RequestReportPage>
   AnimationController? animationController;
   late RequestDetailController _controller;
   RequestListData? selectedData;
+  bool startDisabled = true, activeDisabled = true;
 
   // List<TabIconData> tabIconsList = TabIconData.tabIconsList;
 
@@ -38,6 +39,8 @@ class _RequestReportPageState extends State<RequestReportPage>
     selectedData = RequestListData.fromJson(
         jsonDecode(Get.parameters['request_info'] ?? '{}'));
     _controller = RequestDetailController();
+    startDisabled = true;
+    activeDisabled = true;
     super.initState();
   }
 
@@ -57,81 +60,134 @@ class _RequestReportPageState extends State<RequestReportPage>
               SubPageAppBar(titleText: '報告'),
               Divider(
                 height: 1,
-                color: AppTheme.dark_grey.withOpacity(0.2),
+                color: AppTheme.mainLightGrey,
               ),
-              GetBuilder<RequestDetailController>(
-                  init: _controller,
-                  builder: (controller) {
-                    return Padding(
-                      padding: EdgeInsets.all(Dimens.gap_dp10),
+              Expanded(
+                  child: SingleChildScrollView(
                       child: Column(
-                        children: <Widget>[
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  top: Dimens.gap_dp40, left: Dimens.gap_dp20),
-                              child: TextKeyValue(
-                                  label: '出発時刻', value: '2024-03-03  13:40 ')),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  top: Dimens.gap_dp40, left: Dimens.gap_dp20),
-                              child: TextKeyValue(
-                                  label: '開始時刻', value: '2024-03-03  14:20 ')),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  top: Dimens.gap_dp40,
-                                  bottom: Dimens.gap_dp40,
-                                  left: Dimens.gap_dp20),
-                              child: TextKeyValue(
-                                  label: '終了時刻', value: '2024-03-03  15:00 ')),
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(Dimens.gap_dp10),
+                    child: Column(
+                      children: <Widget>[
+                        Padding(
+                            padding: EdgeInsets.only(
+                                top: Dimens.gap_dp40, left: Dimens.gap_dp20),
+                            child: TextKeyValue(
+                                label: '出発時刻', value: '2024-03-03  13:40 ')),
+                        Padding(
+                            padding: EdgeInsets.only(
+                                top: Dimens.gap_dp40, left: Dimens.gap_dp20),
+                            child: TextKeyValue(
+                                label: '開始時刻', value: '2024-03-03  14:20 ')),
+                        Padding(
+                            padding: EdgeInsets.only(
+                                top: Dimens.gap_dp40, left: Dimens.gap_dp20),
+                            child: TextKeyValue(
+                                label: '延長終了①', value: '2024-03-03  15:15')),
+                        Padding(
+                            padding: EdgeInsets.only(
+                                top: Dimens.gap_dp40, left: Dimens.gap_dp20),
+                            child: TextKeyValue(
+                                label: '延長終了②', value: '2024-03-03  15:30')),
+                        Padding(
+                            padding: EdgeInsets.only(
+                                top: Dimens.gap_dp40,
+                                bottom: Dimens.gap_dp40,
+                                left: Dimens.gap_dp20),
+                            child: TextKeyValue(
+                                label: '終了時刻', value: '2024-03-03  15:00 ')),
+                      ],
+                    ),
+                  ),
+                  Divider(
+                    height: 1,
+                    color: AppTheme.mainLightGrey,
+                  ),
+                  Padding(
+                      padding: EdgeInsets.only(
+                          top: Dimens.gap_dp40,
+                          left: Dimens.gap_dp80,
+                          right: Dimens.gap_dp80),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Button(
+                                  text: "出発報告",
+                                  onPressed: () {
+                                    setState(() {
+                                      startDisabled = false;
+                                    });
+                                  },
+                                  isFullToWidth: true,
+                                  borderRadius: Dimens.gap_dp16,
+                                  backgroundColor: AppTheme.black,
+                                  minWidth: Dimens.gap_dp200,
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(height: Dimens.gap_dp40),
+                          Row(
+                            children: [
+                              Expanded(
+                                  child: Button(
+                                text: "開始報告",
+                                onPressed: () {
+                                  Get.toNamed(AppRouter.requestStart, parameters:{'isExtension': '0'});
+                                  setState(() {
+                                    activeDisabled = false;
+                                  });
+                                },
+                                borderRadius: Dimens.gap_dp16,
+                                backgroundColor: AppTheme.black,
+                                minWidth: Dimens.gap_dp200,
+                                disabled: startDisabled,
+                                isFullToWidth: true,
+                              ))
+                            ],
+                          ),
+                          SizedBox(height: Dimens.gap_dp40),
+                          Row(
+                            children: [
+                              Expanded(
+                                  child: Button(
+                                text: "延長報告",
+                                onPressed: () {
+                                  Get.toNamed(AppRouter.requestStart, parameters:{'isExtension': '1'});
+                                },
+                                borderRadius: Dimens.gap_dp16,
+                                backgroundColor: AppTheme.black,
+                                minWidth: Dimens.gap_dp200,
+                                disabled: activeDisabled,
+                                isFullToWidth: true,
+                              ))
+                            ],
+                          ),
+                          SizedBox(height: Dimens.gap_dp40),
+                          Row(
+                            children: [
+                              Expanded(
+                                  child: Button(
+                                text: "活動報告",
+                                onPressed: () {
+                                  Get.toNamed(AppRouter.requestActive);
+                                },
+                                borderRadius: Dimens.gap_dp16,
+                                backgroundColor: AppTheme.black,
+                                minWidth: Dimens.gap_dp200,
+                                disabled: activeDisabled,
+                                isFullToWidth: true,
+                              ))
+                            ],
+                          ),
+                          SizedBox(height: Dimens.gap_dp40),
                         ],
-                      ),
-                    );
-                  }),
-              Divider(
-                height: 1,
-                color: AppTheme.dark_grey.withOpacity(0.2),
-              ),
-              Padding(
-                  padding: EdgeInsets.only(
-                      top: Dimens.gap_dp40,
-                      left: Dimens.gap_dp80,
-                      right: Dimens.gap_dp80),
-                  child: Column(
-                    children: [
-                      Button(
-                        text: "出発報告",
-                        onPressed: () {},
-                        borderRadius: Dimens.gap_dp16,
-                        backgroundColor: AppTheme.black,
-                        minWidth: Dimens.gap_dp200,
-                      ),
-                      SizedBox(height: Dimens.gap_dp40),
-                      Button(
-                        text: "開始報告",
-                        onPressed: () {
-                          Get.toNamed(AppRouter.requestStart);
-                        },
-                        borderRadius: Dimens.gap_dp16,
-                        backgroundColor: AppTheme.buttonDisabledBack,
-                        textColor: AppTheme.buttonDisabledText,
-                        minWidth: Dimens.gap_dp200,
-                        isFullToWidth: true,
-                      ),
-                      SizedBox(height: Dimens.gap_dp40),
-                      Button(
-                        text: "活動報告",
-                        onPressed: () {
-                          Get.toNamed(AppRouter.requestActive);
-                        },
-                        borderRadius: Dimens.gap_dp16,
-                        backgroundColor: AppTheme.buttonDisabledBack,
-                        textColor: AppTheme.buttonDisabledText,
-                        minWidth: Dimens.gap_dp200,
-                        isFullToWidth: true,
-                      ),
-                      SizedBox(height: Dimens.gap_dp40),
-                    ],
-                  ))
+                      ))
+                ],
+              ))),
             ],
           )
         ]));

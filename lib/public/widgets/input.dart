@@ -10,6 +10,7 @@ class Input extends StatelessWidget {
   final TextEditingController? controller;
   final bool autofocus;
   final Color borderColor;
+  final bool isPassword;
 
   Input(
       {this.placeholder = '',
@@ -18,6 +19,7 @@ class Input extends StatelessWidget {
       this.onTap,
       this.onChanged,
       this.autofocus = false,
+      this.isPassword = false,
       this.borderColor = AppTheme.mainGrey,
       this.controller});
 
@@ -29,6 +31,9 @@ class Input extends StatelessWidget {
         onChanged: onChanged,
         controller: controller,
         autofocus: autofocus,
+        obscureText: isPassword,
+        enableSuggestions: !isPassword,
+        autocorrect: !isPassword,
         style: TextStyle(
             height: 1.0,
             fontSize: 14.0,

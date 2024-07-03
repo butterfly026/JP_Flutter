@@ -10,6 +10,7 @@ import 'package:fpg_flutter/public/models/business/request_list_data.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
 import 'package:fpg_flutter/public/widgets/button.dart';
 import 'package:fpg_flutter/public/widgets/checkbox_text.dart';
+import 'package:fpg_flutter/public/widgets/dropdown.dart';
 import 'package:fpg_flutter/public/widgets/image.dart';
 import 'package:fpg_flutter/public/widgets/table-cell.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
@@ -26,14 +27,14 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
     with TickerProviderStateMixin {
   AnimationController? animationController;
   late RequestDetailController _controller;
-
+  bool isExtension = false;
   // List<TabIconData> tabIconsList = TabIconData.tabIconsList;
 
   @override
   void initState() {
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-
+    isExtension = (Get.parameters['isExtension'] ?? '0') == '1';
     _controller = RequestDetailController();
     super.initState();
   }
@@ -56,7 +57,7 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
               ),
               Divider(
                 height: 1,
-                color: AppTheme.dark_grey.withOpacity(0.2),
+                color: AppTheme.mainLightGrey,
               ),
               Container(
                   padding: EdgeInsets.symmetric(
@@ -65,15 +66,41 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
                     children: [
                       Row(children: [
                         Text(
-                          '以下の日時で開始報告を送信します。',
+                          isExtension
+                              ? '延長したい時間を選択してください'
+                              : '以下の日時で開始報告を送信します。',
                           style: AppTheme.body2,
                         )
                       ]),
+                      if (isExtension)
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              SizedBox(height: Dimens.gap_dp30),
+                              CustomDropdownMenu(
+                                items: [
+                                  '15分',
+                                  '30分',
+                                  '45分',
+                                  '60分',
+                                ],
+                                height: Dimens.gap_dp50,
+                                borderRadius: 0,
+                                selectedItem: null,
+                                onChanged: (val) {},
+                              ),
+                            ],
+                          ),
+                        ),
                       SizedBox(height: Dimens.gap_dp30),
                       Container(
                           padding: EdgeInsets.symmetric(
                               horizontal: Dimens.gap_dp20,
                               vertical: Dimens.gap_dp30),
+                          alignment: Alignment.center,
                           decoration: BoxDecoration(
                               border: Border.all(
                                 width: 1.0,
@@ -83,10 +110,14 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
                               borderRadius: BorderRadius.all(
                                   Radius.circular(Dimens.gap_dp20))),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Text(
-                                '送信日時：2024-03-03  14:00',
-                                style: AppTheme.headline,
+                                isExtension
+                                    ? '延長終了時間：2024-03-03  15:15'
+                                    : '送信日時：2024-03-03  14:00',
+                                style: AppTheme.display1,
                               )
                             ],
                           )),
@@ -101,7 +132,8 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
                       CheckboxWithText(
                           isChecked: false,
                           label: '高齢者に確認しましたか？',
-                          textStyle: AppTheme.body2.copyWith(fontWeight: FontWeight.bold))
+                          textStyle: AppTheme.body2
+                              .copyWith(fontWeight: FontWeight.bold))
                     ],
                   )),
               Expanded(
@@ -114,7 +146,7 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
                             padding: EdgeInsets.symmetric(
                                 horizontal: Dimens.gap_dp60),
                             child: Button(
-                              text: "出発報告",
+                              text: "送信",
                               onPressed: () {},
                               borderRadius: 16.0,
                               backgroundColor: Colors.black,

@@ -64,7 +64,7 @@ class _RequestActiveReportPageState extends State<RequestActiveReportPage>
               ),
               Divider(
                 height: 1,
-                color: AppTheme.dark_grey.withOpacity(0.2),
+                color: AppTheme.mainLightGrey,
               ),
               Expanded(
                   child: SingleChildScrollView(
