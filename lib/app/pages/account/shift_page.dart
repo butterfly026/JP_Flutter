@@ -10,6 +10,7 @@ import 'package:fpg_flutter/public/widgets/button.dart';
 import 'package:fpg_flutter/public/widgets/calendar.dart';
 import 'package:fpg_flutter/public/widgets/checkbox_text.dart';
 import 'package:fpg_flutter/public/widgets/input.dart';
+import 'package:fpg_flutter/public/widgets/radio_button.dart';
 import 'package:fpg_flutter/public/widgets/text_info_title.dart';
 import 'package:fpg_flutter/public/widgets/top_labeled_textfield.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
@@ -80,6 +81,15 @@ class _UserShiftPageState extends State<UserShiftPage>
                                     ))
                                   ],
                                 ),
+                                RadioButton(
+                                  options: [
+                                    {'label': '繰り返さない', 'value': 0},
+                                    {'label': '毎週', 'value': 1},
+                                    {'label': '毎月', 'value': 2},
+                                  ],
+                                  isVertical: false,
+                                  selectedValue: 0,
+                                ),
                                 CheckboxWithText(
                                     isChecked: false,
                                     label: '08:00~10:00',
@@ -100,6 +110,20 @@ class _UserShiftPageState extends State<UserShiftPage>
                                     isChecked: false,
                                     label: '早朝深夜(18:00 ~ 8:00)',
                                     textStyle: AppTheme.body2),
+                                SizedBox(height: Dimens.gap_dp10),
+                                Align(
+                                    alignment: Alignment.bottomCenter,
+                                    child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: Dimens.gap_dp60),
+                                        child: Button(
+                                          text: "更新",
+                                          onPressed: () {},
+                                          borderRadius: 16.0,
+                                          backgroundColor: Colors.black,
+                                          minWidth: 200.0,
+                                        ))),
+                                SizedBox(height: Dimens.gap_dp20)
                               ]))))
             ],
           )

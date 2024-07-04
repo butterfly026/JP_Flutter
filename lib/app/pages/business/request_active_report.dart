@@ -21,6 +21,7 @@ import 'package:fpg_flutter/public/widgets/table-cell.dart';
 import 'package:fpg_flutter/public/widgets/text_info_title.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
+import 'package:oktoast/oktoast.dart';
 
 class RequestActiveReportPage extends StatefulWidget {
   const RequestActiveReportPage({super.key});
@@ -34,6 +35,7 @@ class _RequestActiveReportPageState extends State<RequestActiveReportPage>
     with TickerProviderStateMixin {
   AnimationController? animationController;
   late RequestDetailController _controller;
+  final Map<String, String> bodies = {};
 
   // List<TabIconData> tabIconsList = TabIconData.tabIconsList;
 
@@ -135,13 +137,19 @@ class _RequestActiveReportPageState extends State<RequestActiveReportPage>
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       LabeledRichText(
-                                          label: '訪問マナーで出来た項目全てにチェックをしてください',
-                                          value: ''),
+                                          label: '実際に稼働した内容を細かく教えてください*',
+                                          value: bodies['act_operation'] ?? '',
+                                          onChanged: (value) {
+                                            bodies['act_operation'] = value;
+                                          }),
                                       SizedBox(height: Dimens.gap_dp20),
                                       LabeledRichText(
                                           label:
                                               '今回の依頼以外に、利用者様もしくは施設担当者やケアマネージャーさんから要望はありましたか？*',
-                                          value: ''),
+                                          value: bodies['other_request1'] ?? '',
+                                          onChanged: (value) {
+                                            bodies['other_request1'] = value;
+                                          }),
                                       SizedBox(height: Dimens.gap_dp20),
                                       Column(children: [
                                         Text(
@@ -185,7 +193,10 @@ class _RequestActiveReportPageState extends State<RequestActiveReportPage>
                                       LabeledRichText(
                                           label:
                                               '今回の依頼以外に、利用者様もしくは施設担当者やケアマネージャーさんから要望はありましたか？*',
-                                          value: ''),
+                                          value: bodies['other_request2'] ?? '',
+                                          onChanged: (value) {
+                                            bodies['other_request2'] = value;
+                                          }),
                                       SizedBox(height: Dimens.gap_dp20),
                                       Column(children: [
                                         Text(
@@ -231,16 +242,29 @@ class _RequestActiveReportPageState extends State<RequestActiveReportPage>
                                       LabeledRichText(
                                           label:
                                               '利用者様からありがたくいただいた物を以下に記載してください*',
-                                          value: ''),
+                                          value: bodies['received_users'] ?? '',
+                                          onChanged: (value) {
+                                            bodies['received_users'] = value;
+                                          }),
                                       SizedBox(height: Dimens.gap_dp100),
                                       Button(
                                         text: "送信",
                                         onPressed: () {
-                                          Get.back();
-                                          Get.back();
-                                          GlobalController.to
-                                              .gotoMainPageByIndex(
-                                                  AppDefine.TAB_PROFILE_INDEX);
+                                          bool b1 = true;
+                                          bodies.keys.map((key) {
+                                            if (bodies[key] == null) {
+                                              b1 = false;
+                                            }
+                                          });
+                                          if (bodies.keys.length != 4 || b1 == false) {
+                                            showToast('内容に不備があります。');
+                                          } else {
+                                            Get.back();
+                                            Get.back();
+                                            GlobalController.to
+                                                .gotoMainPageByIndex(AppDefine
+                                                    .TAB_PROFILE_INDEX);
+                                          }
                                         },
                                         borderRadius: 16.0,
                                         backgroundColor: Colors.black,

@@ -10,6 +10,7 @@ import 'package:fpg_flutter/utils/storage/index.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:oktoast/oktoast.dart';
 import 'public/router/router.dart';
 import 'package:provider/provider.dart';
 
@@ -40,22 +41,24 @@ class MyApp extends StatelessWidget {
         designSize: const Size(540, 960),
         builder: (context, child) {
           AppTheme.initFontStyle();
-          return GetMaterialApp(
-            title: 'FPG-t002',
-            debugShowCheckedModeBanner: false,
-            initialRoute: AppRouter.login,
-            getPages: AppRouter.pages,
-            theme: AppTheme.lightTheme, // Use light theme
-            darkTheme: AppTheme.darkTheme, // Use dark theme
-            themeMode: ThemeMode.system,
-            localizationsDelegates: const [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            locale: const Locale('en', 'US'),
-            fallbackLocale: const Locale('en', 'US'),
-            initialBinding: MainBindings(),
+          return OKToast(
+            child: GetMaterialApp(
+              title: 'JP-Flutter',
+              debugShowCheckedModeBanner: false,
+              initialRoute: AppRouter.login,
+              getPages: AppRouter.pages,
+              theme: AppTheme.lightTheme, // Use light theme
+              darkTheme: AppTheme.darkTheme, // Use dark theme
+              themeMode: ThemeMode.system,
+              localizationsDelegates: const [
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              locale: const Locale('en', 'US'),
+              fallbackLocale: const Locale('en', 'US'),
+              initialBinding: MainBindings(),
+            ),
           );
         },
       );

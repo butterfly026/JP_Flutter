@@ -29,6 +29,8 @@ class Dimens {
 
   static double get font_sp28 => ScreenUtil().setSp(28.0).toDouble();
 
+  static double get font_sp34 => ScreenUtil().setSp(34.0).toDouble();
+
   static double get gap_dp1 => ScreenUtil().setWidth(1.0).toDouble();
 
   static double get gap_dp2 => ScreenUtil().setWidth(2.0).toDouble();

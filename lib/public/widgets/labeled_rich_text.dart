@@ -5,50 +5,75 @@ import 'package:fpg_flutter/utils/theme/app_theme.dart';
 class LabeledRichText extends StatefulWidget {
   final String label;
   final String value;
-  const LabeledRichText({super.key, required this.label, required this.value});
+  final ValueChanged<String>? onChanged;
+
+  const LabeledRichText({
+    Key? key,
+    required this.label,
+    required this.value,
+    this.onChanged,
+  }) : super(key: key);
+
   @override
   _LabeledRichTextState createState() => _LabeledRichTextState();
 }
 
 class _LabeledRichTextState extends State<LabeledRichText> {
-  static void _defaultOnTap() {
-    // Function body
+  late TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.value);
+    _controller.addListener(_onTextChanged);
+  }
+
+  @override
+  void dispose() {
+    _controller.removeListener(_onTextChanged);
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _onTextChanged() {
+    if(widget.onChanged != null) {
+      widget.onChanged!(_controller.text);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Column(
-      children: [
-        Align(
-            alignment: Alignment.topLeft,
-            child: Column(children: [
-              Text(
-                widget.label,
-                style: AppTheme.body2,
-              )
-            ])),
-        SizedBox(height: Dimens.gap_dp10),
-        Center(
-          child: SizedBox(
-            height: Dimens.gap_dp150, // Set the height of the input box
-            child: const TextField(
-              textAlign: TextAlign.start,
-              textAlignVertical: TextAlignVertical.top,
-              maxLines: null, // Allow the text field to be multiline
-              expands: true, // Expand to fill the container's height
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppTheme.light_grey, // Set the border color here
-                    width: 1.0, // Set the border width
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            widget.label,
+            style: AppTheme.body2,
+          ),
+          SizedBox(height: Dimens.gap_dp10),
+          Center(
+            child: SizedBox(
+              height: Dimens.gap_dp150,
+              child: TextField(
+                controller: _controller,
+                textAlign: TextAlign.start,
+                textAlignVertical: TextAlignVertical.top,
+                maxLines: null,
+                expands: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: AppTheme.light_grey,
+                      width: 1.0,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        )
-      ],
-    ));
+          )
+        ],
+      ),
+    );
   }
 }

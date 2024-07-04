@@ -53,7 +53,7 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
           Column(
             children: [
               SubPageAppBar(
-                titleText: '開始報告',
+                titleText: isExtension ? '延長報告' : '開始報告',
               ),
               Divider(
                 height: 1,
@@ -109,7 +109,7 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
                               ),
                               borderRadius: BorderRadius.all(
                                   Radius.circular(Dimens.gap_dp20))),
-                          child: Row(
+                          child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
@@ -117,7 +117,9 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
                                 isExtension
                                     ? '延長終了時間：2024-03-03  15:15'
                                     : '送信日時：2024-03-03  14:00',
-                                style: AppTheme.display1,
+                                style: AppTheme.display1.copyWith(fontSize: Dimens.font_sp28),
+                                softWrap: true,
+                                textAlign: TextAlign.center,
                               )
                             ],
                           )),

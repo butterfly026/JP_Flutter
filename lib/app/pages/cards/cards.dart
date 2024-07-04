@@ -130,7 +130,7 @@ class _CardsPageState extends State<CardsPage> {
                                                   icon: Icon(
                                                       Icons.chevron_right,
                                                       size: Dimens.gap_dp16),
-                                                  onPressed: _gotoDetailPage,
+                                                  onPressed: (){},
                                                 ),
                                               ],
                                             ),
