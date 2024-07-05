@@ -4,6 +4,7 @@ import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/public/define/request_info.dart';
 import 'package:fpg_flutter/public/models/card/card_info.dart';
 import 'package:fpg_flutter/public/router/router.dart';
+import 'package:fpg_flutter/public/tools/app_tool.dart';
 import 'package:fpg_flutter/public/widgets/table-cell.dart';
 import 'package:fpg_flutter/public/widgets/text_info_title.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
@@ -24,6 +25,7 @@ class _CardsPageState extends State<CardsPage> {
   void _gotoDetailPage() {
     Get.toNamed(AppRouter.cardDetail);
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -130,7 +132,14 @@ class _CardsPageState extends State<CardsPage> {
                                                   icon: Icon(
                                                       Icons.chevron_right,
                                                       size: Dimens.gap_dp16),
-                                                  onPressed: (){},
+                                                  onPressed: () {
+                                                    String pdf =
+                                                        "http://www.adobe.com/devnet/acrobat/pdfs/pdf_open_parameters.pdf";
+                                                    pdf =
+                                                        "https://drive.google.com/viewerng/viewer?embedded=true&url=$pdf";
+                                                    AppTool.toAppWebPage(
+                                                        pdf);
+                                                  },
                                                 ),
                                               ],
                                             ),
@@ -200,7 +209,8 @@ class _CardsPageState extends State<CardsPage> {
                                                             Icons.chevron_right,
                                                             size: Dimens
                                                                 .gap_dp16),
-                                                        onPressed: _gotoDetailPage,
+                                                        onPressed:
+                                                            _gotoDetailPage,
                                                       ),
                                                     ],
                                                   ))),

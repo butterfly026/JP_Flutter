@@ -8,11 +8,13 @@ class MiniTextField extends StatefulWidget {
   final String? value;
   final bool isPassword;
   final TextEditingController? controller;
+  final ValueChanged<String>? onChagned;
   const MiniTextField(
       {super.key,
       required this.hintText,
       this.value,
       this.controller,
+      this.onChagned,
       this.isPassword = false});
   @override
   _MiniTextFieldState createState() => _MiniTextFieldState();
@@ -40,6 +42,7 @@ class _MiniTextFieldState extends State<MiniTextField> {
             obscureText: widget.isPassword,
             enableSuggestions: !widget.isPassword,
             autocorrect: !widget.isPassword,
+            onChanged: widget.onChagned,
             decoration: InputDecoration(
               filled: true,
               isDense: true,

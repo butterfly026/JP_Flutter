@@ -15,6 +15,7 @@ import 'package:fpg_flutter/public/widgets/image.dart';
 import 'package:fpg_flutter/public/widgets/table-cell.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
+import 'package:oktoast/oktoast.dart';
 
 class RequestStartReportPage extends StatefulWidget {
   const RequestStartReportPage({super.key});
@@ -28,6 +29,7 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
   AnimationController? animationController;
   late RequestDetailController _controller;
   bool isExtension = false;
+  bool isChecked = false;
   // List<TabIconData> tabIconsList = TabIconData.tabIconsList;
 
   @override
@@ -117,7 +119,8 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
                                 isExtension
                                     ? '延長終了時間：2024-03-03  15:15'
                                     : '送信日時：2024-03-03  14:00',
-                                style: AppTheme.display1.copyWith(fontSize: Dimens.font_sp28),
+                                style: AppTheme.display1
+                                    .copyWith(fontSize: Dimens.font_sp28),
                                 softWrap: true,
                                 textAlign: TextAlign.center,
                               )
@@ -134,6 +137,9 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
                       CheckboxWithText(
                           isChecked: false,
                           label: '高齢者に確認しましたか？',
+                          onChanged: (val) => {
+                            isChecked = val
+                          },
                           textStyle: AppTheme.body2
                               .copyWith(fontWeight: FontWeight.bold))
                     ],
@@ -149,7 +155,13 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
                                 horizontal: Dimens.gap_dp60),
                             child: Button(
                               text: "送信",
-                              onPressed: () {},
+                              onPressed: () {
+                                if(!isChecked) {
+                                  showToast('チェックしてください');
+                                } else {
+                                  Get.back();
+                                }
+                              },
                               borderRadius: 16.0,
                               backgroundColor: Colors.black,
                               minWidth: 200.0,

@@ -6,11 +6,13 @@ class CheckboxWithText extends StatefulWidget {
   final bool isChecked;
   final String label;
   final TextStyle textStyle;
+  final ValueChanged<bool>? onChanged;
 
   const CheckboxWithText(
       {Key? key,
       required this.isChecked,
       required this.label,
+      this.onChanged,
       required this.textStyle})
       : super(key: key);
 
@@ -42,6 +44,7 @@ class _CheckboxWithTextState extends State<CheckboxWithText> {
                 onChanged: (bool? value) {
                   setState(() {
                     _isChecked = value!;
+                    widget.onChanged!(_isChecked);
                   });
                 },
               ),

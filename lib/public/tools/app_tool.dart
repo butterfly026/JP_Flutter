@@ -6,6 +6,12 @@ import 'dart:math';
 
 import 'package:crypto/crypto.dart';
 import 'package:extended_image/extended_image.dart';
+import 'package:flutter/material.dart';
+import 'package:fpg_flutter/public/router/router.dart';
+import 'package:fpg_flutter/public/widgets/loading_chasing_dots.dart';
+import 'package:get/get.dart';
+
+import '../../utils/cache.dart';
 
 class AppTool{
   /// 适用于多个被逗号隔开的字符串
@@ -48,6 +54,42 @@ class AppTool{
     final ranNum = Random().nextDouble();
     final randomStr = md5.convert(utf8.encode(ranNum.toString())).toString();
     return randomStr;
+  }
+
+  static Widget buildLoadingAnimation() {
+    return const LoadingChasingDots(
+        color: Color(0xFFFF0000), color2: Color(0xFFFF9900));
+  }
+
+  
+  static String replaceUrlPlaceholder(String origin) {
+    var url = origin;
+    final cache = Cache.getInstance();
+    // if (url.contains('{tenantId}') && cache.userInfo != null) {
+    //   url = url.replaceAll('{tenantId}', cache.userInfo!.tenantId);
+    // }
+    // if (url.contains('{userId}') && cache.userInfo != null) {
+    //   url = url.replaceAll('{userId}', cache.userInfo!.userId);
+    // }
+    // if (url.contains('{deviceId}') && cache.userInfo != null) {
+    //   url = url.replaceAll('{deviceId}', cache.userInfo!.deviceId);
+    // }
+    // if (url.contains('{token}') && cache.token != null) {
+    //   url = url.replaceAll('{token}', cache.token!);
+    // }
+    // if (url.contains('{clientId}')) {
+    //   url = url.replaceAll('{clientId}', AppUtil.getClientByPlatform());
+    // }
+    return url;
+  }
+
+  
+  //去内置浏览器
+  static void toAppWebPage(String url) {
+    Get.toNamed(
+      AppRouter.webPage,
+      parameters: {'url': url},
+    );
   }
 
 }

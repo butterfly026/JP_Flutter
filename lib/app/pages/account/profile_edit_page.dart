@@ -23,6 +23,7 @@ class ProfileEditPage extends StatefulWidget {
 
 class _ProfileEditPageState extends State<ProfileEditPage>
     with TickerProviderStateMixin {
+  final Map<String, String> bodies = {};
   final List<String> japaneseMonths = [
     '1月',
     '2月',
@@ -91,13 +92,19 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                 Text('氏名', style: AppTheme.body2),
                                 Row(children: [
                                   Expanded(
-                                    child:
-                                        MiniTextField(hintText: '氏', value: ''),
+                                    child: MiniTextField(
+                                      hintText: '氏',
+                                      value: '',
+                                      onChagned: (val) =>
+                                          {bodies['fName'] = val},
+                                    ),
                                   ),
                                   SizedBox(width: Dimens.gap_dp10),
                                   Expanded(
                                     child:
-                                        MiniTextField(hintText: '名', value: ''),
+                                        MiniTextField(hintText: '名', value: '',
+                                      onChagned: (val) =>
+                                          {bodies['lName'] = val},),
                                   ),
                                 ]),
                                 SizedBox(height: Dimens.gap_dp14),

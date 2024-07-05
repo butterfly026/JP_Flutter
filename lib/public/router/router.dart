@@ -19,6 +19,7 @@ import 'package:fpg_flutter/app/pages/notices/notice_detail.dart';
 import 'package:fpg_flutter/app/pages/notices/notices.dart';
 import 'package:fpg_flutter/main_bindings.dart';
 import 'package:fpg_flutter/public/define/appDefine.dart';
+import 'package:fpg_flutter/public/widgets/web/webview_page.dart';
 import 'package:get/get.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

@@ -24,6 +24,7 @@ class AppRouter {
   static const notices = '/notices';
   static const noticeDetail = '/notices/detail';
   static const cardDetail = '/cards/detail';
+  static const webPage = '/web_page';
   static const profileChangePasswordPath = '/change-password';
   static const homePath = '/home';
   static const mainPath = '/';
@@ -96,6 +97,10 @@ class AppRouter {
     GetPage(
       name: chatGroup,
       page: () => const ChatGroupPage(),
+    ),
+    GetPage(
+      name: webPage,
+      page: () => const WebViewPage(),
     ),
   ];
 }
