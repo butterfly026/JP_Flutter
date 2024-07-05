@@ -120,42 +120,36 @@ class _CardsPageState extends State<CardsPage> {
                                           ),
                                           Spacer(),
                                           Column(children: [
-                                            Row(
-                                              children: [
-                                                Text('明細確認',
-                                                    style: AppTheme.body2),
-                                                IconButton(
-                                                  visualDensity: VisualDensity(
-                                                      vertical: -Dimens.gap_dp2,
-                                                      horizontal:
-                                                          -Dimens.gap_dp5),
-                                                  icon: Icon(
-                                                      Icons.chevron_right,
-                                                      size: Dimens.gap_dp16),
-                                                  onPressed: () {
+                                            Container(
+                                              padding: EdgeInsets.all(Dimens.gap_dp10),
+                                              margin: EdgeInsets.only(right: Dimens.gap_dp10, bottom: Dimens.gap_dp10),
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      color: AppTheme
+                                                          .lightGreyBack,
+                                                      width: Dimens.gap_dp2),
+                                                  borderRadius: BorderRadius
+                                                      .all(Radius.circular(
+                                                          Dimens.gap_dp10))),
+                                              child: GestureDetector(
+                                                  onTap: () {
                                                     String pdf =
                                                         "http://www.adobe.com/devnet/acrobat/pdfs/pdf_open_parameters.pdf";
                                                     pdf =
                                                         "https://drive.google.com/viewerng/viewer?embedded=true&url=$pdf";
-                                                    AppTool.toAppWebPage(
-                                                        pdf);
+                                                    AppTool.toAppWebPage(pdf);
                                                   },
-                                                ),
-                                              ],
-                                            ),
-                                            // Container(
-                                            //   decoration: BoxDecoration(
-                                            //       border: Border.all(
-                                            //           color:
-                                            //               AppTheme.lightGreyBack,
-                                            //           width: Dimens.gap_dp2),
-                                            //       borderRadius: BorderRadius.all(
-                                            //           Radius.circular(
-                                            //               Dimens.gap_dp10))),
-                                            //   child: GestureDetector(
-                                            //       onTap: _gotoDetailPage,
-                                            //       child: Text('AA')),
-                                            // )
+                                                  child: Row(
+                                                    children: [
+                                                      Text('明細確認',
+                                                          style:
+                                                              AppTheme.body2),
+                                                      Icon(Icons.chevron_right,
+                                                          size:
+                                                              Dimens.gap_dp20),
+                                                    ],
+                                                  )),
+                                            )
                                           ]),
                                         ],
                                       )),
@@ -208,7 +202,7 @@ class _CardsPageState extends State<CardsPage> {
                                                         icon: Icon(
                                                             Icons.chevron_right,
                                                             size: Dimens
-                                                                .gap_dp16),
+                                                                .gap_dp20),
                                                         onPressed:
                                                             _gotoDetailPage,
                                                       ),
