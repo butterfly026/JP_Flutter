@@ -5,10 +5,15 @@ import 'package:fpg_flutter/app/pages/notices/components/notice_item.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/public/define/request_info.dart';
 import 'package:fpg_flutter/public/models/notice.dart';
+import 'package:fpg_flutter/public/models/province.dart';
+import 'package:fpg_flutter/public/router/router.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
 import 'package:fpg_flutter/public/widgets/button.dart';
+import 'package:fpg_flutter/public/widgets/checkbox_text.dart';
 import 'package:fpg_flutter/public/widgets/dropdown.dart';
+import 'package:fpg_flutter/public/widgets/labeled_rich_text.dart';
 import 'package:fpg_flutter/public/widgets/mini_textfield.dart';
+import 'package:fpg_flutter/public/widgets/phone_number_formatter.dart';
 import 'package:fpg_flutter/public/widgets/text_info_title.dart';
 import 'package:fpg_flutter/public/widgets/top_labeled_textfield.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
@@ -24,6 +29,8 @@ class ProfileEditPage extends StatefulWidget {
 class _ProfileEditPageState extends State<ProfileEditPage>
     with TickerProviderStateMixin {
   final Map<String, String> bodies = {};
+  String title = '';
+  bool isNewUser = false;
   final List<String> japaneseMonths = [
     '1月',
     '2月',
@@ -38,6 +45,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
     '11月',
     '12月'
   ];
+
   final List<String> weekDays = [
     '日曜日',
     '月曜日',
@@ -49,7 +57,13 @@ class _ProfileEditPageState extends State<ProfileEditPage>
   ];
   @override
   void initState() {
-    // int curIndex = int.tryParse(Get.parameters['index'] ?? '') ?? 0;
+    if (Get.parameters['user_id'] != null) {
+      isNewUser = false;
+      title = '個人情報編集';
+    } else {
+      isNewUser = true;
+      title = '個人情報登録';
+    }
     super.initState();
   }
 
@@ -76,7 +90,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
               ),
               Divider(
                 height: 1,
-                color: AppTheme.black,
+                color: AppTheme.mainLightGrey,
               ),
               Expanded(
                   child: SingleChildScrollView(
@@ -93,7 +107,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                 Row(children: [
                                   Expanded(
                                     child: MiniTextField(
-                                      hintText: '氏',
+                                      hintText: '姓',
                                       value: '',
                                       onChagned: (val) =>
                                           {bodies['fName'] = val},
@@ -101,10 +115,12 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                   ),
                                   SizedBox(width: Dimens.gap_dp10),
                                   Expanded(
-                                    child:
-                                        MiniTextField(hintText: '名', value: '',
+                                    child: MiniTextField(
+                                      hintText: '名',
+                                      value: '',
                                       onChagned: (val) =>
-                                          {bodies['lName'] = val},),
+                                          {bodies['lName'] = val},
+                                    ),
                                   ),
                                 ]),
                                 SizedBox(height: Dimens.gap_dp14),
@@ -112,7 +128,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                 Row(children: [
                                   Expanded(
                                     child:
-                                        MiniTextField(hintText: '氏', value: ''),
+                                        MiniTextField(hintText: '姓', value: ''),
                                   ),
                                   SizedBox(width: Dimens.gap_dp10),
                                   Expanded(
@@ -124,10 +140,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                 Text('性別', style: AppTheme.body2),
                                 SizedBox(height: Dimens.gap_dp8),
                                 CustomDropdownMenu(
-                                  items: [
-                                    '男',
-                                    '女',
-                                  ],
+                                  items: ['男', '女', 'その他'],
                                   selectedItem: null,
                                   height: Dimens.gap_dp50,
                                   width: width3_2,
@@ -177,7 +190,12 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                       children: [
                                         Expanded(
                                             child: MiniTextField(
-                                                hintText: '年', value: '')),
+                                          hintText: '',
+                                          value: '',
+                                          inputFormatters: [
+                                            PhoneNumberFormatter()
+                                          ],
+                                        )),
                                       ],
                                     )),
                                 SizedBox(height: Dimens.gap_dp24),
@@ -193,7 +211,9 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                             padding: EdgeInsets.only(
                                                 top: Dimens.gap_dp10),
                                             child: CustomDropdownMenu(
-                                              items: japaneseMonths,
+                                              items: Province.provinces(),
+                                              labelFieldName: 'jp_name',
+                                              valueFieldName: 'id',
                                               selectedItem: null,
                                               height: Dimens.gap_dp50,
                                               width: width3_2 * 3 / 2,
@@ -227,17 +247,28 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                                 hintText: '', value: '')),
                                       ],
                                     )),
-                                SizedBox(height: Dimens.gap_dp50),
-                                Text('アシスタメンバー情報', style: AppTheme.body2),
+                                SizedBox(height: Dimens.gap_dp14),
+                                Text('学生or社会人', style: AppTheme.body2),
                                 SizedBox(height: Dimens.gap_dp8),
+                                CustomDropdownMenu(
+                                  items: [
+                                    '学生',
+                                    '社会人',
+                                  ],
+                                  selectedItem: null,
+                                  height: Dimens.gap_dp50,
+                                  width: width3_2,
+                                  onChanged: (value) {
+                                    setState(() {});
+                                  },
+                                ),
                                 Container(
                                     width: width3_2,
                                     child: Row(
                                       children: [
                                         Expanded(
                                             child: TopLabeledTextField(
-                                                label: '建物名・部屋番号など',
-                                                value: '')),
+                                                label: '所属大学', value: '')),
                                       ],
                                     )),
                                 Container(
@@ -246,7 +277,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                       children: [
                                         Expanded(
                                             child: TopLabeledTextField(
-                                                label: '学生or社会人', value: '')),
+                                                label: '所属学部', value: '')),
                                       ],
                                     )),
                                 Container(
@@ -273,7 +304,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                       children: [
                                         Expanded(
                                             child: TopLabeledTextField(
-                                                label: '最寄り駅', value: '')),
+                                                label: '最寄駅', value: '')),
                                       ],
                                     )),
                                 Container(
@@ -285,50 +316,34 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                                 label: '可動範囲（何駅）', value: '')),
                                       ],
                                     )),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Container(
-                                      width: width3_2,
-                                      child: TopLabeledTextField(
-                                        label: 'OKな依頼',
-                                        value: '',
-                                      ),
-                                    ),
-                                    Container(
-                                        padding: EdgeInsets.only(
-                                            left: Dimens.gap_dp6),
-                                        child: Button(
-                                          text: '選択',
-                                          paddingVertical: 0,
-                                          paddingHorizontal: 0,
-                                          borderRadius: 0,
-                                          backgroundColor: AppTheme.secondary,
-                                        ))
-                                  ],
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Container(
-                                      width: width3_2,
-                                      child: TopLabeledTextField(
-                                        label: 'NGな依頼　選択',
-                                        value: '',
-                                      ),
-                                    ),
-                                    Container(
-                                        padding: EdgeInsets.only(
-                                            left: Dimens.gap_dp6),
-                                        child: Button(
-                                          text: '選択',
-                                          paddingVertical: 0,
-                                          paddingHorizontal: 0,
-                                          borderRadius: 0,
-                                          backgroundColor: AppTheme.secondary,
-                                        ))
-                                  ],
-                                ),
+                                SizedBox(height: Dimens.gap_dp14),
+                                Text('やりたい依頼', style: AppTheme.body2),
+                                CheckboxWithText(
+                                    isChecked: false,
+                                    label: '1',
+                                    textStyle: AppTheme.body2),
+                                CheckboxWithText(
+                                    isChecked: false,
+                                    label: '2',
+                                    textStyle: AppTheme.body2),
+                                CheckboxWithText(
+                                    isChecked: false,
+                                    label: '3',
+                                    textStyle: AppTheme.body2),
+                                SizedBox(height: Dimens.gap_dp14),
+                                Text('NGな依頼', style: AppTheme.body2),
+                                CheckboxWithText(
+                                    isChecked: false,
+                                    label: '1',
+                                    textStyle: AppTheme.body2),
+                                CheckboxWithText(
+                                    isChecked: false,
+                                    label: '2',
+                                    textStyle: AppTheme.body2),
+                                CheckboxWithText(
+                                    isChecked: false,
+                                    label: '3',
+                                    textStyle: AppTheme.body2),
                                 SizedBox(height: Dimens.gap_dp50),
                                 Text('稼働可能な曜日', style: AppTheme.body2),
                                 for (var item in weekDays)
@@ -336,10 +351,11 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
+                                        SizedBox(height: Dimens.gap_dp14),
                                         Text(item, style: AppTheme.body2),
                                         SizedBox(height: Dimens.gap_dp8),
                                         CustomDropdownMenu(
-                                          items: ['可能', '不可能'],
+                                          items: ['午前', '午後', '終日', '不可能'],
                                           selectedItem: null,
                                           height: Dimens.gap_dp50,
                                           width: width3_2,
@@ -403,7 +419,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                         right: Dimens.gap_dp60),
                                     child: Button(
                                       text: "便新",
-                                      onPressed: () {},
+                                      onPressed: saveUserInfo,
                                       backgroundColor: AppTheme.black,
                                       borderRadius: Dimens.gap_dp20,
                                     ),
@@ -414,28 +430,8 @@ class _ProfileEditPageState extends State<ProfileEditPage>
           )
         ]));
   }
-}
 
-class ContestTabHeader extends SliverPersistentHeaderDelegate {
-  ContestTabHeader(
-    this.searchUI,
-  );
-  final Widget searchUI;
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return searchUI;
-  }
-
-  @override
-  double get maxExtent => 52.0;
-
-  @override
-  double get minExtent => 52.0;
-
-  @override
-  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
-    return false;
+  void saveUserInfo() {
+    Get.offAllNamed(AppRouter.profile);
   }
 }

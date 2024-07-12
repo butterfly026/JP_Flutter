@@ -42,7 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       TableCellSettings(
                           title: "個人情報編集",
                           onTap: () {
-                            Get.toNamed(AppRouter.profileEdit);
+                            Get.toNamed(AppRouter.profileEdit, parameters: {'user_id': '1'});
                           }),
                       TableCellSettings(
                           title: "アカウント設定",

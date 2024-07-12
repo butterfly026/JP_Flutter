@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +21,11 @@ void main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+  
+  LicenseRegistry.addLicense(() async* {
+    final license = await rootBundle.loadString('assets/fonts/OFL.txt');
+    yield LicenseEntryWithLineBreaks(['google_fonts'], license);
+  });
   await Storage.instance.init();
   await Global.init();
   await AppInfoUtils.instance.fetchAppInfo();
@@ -47,7 +53,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               initialRoute: AppRouter.login,
               getPages: AppRouter.pages,
-              theme: AppTheme.lightTheme, // Use light theme
+              theme: AppTheme.lightTheme,
               darkTheme: AppTheme.darkTheme, // Use dark theme
               themeMode: ThemeMode.system,
               localizationsDelegates: const [

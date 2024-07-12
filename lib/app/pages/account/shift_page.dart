@@ -53,20 +53,16 @@ class _UserShiftPageState extends State<UserShiftPage>
               SubPageAppBar(
                 titleText: 'シフト入力',
               ),
-              Divider(
-                height: 1,
-                color: AppTheme.mainLightGrey,
-              ),
               Expanded(
                   child: SingleChildScrollView(
                       child: Padding(
-                          padding: EdgeInsets.all(Dimens.gap_dp20),
+                          padding: EdgeInsets.only(left: Dimens.gap_dp20, right: Dimens.gap_dp20, bottom: Dimens.gap_dp20),
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                TextInfoTitle(
-                                    title: 'アカウント情報',
-                                    type: RequestInfo.SECTION_TITLE),
+                                // TextInfoTitle(
+                                //     title: 'アカウント情報',
+                                //     type: RequestInfo.SECTION_TITLE),
                                 CustomCalendar(selectedDay: DateTime.now()),
                                 Row(
                                   children: [

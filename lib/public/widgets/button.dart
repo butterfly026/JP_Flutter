@@ -42,7 +42,7 @@ class Button extends StatelessWidget {
             text,
             style: TextStyle(
               fontSize: Dimens.font_sp20,
-              fontFamily: 'OpenSans',
+              fontFamily: 'NotoSansJP',
               color: disabled ? AppTheme.buttonDisabledText : textColor,
               fontWeight: FontWeight.bold,
             ),
@@ -63,7 +63,7 @@ class Button extends StatelessWidget {
             text,
             style: TextStyle(
               fontSize: Dimens.font_sp20,
-              fontFamily: 'OpenSans',
+              fontFamily: 'NotoSansJP',
               color: textColor,
               fontWeight: FontWeight.bold,
             ),
@@ -96,7 +96,7 @@ class Button extends StatelessWidget {
         text,
         style: TextStyle(
           fontSize: Dimens.font_sp20,
-          fontFamily: 'OpenSans',
+          fontFamily: 'NotoSansJP',
           color: textColor,
           fontWeight: FontWeight.bold,
         ),

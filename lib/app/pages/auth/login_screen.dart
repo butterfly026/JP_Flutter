@@ -21,11 +21,16 @@ class _LoginPageState extends State<LoginScreen> {
   final AuthController authController = Get.find();
   String userName = '';
   String password = '';
+  bool bUserNameValid = true;
 
   Future handleLogin() async {
-    print(userName);
-    print(password);
-    await Get.offAndToNamed(AppRouter.profile);
+    if (userName.isEmpty || password.isEmpty) {
+      setState(() {
+        bUserNameValid = false;
+      });
+    } else {
+      await Get.offAndToNamed(AppRouter.profile);
+    }
   }
 
   Future handleRegister() async {
@@ -72,6 +77,12 @@ class _LoginPageState extends State<LoginScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        if (!bUserNameValid)
+                          Text(
+                            'ユーザー名とパスワードの組み合わせが正しくありません',
+                            style:
+                                AppTheme.body3.copyWith(color: AppTheme.error),
+                          ),
                         Container(
                           margin: EdgeInsets.only(left: 20.0, right: 20.0),
                           child: Padding(
@@ -79,9 +90,13 @@ class _LoginPageState extends State<LoginScreen> {
                                 top: 4.0, bottom: 4.0, left: 8.0, right: 8.0),
                             child: Input(
                               placeholder: "ユーザー名",
+                              borderColor: bUserNameValid
+                                  ? AppTheme.mainGrey
+                                  : AppTheme.error,
                               onChanged: (value) {
                                 setState(() {
-                                  userName = value ?? '';
+                                  bUserNameValid = true;
+                                  userName = value;
                                 });
                               },
                             ),
@@ -96,26 +111,27 @@ class _LoginPageState extends State<LoginScreen> {
                               isPassword: true,
                               onChanged: (value) {
                                 setState(() {
-                                  password = value ?? '';
+                                  password = value;
+                                  bUserNameValid = true;
                                 });
                               },
                             ),
                           ),
                         ),
-                        Container(
-                          margin: EdgeInsets.only(left: 20.0, right: 20.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text("パスワードをお忘れですか？",
-                                  style: TextStyle(
-                                      color: AppTheme.black,
-                                      fontSize: 12,
-                                      fontFamily: 'OpenSans',
-                                      fontWeight: FontWeight.w200)),
-                            ],
-                          ),
-                        ),
+                        // Container(
+                        //   margin: EdgeInsets.only(left: 20.0, right: 20.0),
+                        //   child: Row(
+                        //     mainAxisAlignment: MainAxisAlignment.end,
+                        //     children: [
+                        //       Text("パスワードをお忘れですか？",
+                        //           style: TextStyle(
+                        //               color: AppTheme.black,
+                        //               fontSize: 12,
+                        //               fontFamily: 'OpenSans',
+                        //               fontWeight: FontWeight.w200)),
+                        //     ],
+                        //   ),
+                        // ),
                       ],
                     ),
                     SizedBox(
@@ -136,20 +152,20 @@ class _LoginPageState extends State<LoginScreen> {
                             ),
                           ),
                         ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Container(
-                            margin: EdgeInsets.only(left: 20.0, right: 20.0),
-                            child: Button(
-                              text: "新規作成",
-                              onPressed: handleRegister,
-                              borderRadius: 32.0,
-                            ),
-                          ),
-                        ),
+                        // SizedBox(
+                        //   height: 30,
+                        // ),
+                        // SizedBox(
+                        //   width: double.infinity,
+                        //   child: Container(
+                        //     margin: EdgeInsets.only(left: 20.0, right: 20.0),
+                        //     child: Button(
+                        //       text: "新規作成",
+                        //       onPressed: handleRegister,
+                        //       borderRadius: 32.0,
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ],

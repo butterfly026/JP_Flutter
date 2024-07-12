@@ -50,7 +50,7 @@ class _AuthSettingsPageState extends State<AuthSettingsPage>
               ),
               Divider(
                 height: 1,
-                color: AppTheme.black,
+                color: AppTheme.mainLightGrey,
               ),
               Expanded(
                   child: Padding(

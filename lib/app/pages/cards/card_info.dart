@@ -103,7 +103,7 @@ class _CardInfoPageState extends State<CardInfoPage>
               SizedBox(height: Dimens.gap_dp10),
               Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                 Button(
-                  text: "報告確認",
+                  text: "報告",
                   onPressed: () {},
                   borderRadius: Dimens.gap_dp16,
                   paddingVertical: Dimens.gap_dp16,

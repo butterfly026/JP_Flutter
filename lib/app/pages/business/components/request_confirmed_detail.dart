@@ -230,8 +230,46 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                                                 title: '■連絡先',
                                                 value: '080-1111-2222',
                                               ),
-                                              SizedBox(
-                                                  height: Dimens.gap_dp100),
+                                            ])),
+                                  ],
+                                ),
+                              ),
+                              Divider(
+                                height: 1,
+                                color: AppTheme.mainLightGrey,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(Dimens.gap_dp20),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Padding(
+                                        padding:
+                                            EdgeInsets.all(Dimens.gap_dp10),
+                                        child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: Dimens.gap_dp20),
+                                                  child: Align(
+                                                      alignment:
+                                                          Alignment.topLeft,
+                                                      child: Text('緊急時連絡先(家族等)',
+                                                          style: AppTheme
+                                                              .subtitle))),
+                                              TextSubitleValue(
+                                                  title: '■続柄',
+                                                  value: '子'),
+                                              TextSubitleValue(
+                                                title: '■氏名',
+                                                value: '秋田太郎',
+                                              ),
+                                              TextSubitleValue(
+                                                title: '■連絡先',
+                                                value: '080-1111-2222',
+                                              ),
                                             ])),
                                   ],
                                 ),
@@ -337,6 +375,7 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                   text: "報告",
                   onPressed: () {
                     selectedData?.status = '依頼確定';
+                    Get.toNamed(AppRouter.requestReport);
                   },
                   borderRadius: Dimens.gap_dp16,
                   paddingVertical: Dimens.gap_dp16,

@@ -3,9 +3,11 @@ import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 
 class CustomDropdownMenu extends StatefulWidget {
-  final List<String> items;
+  final List<dynamic> items;
   final String? selectedItem;
   final ValueChanged<String?> onChanged;
+  final String? valueFieldName;
+  final String? labelFieldName;
   final double? height;
   final double? width;
   final double? borderRadius;
@@ -17,6 +19,8 @@ class CustomDropdownMenu extends StatefulWidget {
     this.height,
     this.width,
     this.borderRadius,
+    this.labelFieldName,
+    this.valueFieldName,
     required this.onChanged,
   }) : super(key: key);
 
@@ -27,11 +31,15 @@ class CustomDropdownMenu extends StatefulWidget {
 class _CustomDropdownMenuState extends State<CustomDropdownMenu> {
   final TextEditingController dropdownController = TextEditingController();
   String? _selectedItem;
+  String? valueFieldName;
+  String? labelFieldName;
 
   @override
   void initState() {
     super.initState();
     _selectedItem = widget.selectedItem;
+    valueFieldName = widget.valueFieldName;
+    labelFieldName = widget.labelFieldName;
   }
 
   @override
@@ -46,19 +54,19 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu> {
           width: Dimens.gap_dp1, // Border width
         ),
       ),
-      child: DropdownButton<String>(
+      child: DropdownButton<dynamic>(
         value: _selectedItem,
         dropdownColor: AppTheme.white,
-        items: widget.items.map((String item) {
-          return DropdownMenuItem<String>(
-            value: item,
+        items: widget.items.map((dynamic item) {
+          return DropdownMenuItem<dynamic>(
+            value: item is String ? item : item[valueFieldName],
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: Dimens.gap_dp10, vertical: Dimens.gap_dp10),
-              child: Text(item, style: TextStyle(fontSize: Dimens.font_sp20)),
+              child: Text(item is String ? item : item[labelFieldName], style: TextStyle(fontSize: Dimens.font_sp20)),
             ),
           );
         }).toList(),
-        onChanged: (String? newValue) {
+        onChanged: (dynamic? newValue) {
           setState(() {
             _selectedItem = newValue;
             widget.onChanged(newValue);

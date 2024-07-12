@@ -34,8 +34,7 @@ class RegisterScreenState extends State<SignUpPage> {
   String password = '';
 
   Future handleRegister() async {
-    print(userName);
-    print(password);
+    Get.toNamed(AppRouter.profileEdit);
     // Navigator.push<dynamic>(
     //   context,
     //   MaterialPageRoute<dynamic>(
@@ -122,7 +121,7 @@ class RegisterScreenState extends State<SignUpPage> {
                               style: TextStyle(
                                   color: AppTheme.black,
                                   fontSize: 12,
-                                  fontFamily: 'OpenSans',
+                                  fontFamily: 'NotoSansJP',
                                   fontWeight: FontWeight.w200)),
                         ),
                       ],

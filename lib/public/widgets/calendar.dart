@@ -33,7 +33,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: EdgeInsets.all(Dimens.gap_dp8),
       child: Column(
         children: [
           Row(

@@ -35,7 +35,7 @@ class AppTheme extends ChangeNotifier {
   static const Color dismissibleBackground = Color(0xFF364A54);
   static const Color chipBackground = Color(0xFFEEF1F3);
   static const Color spacer = Color(0xFFF2F2F2);
-  static const String fontName = 'OpenSans';
+  static const String fontName = 'NotoSansJP';
   static const Color black = Color(0xFF000000);
   static const Color defaultColor = Color.fromRGBO(136, 136, 136, 1.0);
   static const Color label = Color.fromRGBO(254, 36, 114, 1.0);
@@ -162,7 +162,8 @@ class AppTheme extends ChangeNotifier {
     letterSpacing: 0.2,
     color: lightText, // was lightText
   );
-  static final ThemeData lightTheme = ThemeData(
+  static final ThemeData lightTheme = 
+  ThemeData(
     brightness: Brightness.light,
     primarySwatch: Colors.blue,
     extensions: <ThemeExtension<dynamic>>[

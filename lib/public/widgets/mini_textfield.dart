@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
@@ -9,12 +10,14 @@ class MiniTextField extends StatefulWidget {
   final bool isPassword;
   final TextEditingController? controller;
   final ValueChanged<String>? onChagned;
+  final List<TextInputFormatter>? inputFormatters;
   const MiniTextField(
       {super.key,
       required this.hintText,
       this.value,
       this.controller,
       this.onChagned,
+      this.inputFormatters,
       this.isPassword = false});
   @override
   _MiniTextFieldState createState() => _MiniTextFieldState();
@@ -40,6 +43,7 @@ class _MiniTextFieldState extends State<MiniTextField> {
             controller: controller,
             style: AppTheme.body2,
             obscureText: widget.isPassword,
+            inputFormatters: widget.inputFormatters,
             enableSuggestions: !widget.isPassword,
             autocorrect: !widget.isPassword,
             onChanged: widget.onChagned,

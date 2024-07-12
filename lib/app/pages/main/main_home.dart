@@ -101,7 +101,7 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
                                         ? AppTheme.primary
                                         : AppTheme.black,
                                 fontSize: 18.sp,
-                                fontFamily: 'Arial'
+                                fontFamily: 'NotoSansJP'
                               ),
                               overflow: TextOverflow.ellipsis,
                             ),

@@ -78,11 +78,15 @@ class _RequestListPageState extends State<RequestListPage>
                     child: CustomDropdownMenu(
                       items: [
                         'すべて',
-                        '募集中',
+                        '依頼募集中',
                         '申請中',
                         '依頼確定',
+                        '開始済み',
+                        '延長中',
                         '依頼拒否',
+                        '活動報告済み',
                         '募集終了',
+                        'キャンセル',
                       ],
                       selectedItem: 'すべて',
                       onChanged: (value) {
@@ -120,10 +124,12 @@ class _RequestListPageState extends State<RequestListPage>
                         animationController?.forward();
                         return RequestItemView(
                           onPressItem: () {
-                            Get.toNamed(AppRouter.requestDetail, parameters: {
-                              'request_info':
-                                  jsonEncode(filteredList[index].toJson())
-                            });
+                            if (filteredList[index].status != '活動報告済み') {
+                              Get.toNamed(AppRouter.requestDetail, parameters: {
+                                'request_info':
+                                    jsonEncode(filteredList[index].toJson())
+                              });
+                            }
                           },
                           onPressReport: () {
                             Get.toNamed(AppRouter.requestReport, parameters: {

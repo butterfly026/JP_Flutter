@@ -134,7 +134,7 @@ class _CardsPageState extends State<CardsPage> {
                                               child: GestureDetector(
                                                   onTap: () {
                                                     String pdf =
-                                                        "http://www.adobe.com/devnet/acrobat/pdfs/pdf_open_parameters.pdf";
+                                                        "https://s29.q4cdn.com/175625835/files/doc_downloads/test.pdf";
                                                     pdf =
                                                         "https://drive.google.com/viewerng/viewer?embedded=true&url=$pdf";
                                                     AppTool.toAppWebPage(pdf);

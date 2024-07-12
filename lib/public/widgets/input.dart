@@ -38,7 +38,7 @@ class Input extends StatelessWidget {
             height: 1.0,
             fontSize: 14.0,
             color: AppTheme.mainDark,
-            fontFamily: 'OpenSans'),
+            fontFamily: 'NotoSansJP'),
         // textAlignVertical: TextAlignVertical(y: 0.6),
         decoration: InputDecoration(
             filled: true,
