@@ -36,15 +36,18 @@ class _CheckboxWithTextState extends State<CheckboxWithText> {
         child: Column(children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            children:  <Widget>[
+            children: <Widget>[
               Checkbox(
                 value: _isChecked,
                 activeColor: AppTheme.black,
-                visualDensity: VisualDensity(horizontal: -Dimens.gap_dp5, vertical: -Dimens.gap_dp6),
+                visualDensity: VisualDensity(
+                    horizontal: -Dimens.gap_dp5, vertical: -Dimens.gap_dp6),
                 onChanged: (bool? value) {
                   setState(() {
                     _isChecked = value!;
-                    widget.onChanged!(_isChecked);
+                    if (widget.onChanged != null) {
+                      widget.onChanged!(_isChecked);
+                    }
                   });
                 },
               ),

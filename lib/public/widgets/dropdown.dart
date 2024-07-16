@@ -62,11 +62,11 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu> {
             value: item is String ? item : item[valueFieldName],
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: Dimens.gap_dp10, vertical: Dimens.gap_dp10),
-              child: Text(item is String ? item : item[labelFieldName], style: TextStyle(fontSize: Dimens.font_sp20)),
+              child: Text(item is String ? item : item[labelFieldName], style: TextStyle(fontSize: Dimens.font_sp20, color: AppTheme.mainDark)),
             ),
           );
         }).toList(),
-        onChanged: (dynamic? newValue) {
+        onChanged: (dynamic newValue) {
           setState(() {
             _selectedItem = newValue;
             widget.onChanged(newValue);

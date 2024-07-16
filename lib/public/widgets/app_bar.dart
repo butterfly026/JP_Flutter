@@ -68,6 +68,7 @@ class SubPageAppBar extends CustomAppBar {
             leading: IconButton(
               icon: const Icon(
                 Icons.chevron_left,
+                color: AppTheme.black,
                 size: 25,
               ),
               onPressed: () {

@@ -63,6 +63,7 @@ class _CardsPageState extends State<CardsPage> {
                                       Spacer(),
                                       IconButton(
                                         icon: Icon(Icons.chevron_left),
+                                        color: AppTheme.mainDark,
                                         onPressed: () {
                                           setState(() {
                                             _focusedDay = DateTime(
@@ -78,11 +79,13 @@ class _CardsPageState extends State<CardsPage> {
                                             _focusedDay), // Display month and year in Japanese
                                         style: TextStyle(
                                             fontSize: 20,
+                                            color: AppTheme.mainDark,
                                             fontWeight: FontWeight.bold),
                                       ),
                                       Spacer(),
                                       IconButton(
                                         icon: Icon(Icons.chevron_right),
+                                        color: AppTheme.mainDark,
                                         onPressed: () {
                                           setState(() {
                                             _focusedDay = DateTime(
@@ -121,8 +124,11 @@ class _CardsPageState extends State<CardsPage> {
                                           Spacer(),
                                           Column(children: [
                                             Container(
-                                              padding: EdgeInsets.all(Dimens.gap_dp10),
-                                              margin: EdgeInsets.only(right: Dimens.gap_dp10, bottom: Dimens.gap_dp10),
+                                              padding: EdgeInsets.all(
+                                                  Dimens.gap_dp10),
+                                              margin: EdgeInsets.only(
+                                                  right: Dimens.gap_dp10,
+                                                  bottom: Dimens.gap_dp10),
                                               decoration: BoxDecoration(
                                                   border: Border.all(
                                                       color: AppTheme

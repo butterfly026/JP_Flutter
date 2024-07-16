@@ -41,11 +41,12 @@ class _CustomCalendarState extends State<CustomCalendar> {
               Text(
                 DateFormat.yMMMM('ja_JP')
                     .format(_focusedDay), // Display month and year in Japanese
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppTheme.mainDark),
               ),
               Spacer(),
               IconButton(
                 icon: Icon(Icons.chevron_left),
+                color: AppTheme.mainDark,
                 onPressed: () {
                   setState(() {
                     _focusedDay = DateTime(_focusedDay.year,
@@ -55,6 +56,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
               ),
               IconButton(
                 icon: Icon(Icons.chevron_right),
+                color: AppTheme.mainDark,
                 onPressed: () {
                   setState(() {
                     _focusedDay = DateTime(_focusedDay.year,
@@ -141,6 +143,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
                 shape: BoxShape.rectangle,
               ),
               cellAlignment: Alignment.topCenter,
+              defaultTextStyle: TextStyle(color: AppTheme.mainDark),
               selectedTextStyle: TextStyle(color: AppTheme.black),
               selectedDecoration: CustomDecoration(),
               todayTextStyle: TextStyle(color: AppTheme.black),
