@@ -8,8 +8,10 @@ class MiniTextField extends StatefulWidget {
   final String hintText;
   final String? value;
   final bool isPassword;
+  final bool isReadonly;
   final TextEditingController? controller;
   final ValueChanged<String>? onChagned;
+  final GestureTapCallback? onTap;
   final List<TextInputFormatter>? inputFormatters;
   const MiniTextField(
       {super.key,
@@ -17,7 +19,9 @@ class MiniTextField extends StatefulWidget {
       this.value,
       this.controller,
       this.onChagned,
+      this.onTap,
       this.inputFormatters,
+      this.isReadonly = false,
       this.isPassword = false});
   @override
   _MiniTextFieldState createState() => _MiniTextFieldState();
@@ -25,6 +29,7 @@ class MiniTextField extends StatefulWidget {
 
 class _MiniTextFieldState extends State<MiniTextField> {
   TextEditingController? controller;
+  String? value;
   static void _defaultOnTap() {
     // Function body
   }
@@ -33,20 +38,34 @@ class _MiniTextFieldState extends State<MiniTextField> {
     // TODO: implement initState
     super.initState();
     controller = widget.controller;
+    value = widget.value;
+  }
+  
+  @override
+  void didUpdateWidget(covariant MiniTextField oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.value != widget.value) {
+      setState(() {
+        value = widget.value;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
         margin: EdgeInsets.only(top: Dimens.gap_dp10),
-        child: TextField(
+        child: TextFormField(
             controller: controller,
             style: AppTheme.body2,
             obscureText: widget.isPassword,
             inputFormatters: widget.inputFormatters,
             enableSuggestions: !widget.isPassword,
-            autocorrect: !widget.isPassword,
+            autocorrect: !widget.isPassword,            
+            readOnly: widget.isReadonly,
             onChanged: widget.onChagned,
+            onTap: widget.onTap,
+            initialValue: value,
             decoration: InputDecoration(
               filled: true,
               isDense: true,

@@ -8,6 +8,7 @@ class CustomDropdownMenu extends StatefulWidget {
   final ValueChanged<String?> onChanged;
   final String? valueFieldName;
   final String? labelFieldName;
+  final Color? borderColor;
   final double? height;
   final double? width;
   final double? borderRadius;
@@ -20,6 +21,7 @@ class CustomDropdownMenu extends StatefulWidget {
     this.width,
     this.borderRadius,
     this.labelFieldName,
+    this.borderColor,
     this.valueFieldName,
     required this.onChanged,
   }) : super(key: key);
@@ -50,7 +52,7 @@ class _CustomDropdownMenuState extends State<CustomDropdownMenu> {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(widget.borderRadius ?? Dimens.gap_dp12), // Rounded corners
         border: Border.all(
-          color: Colors.grey, // Border color
+          color: widget.borderColor ?? Colors.grey, // Border color
           width: Dimens.gap_dp1, // Border width
         ),
       ),

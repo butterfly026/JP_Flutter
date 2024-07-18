@@ -1,5 +1,9 @@
 import 'dart:convert';
 
+import 'package:customizable_datetime_picker/sources/i18n/date_picker_i18n.dart';
+import 'package:customizable_datetime_picker/sources/model/date_picker_divider_theme.dart';
+import 'package:customizable_datetime_picker/sources/model/date_picker_theme.dart';
+import 'package:customizable_datetime_picker/sources/widget/customizable_date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:fpg_flutter/app/pages/notices/components/notice_item.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
@@ -10,6 +14,7 @@ import 'package:fpg_flutter/public/router/router.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
 import 'package:fpg_flutter/public/widgets/button.dart';
 import 'package:fpg_flutter/public/widgets/checkbox_text.dart';
+import 'package:fpg_flutter/public/widgets/date_input_formatter.dart';
 import 'package:fpg_flutter/public/widgets/dropdown.dart';
 import 'package:fpg_flutter/public/widgets/labeled_rich_text.dart';
 import 'package:fpg_flutter/public/widgets/mini_textfield.dart';
@@ -18,6 +23,7 @@ import 'package:fpg_flutter/public/widgets/text_info_title.dart';
 import 'package:fpg_flutter/public/widgets/top_labeled_textfield.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class ProfileEditPage extends StatefulWidget {
   const ProfileEditPage({super.key});
@@ -31,6 +37,8 @@ class _ProfileEditPageState extends State<ProfileEditPage>
   final Map<String, String> bodies = {};
   String title = '';
   bool isNewUser = false;
+  DateTime? _birthDate;
+  final TextEditingController _birthDtController = TextEditingController();
   final List<String> japaneseMonths = [
     '1月',
     '2月',
@@ -75,6 +83,68 @@ class _ProfileEditPageState extends State<ProfileEditPage>
   @override
   void dispose() {
     super.dispose();
+  }
+
+  void _selectBirthDate(BuildContext context) {
+    DateTime? selectedDate =
+        _birthDate ?? DateTime(DateTime.now().year - 14, 1, 1);
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            '生年月日',
+            style: AppTheme.subtitle,
+          ),
+          backgroundColor: Colors.white,
+          content: CustomizableDatePickerWidget(
+              separatorWidget: Padding(
+                padding: EdgeInsets.symmetric(horizontal: Dimens.gap_dp20),
+                child: Text(
+                  ":",
+                  style: AppTheme.body2,
+                ),
+              ),
+              locale: DateTimePickerLocale.jp,
+              looping: true,
+              lastDate: DateTime(2012),
+              initialDate: selectedDate,
+              dateFormat: "yyyy-MMMM-dd",
+              pickerTheme: DateTimePickerTheme(
+                  itemTextStyle: AppTheme.body2,
+                  backgroundColor: Colors.white,
+                  itemHeight: Dimens.gap_dp60,
+                  pickerHeight: Dimens.gap_dp300,
+                  dividerTheme: DatePickerDividerTheme(
+                      dividerColor: Color(0xFF00A962),
+                      thickness: Dimens.gap_dp4,
+                      height: Dimens.gap_dp4)),
+              onChange: (dateTime, selectedIndex) {
+                selectedDate = dateTime;
+              }),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('キャンセル'),
+            ),
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  _birthDate = selectedDate;
+                  _birthDtController.text = _birthDate == null
+                      ? ''
+                      : DateFormat.yMMMMd('ja_JP').format(_birthDate!);
+                });
+                Navigator.pop(context);
+              },
+              child: Text('設定'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -144,6 +214,8 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                   selectedItem: null,
                                   height: Dimens.gap_dp50,
                                   width: width3_2,
+                                  borderColor: AppTheme.lightGreyText,
+                                  borderRadius: Dimens.gap_dp8,
                                   onChanged: (value) {
                                     setState(() {});
                                   },
@@ -157,28 +229,13 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                       children: [
                                         Expanded(
                                             child: MiniTextField(
-                                                hintText: '年', value: '')),
-                                        SizedBox(width: Dimens.gap_dp10),
-                                        Expanded(
-                                            child: Padding(
-                                                padding: EdgeInsets.only(
-                                                    top: Dimens.gap_dp10),
-                                                child: CustomDropdownMenu(
-                                                  items: japaneseMonths,
-                                                  selectedItem: null,
-                                                  height: Dimens.gap_dp50,
-                                                  width: width3_2 / 3,
-                                                  onChanged: (value) {
-                                                    setState(() {});
-                                                  },
-                                                ))),
-                                        SizedBox(
-                                            width: Dimens
-                                                .gap_dp10), // Optional: Adds space between components
-                                        Expanded(
-                                          child: MiniTextField(
-                                              hintText: '日', value: ''),
-                                        ),
+                                          hintText: '',
+                                          isReadonly: true,
+                                          controller: _birthDtController,
+                                          onTap: () {
+                                            _selectBirthDate(context);
+                                          },
+                                        )),
                                       ],
                                     )),
                                 SizedBox(height: Dimens.gap_dp14),
@@ -215,6 +272,8 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                               labelFieldName: 'jp_name',
                                               valueFieldName: 'id',
                                               selectedItem: null,
+                                              borderColor:
+                                                  AppTheme.lightGreyText,
                                               height: Dimens.gap_dp50,
                                               width: width3_2 * 3 / 2,
                                               onChanged: (value) {
@@ -257,6 +316,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                   ],
                                   selectedItem: null,
                                   height: Dimens.gap_dp50,
+                                  borderColor: AppTheme.lightGreyText,
                                   width: width3_2,
                                   onChanged: (value) {
                                     setState(() {});
@@ -359,6 +419,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                           selectedItem: null,
                                           height: Dimens.gap_dp50,
                                           width: width3_2,
+                                          borderColor: AppTheme.lightGreyText,
                                           onChanged: (value) {
                                             setState(() {});
                                           },
@@ -386,6 +447,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                   selectedItem: null,
                                   height: Dimens.gap_dp50,
                                   width: width3_2,
+                                  borderColor: AppTheme.lightGreyText,
                                   onChanged: (value) {
                                     setState(() {});
                                   },
@@ -418,7 +480,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                         left: Dimens.gap_dp60,
                                         right: Dimens.gap_dp60),
                                     child: Button(
-                                      text: "便新",
+                                      text: "更新",
                                       onPressed: saveUserInfo,
                                       backgroundColor: AppTheme.black,
                                       borderRadius: Dimens.gap_dp20,

@@ -30,9 +30,28 @@ class _CheckboxWithTextState extends State<CheckboxWithText> {
   }
 
   @override
+  void didUpdateWidget(covariant CheckboxWithText oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.isChecked != _isChecked) {
+      setState(() {
+        _isChecked = widget.isChecked;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Transform.translate(
-        offset: Offset(-Dimens.gap_dp10, 0.0), // Adjust this offset as needed
+      offset: Offset(-Dimens.gap_dp10, 0.0), // Adjust this offset as needed
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            _isChecked = !_isChecked;
+            if (widget.onChanged != null) {
+              widget.onChanged!(_isChecked);
+            }
+          });
+        },
         child: Column(children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -58,6 +77,8 @@ class _CheckboxWithTextState extends State<CheckboxWithText> {
               ))
             ],
           )
-        ]));
+        ]),
+      ),
+    );
   }
 }

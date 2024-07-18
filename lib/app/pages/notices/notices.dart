@@ -76,6 +76,7 @@ class _NoticesPageState extends State<NoticesPage>
                             )),
                           ),
                           child: GestureDetector(
+                              behavior: HitTestBehavior.translucent,
                               onTap: () {
                                 Get.toNamed(AppRouter.noticeDetail,
                                     parameters: {'index': index.toString()});
@@ -84,23 +85,25 @@ class _NoticesPageState extends State<NoticesPage>
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment
-                                        .start, // Align children to the left
-                                    children: [
-                                      Text(
-                                        notices[index].regDate,
-                                        style: AppTheme.body2.copyWith(
-                                            fontSize: Dimens.font_sp14,
-                                            color: AppTheme.lightGreyText),
-                                      ),
-                                      SizedBox(height: Dimens.gap_dp20),
-                                      Text(
-                                        notices[index].title,
-                                        style: AppTheme.body2.copyWith(
-                                            color: AppTheme.lightGreyText),
-                                      ),
-                                    ],
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          notices[index].regDate,
+                                          style: AppTheme.body2.copyWith(
+                                              fontSize: Dimens.font_sp14,
+                                              color: AppTheme.lightGreyText),
+                                        ),
+                                        SizedBox(height: Dimens.gap_dp20),
+                                        Text(
+                                          notices[index].title,
+                                          style: AppTheme.body2.copyWith(
+                                              color: AppTheme.lightGreyText),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(right: 8.0),

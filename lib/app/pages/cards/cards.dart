@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fpg_flutter/app/controllers/auth_controller.dart';
+import 'package:fpg_flutter/app/controllers/global_controller.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
+import 'package:fpg_flutter/public/define/appDefine.dart';
 import 'package:fpg_flutter/public/define/request_info.dart';
 import 'package:fpg_flutter/public/models/card/card_info.dart';
 import 'package:fpg_flutter/public/router/router.dart';
@@ -186,34 +188,44 @@ class _CardsPageState extends State<CardsPage> {
                                             color: Colors.grey,
                                           ),
                                           Expanded(
+                                            child: GestureDetector(
+                                              behavior:
+                                                  HitTestBehavior.translucent,
+                                              onTap: () {
+                                                GlobalController.to
+                                                    .gotoMainPageByIndex(
+                                                        AppDefine
+                                                            .TAB_PROFILE_INDEX);
+                                              },
                                               child: Padding(
-                                                  padding: EdgeInsets.only(
-                                                      left: Dimens.gap_dp20),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Text('お支払先の変更',
-                                                          style:
-                                                              AppTheme.body2),
-                                                      IconButton(
-                                                        visualDensity:
-                                                            VisualDensity(
-                                                          vertical:
-                                                              -Dimens.gap_dp2,
-                                                          horizontal:
-                                                              -Dimens.gap_dp5,
-                                                        ),
-                                                        icon: Icon(
-                                                            Icons.chevron_right,
-                                                            size: Dimens
-                                                                .gap_dp20),
-                                                        onPressed:
-                                                            _gotoDetailPage,
+                                                padding: EdgeInsets.only(
+                                                    left: Dimens.gap_dp20),
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Text('お支払先の変更',
+                                                        style: AppTheme.body2),
+                                                    IconButton(
+                                                      visualDensity:
+                                                          VisualDensity(
+                                                        vertical:
+                                                            -Dimens.gap_dp2,
+                                                        horizontal:
+                                                            -Dimens.gap_dp5,
                                                       ),
-                                                    ],
-                                                  ))),
+                                                      icon: Icon(
+                                                          Icons.chevron_right,
+                                                          size:
+                                                              Dimens.gap_dp20),
+                                                      onPressed: () {},
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
                                         ],
                                       ))
                                 ])))),

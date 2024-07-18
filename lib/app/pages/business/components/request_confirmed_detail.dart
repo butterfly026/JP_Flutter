@@ -384,16 +384,16 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                   backgroundColor: AppTheme.primary,
                   textColor: AppTheme.black,
                 ),
-                Button(
-                  text: "チャット",
-                  onPressed: () {},
-                  borderRadius: Dimens.gap_dp16,
-                  paddingVertical: Dimens.gap_dp16,
-                  paddingHorizontal: Dimens.gap_dp28,
-                  minWidth: Dimens.gap_dp100 * 1.6,
-                  backgroundColor: AppTheme.buttonDisabledBack,
-                  textColor: AppTheme.black,
-                )
+                // Button(
+                //   text: "チャット",
+                //   onPressed: () {},
+                //   borderRadius: Dimens.gap_dp16,
+                //   paddingVertical: Dimens.gap_dp16,
+                //   paddingHorizontal: Dimens.gap_dp28,
+                //   minWidth: Dimens.gap_dp100 * 1.6,
+                //   backgroundColor: AppTheme.buttonDisabledBack,
+                //   textColor: AppTheme.black,
+                // )
               ]),
               SizedBox(height: Dimens.gap_dp20),
             ],

@@ -27,6 +27,10 @@ class UserShiftPage extends StatefulWidget {
 
 class _UserShiftPageState extends State<UserShiftPage>
     with TickerProviderStateMixin {
+  final Map<String, List<dynamic>> _events = {};
+  DateTime? _curSelDate = DateTime.now();
+  Map<String, bool> _checkedState = {};
+
   @override
   void initState() {
     // int curIndex = int.tryParse(Get.parameters['index'] ?? '') ?? 0;
@@ -43,6 +47,10 @@ class _UserShiftPageState extends State<UserShiftPage>
     super.dispose();
   }
 
+  void onChangeTimeOption(bool bVal, String time) {
+    _checkedState[time] = bVal;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,14 +64,30 @@ class _UserShiftPageState extends State<UserShiftPage>
               Expanded(
                   child: SingleChildScrollView(
                       child: Padding(
-                          padding: EdgeInsets.only(left: Dimens.gap_dp20, right: Dimens.gap_dp20, bottom: Dimens.gap_dp20),
+                          padding: EdgeInsets.only(
+                              left: Dimens.gap_dp20,
+                              right: Dimens.gap_dp20,
+                              bottom: Dimens.gap_dp20),
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 // TextInfoTitle(
                                 //     title: 'アカウント情報',
                                 //     type: RequestInfo.SECTION_TITLE),
-                                CustomCalendar(selectedDay: DateTime.now()),
+                                CustomCalendar(
+                                  selectedDay: _curSelDate,
+                                  events: _events,
+                                  onChagned: (selectedDate, event) {
+                                    setState(() {
+                                      _curSelDate = selectedDate;
+                                      if (event != null) {
+                                        _checkedState = event[0];
+                                      } else {
+                                        _checkedState = {};
+                                      }
+                                    });
+                                  },
+                                ),
                                 Row(
                                   children: [
                                     Expanded(
@@ -81,31 +105,50 @@ class _UserShiftPageState extends State<UserShiftPage>
                                   options: [
                                     {'label': '繰り返さない', 'value': 0},
                                     {'label': '毎週', 'value': 1},
-                                    {'label': '毎月', 'value': 2},
                                   ],
                                   isVertical: false,
                                   selectedValue: 0,
                                 ),
                                 CheckboxWithText(
-                                    isChecked: false,
-                                    label: '08:00~10:00',
-                                    textStyle: AppTheme.body2),
+                                  isChecked: _checkedState['8_10'] ?? false,
+                                  label: '08:00~10:00',
+                                  textStyle: AppTheme.body2,
+                                  onChanged: (value) {
+                                    onChangeTimeOption(value, '8_10');
+                                  },
+                                ),
                                 CheckboxWithText(
-                                    isChecked: false,
-                                    label: '10:00~12:00',
-                                    textStyle: AppTheme.body2),
+                                  isChecked: _checkedState['10_12'] ?? false,
+                                  label: '10:00~12:00',
+                                  textStyle: AppTheme.body2,
+                                  onChanged: (value) {
+                                    onChangeTimeOption(value, '10_12');
+                                  },
+                                ),
                                 CheckboxWithText(
-                                    isChecked: false,
-                                    label: '12:00~15:00',
-                                    textStyle: AppTheme.body2),
+                                  isChecked: _checkedState['12_15'] ?? false,
+                                  label: '12:00~15:00',
+                                  textStyle: AppTheme.body2,
+                                  onChanged: (value) {
+                                    onChangeTimeOption(value, '12_15');
+                                  },
+                                ),
                                 CheckboxWithText(
-                                    isChecked: false,
-                                    label: '15:00~18:00',
-                                    textStyle: AppTheme.body2),
+                                  isChecked: _checkedState['15_18'] ?? false,
+                                  label: '15:00~18:00',
+                                  textStyle: AppTheme.body2,
+                                  onChanged: (value) {
+                                    onChangeTimeOption(value, '15_18');
+                                  },
+                                ),
                                 CheckboxWithText(
-                                    isChecked: false,
-                                    label: '早朝深夜(18:00 ~ 8:00)',
-                                    textStyle: AppTheme.body2),
+                                  isChecked: _checkedState['18_8'] ?? false,
+                                  label: '早朝深夜(18:00 ~ 8:00)',
+                                  textStyle: AppTheme.body2,
+                                  onChanged: (value) {
+                                    onChangeTimeOption(value, '18_8');
+                                  },
+                                ),
                                 SizedBox(height: Dimens.gap_dp10),
                                 Align(
                                     alignment: Alignment.bottomCenter,
@@ -114,7 +157,16 @@ class _UserShiftPageState extends State<UserShiftPage>
                                             horizontal: Dimens.gap_dp60),
                                         child: Button(
                                           text: "更新",
-                                          onPressed: () {},
+                                          onPressed: () {
+                                            if (_curSelDate != null) {
+                                              setState(() {
+                                                _events[DateFormat('yyyy-MM-dd')
+                                                    .format(_curSelDate!)] = [
+                                                  _checkedState
+                                                ];
+                                              });
+                                            }
+                                          },
                                           borderRadius: 16.0,
                                           backgroundColor: Colors.black,
                                           minWidth: 200.0,
