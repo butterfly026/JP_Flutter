@@ -18,6 +18,7 @@ import 'package:fpg_flutter/public/widgets/date_input_formatter.dart';
 import 'package:fpg_flutter/public/widgets/dropdown.dart';
 import 'package:fpg_flutter/public/widgets/labeled_rich_text.dart';
 import 'package:fpg_flutter/public/widgets/mini_textfield.dart';
+import 'package:fpg_flutter/public/widgets/number_formatter.dart';
 import 'package:fpg_flutter/public/widgets/phone_number_formatter.dart';
 import 'package:fpg_flutter/public/widgets/text_info_title.dart';
 import 'package:fpg_flutter/public/widgets/top_labeled_textfield.dart';
@@ -241,16 +242,34 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                 SizedBox(height: Dimens.gap_dp14),
                                 Text('電話番号', style: AppTheme.body2),
                                 SizedBox(height: Dimens.gap_dp8),
-                                Container(
+                                SizedBox(
                                     width: width3_2,
                                     child: Row(
                                       children: [
                                         Expanded(
                                             child: MiniTextField(
-                                          hintText: '',
+                                          hintText: 'xxx',
                                           value: '',
                                           inputFormatters: [
-                                            PhoneNumberFormatter()
+                                            NumberFormatter(length: 3)
+                                          ],
+                                        )),
+                                        SizedBox(width: Dimens.gap_dp10),
+                                        Expanded(
+                                            child: MiniTextField(
+                                          hintText: 'xxxx',
+                                          value: '',
+                                          inputFormatters: [
+                                            NumberFormatter(length: 4)
+                                          ],
+                                        )),
+                                        SizedBox(width: Dimens.gap_dp10),
+                                        Expanded(
+                                            child: MiniTextField(
+                                          hintText: 'xxxx',
+                                          value: '',
+                                          inputFormatters: [
+                                            NumberFormatter(length: 4)
                                           ],
                                         )),
                                       ],
@@ -285,7 +304,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                 SizedBox(height: Dimens.gap_dp14),
                                 Text('市町村・番地', style: AppTheme.body2),
                                 SizedBox(height: Dimens.gap_dp8),
-                                Container(
+                                SizedBox(
                                     width: width3_2,
                                     child: Row(
                                       children: [
