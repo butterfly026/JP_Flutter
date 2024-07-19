@@ -39,6 +39,10 @@ class _ProfileEditPageState extends State<ProfileEditPage>
   String title = '';
   bool isNewUser = false;
   DateTime? _birthDate;
+
+  FocusNode _focusNode1 = FocusNode();
+  FocusNode _focusNode2 = FocusNode();
+  FocusNode _focusNode3 = FocusNode();
   final TextEditingController _birthDtController = TextEditingController();
   final List<String> japaneseMonths = [
     '1月',
@@ -83,7 +87,18 @@ class _ProfileEditPageState extends State<ProfileEditPage>
 
   @override
   void dispose() {
+    _focusNode1.dispose();
+    _focusNode2.dispose();
+    _focusNode3.dispose();
     super.dispose();
+  }
+
+  void _moveFocus() {
+    if (_focusNode1.hasFocus) {
+      FocusScope.of(context).requestFocus(_focusNode2);
+    } else if (_focusNode2.hasFocus) {
+      FocusScope.of(context).requestFocus(_focusNode3);
+    }
   }
 
   void _selectBirthDate(BuildContext context) {
@@ -97,6 +112,8 @@ class _ProfileEditPageState extends State<ProfileEditPage>
             '生年月日',
             style: AppTheme.subtitle,
           ),
+          contentPadding: EdgeInsets.zero,
+          insetPadding: EdgeInsets.zero,
           backgroundColor: Colors.white,
           content: CustomizableDatePickerWidget(
               separatorWidget: Padding(
@@ -108,7 +125,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
               ),
               locale: DateTimePickerLocale.jp,
               looping: true,
-              lastDate: DateTime(2012),
+              lastDate: DateTime.now(),
               initialDate: selectedDate,
               dateFormat: "yyyy-MMMM-dd",
               pickerTheme: DateTimePickerTheme(
@@ -216,7 +233,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                   height: Dimens.gap_dp50,
                                   width: width3_2,
                                   borderColor: AppTheme.lightGreyText,
-                                  borderRadius: Dimens.gap_dp8,
+                                  borderRadius: Dimens.gap_dp4,
                                   onChanged: (value) {
                                     setState(() {});
                                   },
@@ -249,7 +266,13 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                         Expanded(
                                             child: MiniTextField(
                                           hintText: 'xxx',
+                                          focusNode: _focusNode1,
                                           value: '',
+                                          onChagned: (value) {
+                                            if (value.length == 3) {
+                                              _moveFocus();
+                                            }
+                                          },
                                           inputFormatters: [
                                             NumberFormatter(length: 3)
                                           ],
@@ -259,6 +282,12 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                             child: MiniTextField(
                                           hintText: 'xxxx',
                                           value: '',
+                                          focusNode: _focusNode2,
+                                          onChagned: (value) {
+                                            if (value.length == 4) {
+                                              _moveFocus();
+                                            }
+                                          },
                                           inputFormatters: [
                                             NumberFormatter(length: 4)
                                           ],
@@ -268,6 +297,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                             child: MiniTextField(
                                           hintText: 'xxxx',
                                           value: '',
+                                          focusNode: _focusNode3,
                                           inputFormatters: [
                                             NumberFormatter(length: 4)
                                           ],
@@ -293,6 +323,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                               selectedItem: null,
                                               borderColor:
                                                   AppTheme.lightGreyText,
+                                                  borderRadius: Dimens.gap_dp4,
                                               height: Dimens.gap_dp50,
                                               width: width3_2 * 3 / 2,
                                               onChanged: (value) {
@@ -336,6 +367,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                   selectedItem: null,
                                   height: Dimens.gap_dp50,
                                   borderColor: AppTheme.lightGreyText,
+                                  borderRadius: Dimens.gap_dp4,
                                   width: width3_2,
                                   onChanged: (value) {
                                     setState(() {});
@@ -439,6 +471,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                           height: Dimens.gap_dp50,
                                           width: width3_2,
                                           borderColor: AppTheme.lightGreyText,
+                                          borderRadius: Dimens.gap_dp4,
                                           onChanged: (value) {
                                             setState(() {});
                                           },
@@ -467,6 +500,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                   height: Dimens.gap_dp50,
                                   width: width3_2,
                                   borderColor: AppTheme.lightGreyText,
+                                  borderRadius: Dimens.gap_dp4,
                                   onChanged: (value) {
                                     setState(() {});
                                   },

@@ -12,6 +12,7 @@ class MiniTextField extends StatefulWidget {
   final TextEditingController? controller;
   final ValueChanged<String>? onChagned;
   final GestureTapCallback? onTap;
+  final FocusNode? focusNode;
   final List<TextInputFormatter>? inputFormatters;
   const MiniTextField(
       {super.key,
@@ -21,6 +22,7 @@ class MiniTextField extends StatefulWidget {
       this.onChagned,
       this.onTap,
       this.inputFormatters,
+      this.focusNode,
       this.isReadonly = false,
       this.isPassword = false});
   @override
@@ -30,6 +32,7 @@ class MiniTextField extends StatefulWidget {
 class _MiniTextFieldState extends State<MiniTextField> {
   TextEditingController? controller;
   String? value;
+  FocusNode? _focusNode;
   static void _defaultOnTap() {
     // Function body
   }
@@ -39,6 +42,7 @@ class _MiniTextFieldState extends State<MiniTextField> {
     super.initState();
     controller = widget.controller;
     value = widget.value;
+    _focusNode = widget.focusNode;
   }
   
   @override
@@ -57,6 +61,7 @@ class _MiniTextFieldState extends State<MiniTextField> {
         margin: EdgeInsets.only(top: Dimens.gap_dp10),
         child: TextFormField(
             controller: controller,
+            focusNode: _focusNode,
             style: AppTheme.body2,
             obscureText: widget.isPassword,
             inputFormatters: widget.inputFormatters,
