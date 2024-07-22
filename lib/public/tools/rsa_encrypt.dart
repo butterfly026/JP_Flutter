@@ -1,9 +1,7 @@
 import 'dart:convert';
 import 'package:basic_utils/basic_utils.dart';
 import 'package:crypto/crypto.dart' as crypto;
-import 'package:rsa_encrypt/rsa_encrypt.dart' as rsa;
 import 'package:encrypt/encrypt.dart' as enc;
-import 'package:pointycastle/export.dart' as pointycastle;
 
 // Define your public key
 const String publicKey = '-----BEGIN PUBLIC KEY-----\n'
@@ -34,6 +32,6 @@ Future<String?> encryptRsa(String str) async {
 
 void main() async {
   // Example usage
-  final encrypted = await encryptRsa('Hello, World!');
-  print('Encrypted data: $encrypted');
+  // final encrypted = await encryptRsa('Hello, World!');
+  // print('Encrypted data: $encrypted');
 }

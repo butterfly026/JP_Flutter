@@ -1,22 +1,9 @@
-import 'dart:convert';
 
-import 'package:device_info_plus/device_info_plus.dart';
-import 'package:fpg_flutter/public/apis/api_app_info.dart';
-import 'package:fpg_flutter/public/apis/app_api.dart';
-import 'package:fpg_flutter/public/define/appDefine.dart';
-import 'package:fpg_flutter/public/models/base.dart';
-import 'package:fpg_flutter/public/network/networking.dart';
-import 'package:fpg_flutter/utils/common_util.dart';
-import 'package:fpg_flutter/utils/device.dart';
-import 'package:fpg_flutter/utils/storage/index.dart';
-import 'package:package_info/package_info.dart';
 
 class ApiAppInfoRepository {
-  final ApiAppInfo _api = ApiAppInfo();
   static String appInfoKey = '@appInfo';
   static String configKey = '@systemConfig';
   static dynamic appInfo;
-  static String _serverTime = '/wjapp/api.php?c=system&a=serverTime';
 
   // Future<void> _fetchUserAgent() async {
   //   DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();

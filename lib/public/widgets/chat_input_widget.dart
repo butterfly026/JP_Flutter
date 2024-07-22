@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
-import 'package:fpg_flutter/public/widgets/mini_textfield.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 
 class ChatInputWidget extends StatefulWidget {
+  const ChatInputWidget({super.key});
+
   @override
-  _ChatInputWidgetState createState() => _ChatInputWidgetState();
+  ChatInputWidgetState createState() => ChatInputWidgetState();
 }
 
-class _ChatInputWidgetState extends State<ChatInputWidget> {
-  TextEditingController _messageController = TextEditingController();
+class ChatInputWidgetState extends State<ChatInputWidget> {
+  final TextEditingController _messageController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
           Expanded(
@@ -36,7 +37,7 @@ class _ChatInputWidgetState extends State<ChatInputWidget> {
               IconButton(
                 visualDensity: VisualDensity(
                     horizontal: -Dimens.gap_dp5, vertical: -Dimens.gap_dp2),
-                icon: Icon(Icons.add),
+                icon: const Icon(Icons.add),
                 onPressed: () {
                   // Handle attachment button press
                   // Add functionality to attach files or images
@@ -45,15 +46,15 @@ class _ChatInputWidgetState extends State<ChatInputWidget> {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: Text('Attach Files'),
+                        title: const Text('Attach Files'),
                         content:
-                            Text('Placeholder for attaching files or images'),
+                            const Text('Placeholder for attaching files or images'),
                         actions: [
                           TextButton(
                             onPressed: () {
                               Navigator.pop(context);
                             },
-                            child: Text('Close'),
+                            child: const Text('Close'),
                           ),
                         ],
                       );
@@ -79,12 +80,12 @@ class _ChatInputWidgetState extends State<ChatInputWidget> {
           IconButton(
             visualDensity: VisualDensity(
                 horizontal: -Dimens.gap_dp5, vertical: -Dimens.gap_dp2),
-            icon: Icon(Icons.send),
+            icon: const Icon(Icons.send),
             onPressed: () {
               // Handle send button press
-              String message = _messageController.text;
+              // String message = _messageController.text;
               // Example: Print the message to the console
-              print('Sending message: $message');
+              // print('Sending message: $message');
               // Example: Clear the input field after sending
               _messageController.clear();
             },

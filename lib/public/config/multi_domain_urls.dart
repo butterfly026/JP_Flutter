@@ -1,7 +1,4 @@
-import 'dart:convert';
-import 'package:flutter/services.dart';
-import 'package:fpg_flutter/utils/device.dart';
-import 'package:platform/platform.dart'; // Custom platform check utilities
+// Custom platform check utilities
 
 
 // Define your site IDs

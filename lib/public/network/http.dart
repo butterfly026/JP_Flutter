@@ -1,10 +1,7 @@
 library http;
 
-import 'dart:convert';
-import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:dio/io.dart';
 import 'package:fpg_flutter/public/network/service.dart';
 
 part 'dio_utils.dart';

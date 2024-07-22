@@ -44,11 +44,10 @@ class AppApi extends ApiBase {
   }
 
   static AppApi get instance => _instance;
-  static AppApi _instance = AppApi._();
+  static final AppApi _instance = AppApi._();
 
   static AppApi _sharedInstance() {
-    _instance ??= AppApi._();
-    return _instance!;
+    return _instance;
   }
 
   void _internal() {

@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:fpg_flutter/public/tools/log_factory.dart';
-import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
 enum LogType {
@@ -145,8 +144,6 @@ class Logger {
   }
 
   Future<bool> _api(String message, LogType logType) async {
-    final text = 'Site: ${options.site}, Ver: ${options.version}, IP: ${options.location}\n'
-        '$message';
 
     if (!_isDev && flags.needLog(logType)) {
       return  true; //(await LogApi.instance.sendLog(Uri.encodeComponent(text))) != null;

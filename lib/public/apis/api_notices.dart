@@ -1,11 +1,5 @@
-import 'dart:convert';
-import 'dart:io';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
 import 'package:fpg_flutter/public/define/appDefine.dart';
 import 'package:fpg_flutter/public/network/networking.dart';
-import 'package:fpg_flutter/utils/device.dart';
-import 'package:http/http.dart' as http;
 
 
 const List<String> appInfoUrl = [

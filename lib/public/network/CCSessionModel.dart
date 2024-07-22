@@ -145,8 +145,8 @@ void main() {
 
   // Example asynchronous method call using static method
   CCSessionModel.getParams({'asyncParam': () => Future.value('asyncValue')}).then((params) {
-    print('Async params: $params');
+    // print('Async params: $params');
   }).catchError((error) {
-    print('Error fetching async params: $error');
+    // print('Error fetching async params: $error');
   });
 }

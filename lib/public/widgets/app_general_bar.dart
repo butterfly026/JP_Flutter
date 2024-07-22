@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 
 class AppGeneralBar extends StatelessWidget implements PreferredSizeWidget {

@@ -4,8 +4,8 @@
 import 'dart:convert';
 import 'dart:math';
 
+// ignore: depend_on_referenced_packages
 import 'package:crypto/crypto.dart';
-import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:fpg_flutter/public/router/router.dart';
 import 'package:fpg_flutter/public/widgets/loading_chasing_dots.dart';
@@ -64,7 +64,7 @@ class AppTool{
   
   static String replaceUrlPlaceholder(String origin) {
     var url = origin;
-    final cache = Cache.getInstance();
+    Cache.getInstance();
     // if (url.contains('{tenantId}') && cache.userInfo != null) {
     //   url = url.replaceAll('{tenantId}', cache.userInfo!.tenantId);
     // }

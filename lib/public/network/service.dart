@@ -1,10 +1,8 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:fpg_flutter/utils/common_util.dart';
-import 'package:get/get.dart' hide Response;
 
 import 'view_state_error_type.dart';
 
