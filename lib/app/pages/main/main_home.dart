@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fpg_flutter/app/controllers/auth_controller.dart';
 import 'package:fpg_flutter/app/pages/main/main_home_controller.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
-import 'package:fpg_flutter/public/tools/app_tool.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
 import 'package:fpg_flutter/public/widgets/app_image.dart';
 import 'package:fpg_flutter/utils/theme/app_colors.dart';
@@ -64,7 +62,7 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
           () => BottomAppBar(
             padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 0.w),
             height: 110.h,
-            color: Color.fromARGB(255, 253, 253, 253),
+            color: const Color.fromARGB(255, 253, 253, 253),
             child: Column(children: <Widget>[
               Divider(
                 height: Dimens.gap_dp1,
@@ -94,7 +92,7 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
                                   : AppTheme.black,
                             ),
                             Text(
-                              '${nav.name}',
+                              nav.name,
                               style: TextStyle(
                                 color:
                                     _controller.currentTabIndex.value == index

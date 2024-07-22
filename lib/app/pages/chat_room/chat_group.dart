@@ -1,9 +1,5 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:fpg_flutter/app/pages/notices/components/notice_item.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
-import 'package:fpg_flutter/public/models/notice.dart';
 import 'package:fpg_flutter/public/router/router.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
 import 'package:fpg_flutter/public/widgets/table-cell.dart';
@@ -14,10 +10,10 @@ class ChatGroupPage extends StatefulWidget {
   const ChatGroupPage({super.key});
 
   @override
-  _ChatGroupPageState createState() => _ChatGroupPageState();
+  ChatGroupPageState createState() => ChatGroupPageState();
 }
 
-class _ChatGroupPageState extends State<ChatGroupPage>
+class ChatGroupPageState extends State<ChatGroupPage>
     with TickerProviderStateMixin {
   @override
   void initState() {
@@ -29,10 +25,6 @@ class _ChatGroupPageState extends State<ChatGroupPage>
     return true;
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +36,7 @@ class _ChatGroupPageState extends State<ChatGroupPage>
               SubPageAppBar(
                 titleText: 'お知らせ詳細',
               ),
-              Divider(
+              const Divider(
                 height: 1,
                 color: AppTheme.mainLightGrey,
               ),

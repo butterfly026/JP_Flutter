@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/public/config/gaps.dart';
 import 'package:fpg_flutter/public/config/images.dart';
@@ -31,7 +30,7 @@ class BottomTab extends StatelessWidget {
     const double imageSize = 20;
     return TextButton(
       style: ButtonStyle(
-        overlayColor: MaterialStateProperty.all(Colors.transparent),
+        overlayColor: WidgetStateProperty.all(Colors.transparent),
       ),
       onPressed: () => onTap?.call(data),
       child: Column(

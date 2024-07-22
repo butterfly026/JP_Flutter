@@ -1,17 +1,13 @@
-import 'dart:convert';
+
 
 import 'package:flutter/material.dart';
-import 'package:fpg_flutter/app/pages/notices/components/notice_item.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/public/define/request_info.dart';
-import 'package:fpg_flutter/public/models/notice.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
 import 'package:fpg_flutter/public/widgets/button.dart';
-import 'package:fpg_flutter/public/widgets/input.dart';
 import 'package:fpg_flutter/public/widgets/text_info_title.dart';
 import 'package:fpg_flutter/public/widgets/top_labeled_textfield.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
-import 'package:get/get.dart';
 
 class AuthSettingsPage extends StatefulWidget {
   const AuthSettingsPage({super.key});
@@ -48,7 +44,7 @@ class _AuthSettingsPageState extends State<AuthSettingsPage>
               SubPageAppBar(
                 titleText: 'アカウント設定',
               ),
-              Divider(
+              const Divider(
                 height: 1,
                 color: AppTheme.mainLightGrey,
               ),
@@ -58,13 +54,13 @@ class _AuthSettingsPageState extends State<AuthSettingsPage>
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            TextInfoTitle(
+                            const TextInfoTitle(
                                 title: 'アカウント情報',
                                 type: RequestInfo.SECTION_TITLE),
-                            TopLabeledTextField(label: 'メールアドレス', value: ''),
-                            TopLabeledTextField(
+                            const TopLabeledTextField(label: 'メールアドレス', value: ''),
+                            const TopLabeledTextField(
                                 label: '新しいパスワード', value: '', isPassword: true),
-                            TopLabeledTextField(
+                            const TopLabeledTextField(
                                 label: '新しいパスワードを再入力',
                                 value: '',
                                 isPassword: true),

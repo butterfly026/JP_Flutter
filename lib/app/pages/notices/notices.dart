@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:fpg_flutter/app/pages/notices/components/notice_item.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/public/models/notice.dart';
 import 'package:fpg_flutter/public/router/router.dart';
@@ -13,13 +10,12 @@ class NoticesPage extends StatefulWidget {
   const NoticesPage({super.key});
 
   @override
-  _NoticesPageState createState() => _NoticesPageState();
+  NoticesPageState createState() => NoticesPageState();
 }
 
-class _NoticesPageState extends State<NoticesPage>
+class NoticesPageState extends State<NoticesPage>
     with TickerProviderStateMixin {
   List<Notice> notices = Notice.notices;
-  final ScrollController _scrollController = ScrollController();
   String? selected = 'すべて';
 
   DateTime startDate = DateTime.now();
@@ -35,10 +31,6 @@ class _NoticesPageState extends State<NoticesPage>
     return true;
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,7 +42,7 @@ class _NoticesPageState extends State<NoticesPage>
               SubPageAppBar(
                 titleText: 'おしらせ',
               ),
-              Divider(
+              const Divider(
                 height: 1,
                 color: AppTheme.mainLightGrey,
               ),
@@ -63,7 +55,6 @@ class _NoticesPageState extends State<NoticesPage>
                         top: Dimens.gap_dp10, right: Dimens.gap_dp8),
                     scrollDirection: Axis.vertical,
                     itemBuilder: (BuildContext context, int index) {
-                      final int count = notices.length > 5 ? 5 : notices.length;
 
                       return Container(
                           padding: EdgeInsets.all(Dimens.gap_dp16),
@@ -105,8 +96,8 @@ class _NoticesPageState extends State<NoticesPage>
                                       ],
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 8.0),
+                                  const Padding(
+                                    padding: EdgeInsets.only(right: 8.0),
                                     child: Icon(
                                       Icons.arrow_forward_ios,
                                       color: AppTheme.mainDark,
@@ -122,29 +113,5 @@ class _NoticesPageState extends State<NoticesPage>
             ],
           )
         ]));
-  }
-}
-
-class ContestTabHeader extends SliverPersistentHeaderDelegate {
-  ContestTabHeader(
-    this.searchUI,
-  );
-  final Widget searchUI;
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return searchUI;
-  }
-
-  @override
-  double get maxExtent => 52.0;
-
-  @override
-  double get minExtent => 52.0;
-
-  @override
-  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
-    return false;
   }
 }

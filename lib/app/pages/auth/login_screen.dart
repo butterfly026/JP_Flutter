@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:fpg_flutter/app/controllers/auth_controller.dart';
-import 'package:fpg_flutter/app/controllers/global_controller.dart';
-import 'package:fpg_flutter/app/pages/main/main_home_controller.dart';
-import 'package:fpg_flutter/public/define/appDefine.dart';
 import 'package:fpg_flutter/public/router/router.dart';
 import 'package:fpg_flutter/public/widgets/button.dart';
 import 'package:fpg_flutter/public/widgets/input.dart';
@@ -34,44 +31,40 @@ class _LoginPageState extends State<LoginScreen> {
   }
 
   Future handleRegister() async {
-    print(userName);
-    print(password);
     Get.offNamed(AppRouter.register);
   }
 
   @override
   Widget build(BuildContext context) {
     timeDilation = 1.0;
-    return new SafeArea(
+    return SafeArea(
         child: Scaffold(
       body: Container(
           color: Colors.white,
-          child: new SafeArea(
+          child: SafeArea(
             child: Scaffold(
               backgroundColor: AppTheme.white,
-              body: new Center(
-                child: new Column(
+              body: Center(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    new Container(
-                      child: new Stack(
-                        children: [
-                          new Center(
-                            child: new Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                new Image.asset(
-                                  'assets/images/logo.png',
-                                  // width: 168.0,
-                                  // height: 168.0,
-                                )
-                              ],
-                            ),
+                    Stack(
+                      children: [
+                        Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Image.asset(
+                                'assets/images/logo.png',
+                                // width: 168.0,
+                                // height: 168.0,
+                              )
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                     Column(
@@ -84,7 +77,7 @@ class _LoginPageState extends State<LoginScreen> {
                                 AppTheme.body3.copyWith(color: AppTheme.error),
                           ),
                         Container(
-                          margin: EdgeInsets.only(left: 20.0, right: 20.0),
+                          margin: const EdgeInsets.only(left: 20.0, right: 20.0),
                           child: Padding(
                             padding: const EdgeInsets.only(
                                 top: 4.0, bottom: 4.0, left: 8.0, right: 8.0),
@@ -103,7 +96,7 @@ class _LoginPageState extends State<LoginScreen> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.only(left: 20.0, right: 20.0),
+                          margin: const EdgeInsets.only(left: 20.0, right: 20.0),
                           child: Padding(
                             padding: const EdgeInsets.all(6.0),
                             child: Input(
@@ -134,7 +127,7 @@ class _LoginPageState extends State<LoginScreen> {
                         // ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 40,
                     ),
                     Column(
@@ -143,7 +136,7 @@ class _LoginPageState extends State<LoginScreen> {
                         SizedBox(
                           width: double.infinity,
                           child: Container(
-                            margin: EdgeInsets.only(left: 20.0, right: 20.0),
+                            margin: const EdgeInsets.only(left: 20.0, right: 20.0),
                             child: Button(
                               text: "ログイン",
                               onPressed: handleLogin,

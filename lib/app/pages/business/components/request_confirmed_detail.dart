@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:fpg_flutter/app/pages/business/controllers/request_detail_controller.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
-import 'package:fpg_flutter/public/config/images.dart';
 import 'package:fpg_flutter/public/define/request_info.dart';
 import 'package:fpg_flutter/public/models/business/request_list_data.dart';
 import 'package:fpg_flutter/public/router/router.dart';
-import 'package:fpg_flutter/public/widgets/app_bar.dart';
 import 'package:fpg_flutter/public/widgets/button.dart';
-import 'package:fpg_flutter/public/widgets/checkbox_text.dart';
-import 'package:fpg_flutter/public/widgets/image.dart';
-import 'package:fpg_flutter/public/widgets/table-cell.dart';
 import 'package:fpg_flutter/public/widgets/text_info_title.dart';
 import 'package:fpg_flutter/public/widgets/text_subtitle_value.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
@@ -20,11 +15,11 @@ class RequestConfirmedDetailPage extends StatefulWidget {
   final RequestListData? selectedData;
 
   @override
-  _RequestConfirmedDetailPageState createState() =>
-      _RequestConfirmedDetailPageState();
+  RequestConfirmedDetailPageState createState() =>
+      RequestConfirmedDetailPageState();
 }
 
-class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
+class RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
     with TickerProviderStateMixin {
   AnimationController? animationController;
   late RequestDetailController _controller;
@@ -90,7 +85,7 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                                   ),
                                 ),
                               ),
-                              TextInfoTitle(
+                              const TextInfoTitle(
                                   title: '【依頼内容】',
                                   type: RequestInfo.SECTION_TITLE),
                               Padding(
@@ -99,23 +94,23 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
-                                        TextSubitleValue(
+                                        const TextSubitleValue(
                                             title: '■住所',
                                             value: '〒777-2222　秋田県秋田市1111-3'),
-                                        TextSubitleValue(
+                                        const TextSubitleValue(
                                           title: '■依頼日時',
                                           value: '2024-03-03  14:00 ~ 15:00',
                                         ),
-                                        TextSubitleValue(
+                                        const TextSubitleValue(
                                             title: '■依頼内容', value: '病院付き添い'),
-                                        TextSubitleValue(
+                                        const TextSubitleValue(
                                             title: '■依頼内容詳細', value: ''),
                                         SizedBox(height: Dimens.gap_dp200),
-                                        TextSubitleValue(
+                                        const TextSubitleValue(
                                             title: '■運営からのコメント', value: ''),
                                         SizedBox(height: Dimens.gap_dp200),
                                       ])),
-                              Divider(
+                              const Divider(
                                 height: 1,
                                 color: AppTheme.mainLightGrey,
                               ),
@@ -125,7 +120,7 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    TextInfoTitle(
+                                    const TextInfoTitle(
                                         title: '【依頼者情報】',
                                         type: RequestInfo.SECTION_TITLE),
                                     Padding(
@@ -135,18 +130,18 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
                                             children: [
-                                              TextSubitleValue(
+                                              const TextSubitleValue(
                                                   title: '■依頼者氏名',
                                                   value: '山田太郎'),
-                                              TextSubitleValue(
+                                              const TextSubitleValue(
                                                 title: '■依頼者性別',
                                                 value: '男性',
                                               ),
-                                              TextSubitleValue(
+                                              const TextSubitleValue(
                                                   title: '■身体的特徴', value: ''),
                                               SizedBox(
                                                   height: Dimens.gap_dp200),
-                                              TextSubitleValue(
+                                              const TextSubitleValue(
                                                   title: '■精神的特徴', value: ''),
                                               SizedBox(
                                                   height: Dimens.gap_dp200),
@@ -154,7 +149,7 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                                   ],
                                 ),
                               ),
-                              Divider(
+                              const Divider(
                                 height: 1,
                                 color: AppTheme.mainLightGrey,
                               ),
@@ -164,7 +159,7 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    TextInfoTitle(
+                                    const TextInfoTitle(
                                         title: '【緊急時連絡先】',
                                         type: RequestInfo.SECTION_TITLE),
                                     Padding(
@@ -183,9 +178,9 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                                                       child: Text('運営',
                                                           style: AppTheme
                                                               .subtitle))),
-                                              TextSubitleValue(
+                                              const TextSubitleValue(
                                                   title: '■担当者', value: '秋田太郎'),
-                                              TextSubitleValue(
+                                              const TextSubitleValue(
                                                 title: '■連絡先',
                                                 value: '080-1111-2222',
                                               ),
@@ -193,7 +188,7 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                                   ],
                                 ),
                               ),
-                              Divider(
+                              const Divider(
                                 height: 1,
                                 color: AppTheme.mainLightGrey,
                               ),
@@ -219,14 +214,14 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                                                       child: Text('担当ケアマネ',
                                                           style: AppTheme
                                                               .subtitle))),
-                                              TextSubitleValue(
+                                              const TextSubitleValue(
                                                   title: '■所属居宅事業所',
                                                   value: '秋田事業所'),
-                                              TextSubitleValue(
+                                              const TextSubitleValue(
                                                 title: '■氏名',
                                                 value: '秋田太郎',
                                               ),
-                                              TextSubitleValue(
+                                              const TextSubitleValue(
                                                 title: '■連絡先',
                                                 value: '080-1111-2222',
                                               ),
@@ -234,7 +229,7 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                                   ],
                                 ),
                               ),
-                              Divider(
+                              const Divider(
                                 height: 1,
                                 color: AppTheme.mainLightGrey,
                               ),
@@ -259,14 +254,14 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                                                       child: Text('緊急時連絡先(家族等)',
                                                           style: AppTheme
                                                               .subtitle))),
-                                              TextSubitleValue(
+                                              const TextSubitleValue(
                                                   title: '■続柄',
                                                   value: '子'),
-                                              TextSubitleValue(
+                                              const TextSubitleValue(
                                                 title: '■氏名',
                                                 value: '秋田太郎',
                                               ),
-                                              TextSubitleValue(
+                                              const TextSubitleValue(
                                                 title: '■連絡先',
                                                 value: '080-1111-2222',
                                               ),
@@ -274,7 +269,7 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                                   ],
                                 ),
                               ),
-                              Divider(
+                              const Divider(
                                 height: 1,
                                 color: AppTheme.mainLightGrey,
                               ),
@@ -284,7 +279,7 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    TextInfoTitle(
+                                    const TextInfoTitle(
                                         title: '【過去の依頼内容】',
                                         type: RequestInfo.SECTION_TITLE),
                                     Padding(
@@ -320,7 +315,7 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                                   ],
                                 ),
                               ),
-                              Divider(
+                              const Divider(
                                 height: 1,
                                 color: AppTheme.mainLightGrey,
                               ),
@@ -365,7 +360,7 @@ class _RequestConfirmedDetailPageState extends State<RequestConfirmedDetailPage>
                               ),
                             ],
                           )))),
-              Divider(
+              const Divider(
                 height: 1,
                 color: AppTheme.mainLightGrey,
               ),

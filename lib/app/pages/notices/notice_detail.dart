@@ -1,7 +1,5 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:fpg_flutter/app/pages/notices/components/notice_item.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/public/models/notice.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
@@ -12,10 +10,10 @@ class NoticeDetailPage extends StatefulWidget {
   const NoticeDetailPage({super.key});
 
   @override
-  _NoticeDetailPageState createState() => _NoticeDetailPageState();
+  NoticeDetailPageState createState() => NoticeDetailPageState();
 }
 
-class _NoticeDetailPageState extends State<NoticeDetailPage>
+class NoticeDetailPageState extends State<NoticeDetailPage>
     with TickerProviderStateMixin {
   List<Notice> notices = Notice.notices;
   Notice? notice;
@@ -32,10 +30,6 @@ class _NoticeDetailPageState extends State<NoticeDetailPage>
     return true;
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +41,7 @@ class _NoticeDetailPageState extends State<NoticeDetailPage>
               SubPageAppBar(
                 titleText: 'お知らせ詳細',
               ),
-              Divider(
+              const Divider(
                 height: 1,
                 color: AppTheme.mainLightGrey,
               ),

@@ -6,13 +6,12 @@ import 'package:fpg_flutter/utils/theme/app_theme.dart';
 
 class RequestItemView extends StatelessWidget {
   const RequestItemView(
-      {Key? key,
+      {super.key,
       this.requestData,
       this.animationController,
       this.animation,
       this.onPressItem,
-      this.onPressReport})
-      : super(key: key);
+      this.onPressReport});
 
   final VoidCallback? onPressItem;
   final VoidCallback? onPressReport;
@@ -105,7 +104,7 @@ class RequestItemView extends StatelessWidget {
                                       backgroundColor: Colors.black),
                               ],
                             ),
-                            SizedBox(height: 16.0),
+                            const SizedBox(height: 16.0),
                             Row(
                               children: [
                                 SizedBox(
@@ -118,7 +117,7 @@ class RequestItemView extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 16.0),
+                            const SizedBox(height: 16.0),
                             Row(
                               children: [
                                 SizedBox(
@@ -131,7 +130,7 @@ class RequestItemView extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 16.0),
+                            const SizedBox(height: 16.0),
                             Row(
                               children: [
                                 SizedBox(
@@ -144,7 +143,7 @@ class RequestItemView extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 16.0),
+                            const SizedBox(height: 16.0),
                             Row(
                               children: [
                                 SizedBox(
@@ -157,7 +156,7 @@ class RequestItemView extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 16.0),
+                            const SizedBox(height: 16.0),
                           ],
                         ),
                       ),

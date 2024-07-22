@@ -3,15 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fpg_flutter/app/pages/business/controllers/request_detail_controller.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
-import 'package:fpg_flutter/public/config/images.dart';
 import 'package:fpg_flutter/public/define/request_info.dart';
 import 'package:fpg_flutter/public/models/business/request_list_data.dart';
 import 'package:fpg_flutter/public/router/router.dart';
-import 'package:fpg_flutter/public/widgets/app_bar.dart';
 import 'package:fpg_flutter/public/widgets/button.dart';
 import 'package:fpg_flutter/public/widgets/checkbox_text.dart';
-import 'package:fpg_flutter/public/widgets/image.dart';
-import 'package:fpg_flutter/public/widgets/table-cell.dart';
 import 'package:fpg_flutter/public/widgets/text_info_title.dart';
 import 'package:fpg_flutter/public/widgets/text_subtitle_value.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
@@ -22,10 +18,10 @@ class RequestNewDetailPage extends StatefulWidget {
   final RequestListData? selectedData;
 
   @override
-  _RequestNewDetailPageState createState() => _RequestNewDetailPageState();
+  RequestNewDetailPageState createState() => RequestNewDetailPageState();
 }
 
-class _RequestNewDetailPageState extends State<RequestNewDetailPage>
+class RequestNewDetailPageState extends State<RequestNewDetailPage>
     with TickerProviderStateMixin {
   AnimationController? animationController;
   late RequestDetailController _controller;
@@ -91,23 +87,23 @@ class _RequestNewDetailPageState extends State<RequestNewDetailPage>
                         ),
                       ),
                     ),
-                    TextSubitleValue(title: '■性別', value: '男性'),
-                    TextSubitleValue(
+                    const TextSubitleValue(title: '■性別', value: '男性'),
+                    const TextSubitleValue(
                       title: '■住所',
                       value: '〒777-2222　秋田県秋田市1111-3',
                     ),
-                    TextSubitleValue(title: '■依頼内容', value: '病院付き添い'),
-                    TextSubitleValue(title: '■所要時間', value: '1h'),
-                    TextSubitleValue(title: '■身体的特徴', value: ''),
+                    const TextSubitleValue(title: '■依頼内容', value: '病院付き添い'),
+                    const TextSubitleValue(title: '■所要時間', value: '1h'),
+                    const TextSubitleValue(title: '■身体的特徴', value: ''),
                     SizedBox(height: Dimens.gap_dp100),
-                    TextSubitleValue(title: '■精神的特徴', value: ''),
+                    const TextSubitleValue(title: '■精神的特徴', value: ''),
                     SizedBox(height: Dimens.gap_dp100),
-                    TextSubitleValue(title: '■運営からのコメント', value: ''),
+                    const TextSubitleValue(title: '■運営からのコメント', value: ''),
                     SizedBox(height: Dimens.gap_dp100),
                     SizedBox(height: Dimens.gap_dp100),
                     Container(
                       margin: EdgeInsets.only(bottom: Dimens.gap_dp6),
-                      child: TextInfoTitle(
+                      child: const TextInfoTitle(
                         title: '■候補日',
                         type: RequestInfo.SUB_TITLE,
                       ),
@@ -133,7 +129,7 @@ class _RequestNewDetailPageState extends State<RequestNewDetailPage>
                   ],
                 ),
               ))),
-              Divider(
+              const Divider(
                 height: 1,
                 color: AppTheme.mainLightGrey,
               ),

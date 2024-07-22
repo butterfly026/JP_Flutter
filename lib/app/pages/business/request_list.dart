@@ -3,14 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fpg_flutter/app/pages/business/components/request_item_view.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
-import 'package:fpg_flutter/public/config/images.dart';
 import 'package:fpg_flutter/public/models/business/request_list_data.dart';
 import 'package:fpg_flutter/public/router/router.dart';
-import 'package:fpg_flutter/public/tools/ugLog.dart';
-import 'package:fpg_flutter/public/widgets/app_bar.dart';
-import 'package:fpg_flutter/public/widgets/app_general_bar.dart';
 import 'package:fpg_flutter/public/widgets/dropdown.dart';
-import 'package:fpg_flutter/public/widgets/image.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
 
@@ -18,15 +13,14 @@ class RequestListPage extends StatefulWidget {
   const RequestListPage({super.key});
 
   @override
-  _RequestListPageState createState() => _RequestListPageState();
+  RequestListPageState createState() => RequestListPageState();
 }
 
-class _RequestListPageState extends State<RequestListPage>
+class RequestListPageState extends State<RequestListPage>
     with TickerProviderStateMixin {
   AnimationController? animationController;
   List<RequestListData> requestList = RequestListData.requestList;
   List<RequestListData> filteredList = [];
-  final ScrollController _scrollController = ScrollController();
   String? selected = 'すべて';
 
   DateTime startDate = DateTime.now();
@@ -76,7 +70,7 @@ class _RequestListPageState extends State<RequestListPage>
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: CustomDropdownMenu(
-                      items: [
+                      items: const [
                         'すべて',
                         '依頼募集中',
                         '申請中',

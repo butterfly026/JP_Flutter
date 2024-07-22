@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 class RequestBase {
   Map<String, dynamic> _properties = {};
 
@@ -58,10 +56,10 @@ class ResponseError extends ResponseBase {
   dynamic payload;
 
   ResponseError({
-    String? url,
-    int? used,
+    super.url,
+    super.used,
     this.code,
     this.message,
     this.payload,
-  }) : super(url: url, used: used);
+  });
 }

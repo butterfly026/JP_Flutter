@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/public/router/router.dart';
-import 'package:fpg_flutter/public/widgets/app_general_bar.dart';
-import 'package:fpg_flutter/public/widgets/app_image.dart';
 import 'package:fpg_flutter/public/widgets/table-cell.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
 
 class ChatPage extends StatefulWidget {
+  const ChatPage({super.key});
+
   @override
   State<StatefulWidget> createState() => _ChatPageState();
 }
@@ -27,7 +25,7 @@ class _ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
       child: Column(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.grey,
               border: Border(
                 bottom: BorderSide(

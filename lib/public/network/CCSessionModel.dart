@@ -1,6 +1,4 @@
 // Import necessary packages if needed
-import 'package:meta/meta.dart'; // Required for required keyword
-
 // ResponseObject class
 class ResponseObject<T> {
   String? cookieStr;

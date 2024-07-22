@@ -1,31 +1,21 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:fpg_flutter/app/pages/notices/components/notice_item.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/public/define/request_info.dart';
-import 'package:fpg_flutter/public/models/notice.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
 import 'package:fpg_flutter/public/widgets/button.dart';
-import 'package:fpg_flutter/public/widgets/calendar.dart';
-import 'package:fpg_flutter/public/widgets/checkbox_text.dart';
-import 'package:fpg_flutter/public/widgets/input.dart';
 import 'package:fpg_flutter/public/widgets/text_info_title.dart';
 import 'package:fpg_flutter/public/widgets/text_subtitle_value.dart';
-import 'package:fpg_flutter/public/widgets/top_labeled_textfield.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
-import 'package:get/get.dart';
-import 'package:intl/intl.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 class CardInfoPage extends StatefulWidget {
   const CardInfoPage({super.key});
 
   @override
-  _CardInfoPageState createState() => _CardInfoPageState();
+  CardInfoPageState createState() => CardInfoPageState();
 }
 
-class _CardInfoPageState extends State<CardInfoPage>
+class CardInfoPageState extends State<CardInfoPage>
     with TickerProviderStateMixin {
   @override
   void initState() {
@@ -38,10 +28,6 @@ class _CardInfoPageState extends State<CardInfoPage>
     return true;
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +39,7 @@ class _CardInfoPageState extends State<CardInfoPage>
               SubPageAppBar(
                 titleText: '依頼内容',
               ),
-              Divider(
+              const Divider(
                 height: 1,
                 color: AppTheme.mainLightGrey,
               ),
@@ -66,27 +52,27 @@ class _CardInfoPageState extends State<CardInfoPage>
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          TextInfoTitle(
+                          const TextInfoTitle(
                               title: '【依頼内容】', type: RequestInfo.SECTION_TITLE),
                           Padding(
                               padding: EdgeInsets.all(Dimens.gap_dp10),
                               child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
-                                    TextSubitleValue(
+                                    const TextSubitleValue(
                                         title: '■依頼日時',
                                         value: '2024-03-03  14:00 ~ 15:00'),
-                                    TextSubitleValue(
+                                    const TextSubitleValue(
                                       title: '■稼働時間',
                                       value: '1時間30分',
                                     ),
-                                    TextSubitleValue(
+                                    const TextSubitleValue(
                                         title: '■報酬', value: '1500円'),
-                                    TextSubitleValue(
+                                    const TextSubitleValue(
                                         title: '■依頼内容', value: '病院付き添い'),
-                                    TextSubitleValue(
+                                    const TextSubitleValue(
                                         title: '■依頼者氏名', value: '山田太郎'),
-                                    TextSubitleValue(
+                                    const TextSubitleValue(
                                         title: '■依頼者性別', value: '男性'),
                                     SizedBox(height: Dimens.gap_dp100),
                                   ])),
@@ -96,7 +82,7 @@ class _CardInfoPageState extends State<CardInfoPage>
                   ],
                 ),
               )),
-              Divider(
+              const Divider(
                 height: 1,
                 color: AppTheme.mainLightGrey,
               ),

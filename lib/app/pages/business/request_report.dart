@@ -1,16 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:fpg_flutter/app/pages/business/components/request_new_detail.dart';
 import 'package:fpg_flutter/app/pages/business/controllers/request_detail_controller.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
-import 'package:fpg_flutter/public/config/images.dart';
 import 'package:fpg_flutter/public/models/business/request_list_data.dart';
 import 'package:fpg_flutter/public/router/router.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
 import 'package:fpg_flutter/public/widgets/button.dart';
-import 'package:fpg_flutter/public/widgets/image.dart';
-import 'package:fpg_flutter/public/widgets/table-cell.dart';
 import 'package:fpg_flutter/public/widgets/text_key_value.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
@@ -19,13 +15,12 @@ class RequestReportPage extends StatefulWidget {
   const RequestReportPage({super.key});
 
   @override
-  _RequestReportPageState createState() => _RequestReportPageState();
+  RequestReportPageState createState() => RequestReportPageState();
 }
 
-class _RequestReportPageState extends State<RequestReportPage>
+class RequestReportPageState extends State<RequestReportPage>
     with TickerProviderStateMixin {
   AnimationController? animationController;
-  late RequestDetailController _controller;
   RequestListData? selectedData;
   bool startDisabled = true, activeDisabled = true;
 
@@ -38,7 +33,6 @@ class _RequestReportPageState extends State<RequestReportPage>
     // tabBody = MyDiaryScreen(animationController: animationController);
     selectedData = RequestListData.fromJson(
         jsonDecode(Get.parameters['request_info'] ?? '{}'));
-    _controller = RequestDetailController();
     startDisabled = true;
     activeDisabled = true;
     super.initState();
@@ -58,7 +52,7 @@ class _RequestReportPageState extends State<RequestReportPage>
           Column(
             children: [
               SubPageAppBar(titleText: '報告'),
-              Divider(
+              const Divider(
                 height: 1,
                 color: AppTheme.mainLightGrey,
               ),
@@ -73,34 +67,34 @@ class _RequestReportPageState extends State<RequestReportPage>
                         Padding(
                             padding: EdgeInsets.only(
                                 top: Dimens.gap_dp40, left: Dimens.gap_dp20),
-                            child: TextKeyValue(
+                            child: const TextKeyValue(
                                 label: '出発時刻', value: '2024-03-03  13:40 ')),
                         Padding(
                             padding: EdgeInsets.only(
                                 top: Dimens.gap_dp40, left: Dimens.gap_dp20),
-                            child: TextKeyValue(
+                            child: const TextKeyValue(
                                 label: '開始時刻', value: '2024-03-03  14:20 ')),
                         Padding(
                             padding: EdgeInsets.only(
                                 top: Dimens.gap_dp40, left: Dimens.gap_dp20),
-                            child: TextKeyValue(
+                            child: const TextKeyValue(
                                 label: '延長終了①', value: '2024-03-03  15:15')),
                         Padding(
                             padding: EdgeInsets.only(
                                 top: Dimens.gap_dp40, left: Dimens.gap_dp20),
-                            child: TextKeyValue(
+                            child: const TextKeyValue(
                                 label: '延長終了②', value: '2024-03-03  15:30')),
                         Padding(
                             padding: EdgeInsets.only(
                                 top: Dimens.gap_dp40,
                                 bottom: Dimens.gap_dp40,
                                 left: Dimens.gap_dp20),
-                            child: TextKeyValue(
+                            child: const TextKeyValue(
                                 label: '終了時刻', value: '2024-03-03  15:00 ')),
                       ],
                     ),
                   ),
-                  Divider(
+                  const Divider(
                     height: 1,
                     color: AppTheme.mainLightGrey,
                   ),

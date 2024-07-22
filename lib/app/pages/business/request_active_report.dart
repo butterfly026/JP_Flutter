@@ -1,23 +1,14 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:fpg_flutter/app/controllers/global_controller.dart';
-import 'package:fpg_flutter/app/pages/business/components/request_confirmed_detail.dart';
-import 'package:fpg_flutter/app/pages/business/components/request_new_detail.dart';
 import 'package:fpg_flutter/app/pages/business/controllers/request_detail_controller.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
-import 'package:fpg_flutter/public/config/images.dart';
 import 'package:fpg_flutter/public/define/appDefine.dart';
 import 'package:fpg_flutter/public/define/request_info.dart';
-import 'package:fpg_flutter/public/models/business/request_list_data.dart';
-import 'package:fpg_flutter/public/router/router.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
 import 'package:fpg_flutter/public/widgets/button.dart';
 import 'package:fpg_flutter/public/widgets/checkbox_text.dart';
-import 'package:fpg_flutter/public/widgets/image.dart';
 import 'package:fpg_flutter/public/widgets/labeled_rich_text.dart';
 import 'package:fpg_flutter/public/widgets/radio_button.dart';
-import 'package:fpg_flutter/public/widgets/table-cell.dart';
 import 'package:fpg_flutter/public/widgets/text_info_title.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
@@ -27,14 +18,13 @@ class RequestActiveReportPage extends StatefulWidget {
   const RequestActiveReportPage({super.key});
 
   @override
-  _RequestActiveReportPageState createState() =>
-      _RequestActiveReportPageState();
+  RequestActiveReportPageState createState() =>
+      RequestActiveReportPageState();
 }
 
-class _RequestActiveReportPageState extends State<RequestActiveReportPage>
+class RequestActiveReportPageState extends State<RequestActiveReportPage>
     with TickerProviderStateMixin {
   AnimationController? animationController;
-  late RequestDetailController _controller;
   final Map<String, String> bodies = {};
 
   // List<TabIconData> tabIconsList = TabIconData.tabIconsList;
@@ -43,8 +33,6 @@ class _RequestActiveReportPageState extends State<RequestActiveReportPage>
   void initState() {
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-
-    _controller = RequestDetailController();
     super.initState();
   }
 
@@ -64,7 +52,7 @@ class _RequestActiveReportPageState extends State<RequestActiveReportPage>
               SubPageAppBar(
                 titleText: '活動報告',
               ),
-              Divider(
+              const Divider(
                 height: 1,
                 color: AppTheme.mainLightGrey,
               ),
@@ -76,7 +64,7 @@ class _RequestActiveReportPageState extends State<RequestActiveReportPage>
                               vertical: Dimens.gap_dp10),
                           child: Column(
                             children: [
-                              TextInfoTitle(
+                              const TextInfoTitle(
                                   title: '【依頼後の自己評価】',
                                   type: RequestInfo.SECTION_TITLE),
                               Padding(
@@ -126,7 +114,7 @@ class _RequestActiveReportPageState extends State<RequestActiveReportPage>
                                   SizedBox(height: Dimens.gap_dp30),
                                 ]),
                               ),
-                              TextInfoTitle(
+                              const TextInfoTitle(
                                   title: '【活動報告】',
                                   type: RequestInfo.SECTION_TITLE),
                               Padding(
@@ -204,7 +192,7 @@ class _RequestActiveReportPageState extends State<RequestActiveReportPage>
                                           style: AppTheme.body2,
                                         )
                                       ]),
-                                      RadioButton(
+                                      const RadioButton(
                                         options: [
                                           {'label': 'はい', 'value': 1},
                                           {'label': 'いいえ', 'value': 0},
@@ -217,7 +205,7 @@ class _RequestActiveReportPageState extends State<RequestActiveReportPage>
                                           style: AppTheme.body2,
                                         )
                                       ]),
-                                      RadioButton(
+                                      const RadioButton(
                                         options: [
                                           {'label': 'はい', 'value': 1},
                                           {'label': 'いいえ', 'value': 0},
@@ -232,7 +220,7 @@ class _RequestActiveReportPageState extends State<RequestActiveReportPage>
                                               style: AppTheme.body2,
                                             )
                                           ])),
-                                      RadioButton(
+                                      const RadioButton(
                                         options: [
                                           {'label': 'はい', 'value': 1},
                                           {'label': 'いいえ', 'value': 0},

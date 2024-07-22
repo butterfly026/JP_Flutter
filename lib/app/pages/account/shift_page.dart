@@ -1,31 +1,22 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:fpg_flutter/app/pages/notices/components/notice_item.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
-import 'package:fpg_flutter/public/define/request_info.dart';
-import 'package:fpg_flutter/public/models/notice.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
 import 'package:fpg_flutter/public/widgets/button.dart';
 import 'package:fpg_flutter/public/widgets/calendar.dart';
 import 'package:fpg_flutter/public/widgets/checkbox_text.dart';
-import 'package:fpg_flutter/public/widgets/input.dart';
 import 'package:fpg_flutter/public/widgets/radio_button.dart';
-import 'package:fpg_flutter/public/widgets/text_info_title.dart';
-import 'package:fpg_flutter/public/widgets/top_labeled_textfield.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 class UserShiftPage extends StatefulWidget {
   const UserShiftPage({super.key});
 
   @override
-  _UserShiftPageState createState() => _UserShiftPageState();
+  UserShiftPageState createState() => UserShiftPageState();
 }
 
-class _UserShiftPageState extends State<UserShiftPage>
+class UserShiftPageState extends State<UserShiftPage>
     with TickerProviderStateMixin {
   final Map<String, List<dynamic>> _events = {};
   DateTime? _curSelDate = DateTime.now();
@@ -42,10 +33,6 @@ class _UserShiftPageState extends State<UserShiftPage>
     return true;
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   void onChangeTimeOption(bool bVal, String time) {
     _checkedState[time] = bVal;
@@ -101,7 +88,7 @@ class _UserShiftPageState extends State<UserShiftPage>
                                     ))
                                   ],
                                 ),
-                                RadioButton(
+                                const RadioButton(
                                   options: [
                                     {'label': '繰り返さない', 'value': 0},
                                     {'label': '毎週', 'value': 1},

@@ -1,18 +1,10 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:fpg_flutter/app/pages/business/components/request_confirmed_detail.dart';
-import 'package:fpg_flutter/app/pages/business/components/request_new_detail.dart';
 import 'package:fpg_flutter/app/pages/business/controllers/request_detail_controller.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
-import 'package:fpg_flutter/public/config/images.dart';
-import 'package:fpg_flutter/public/models/business/request_list_data.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
 import 'package:fpg_flutter/public/widgets/button.dart';
 import 'package:fpg_flutter/public/widgets/checkbox_text.dart';
 import 'package:fpg_flutter/public/widgets/dropdown.dart';
-import 'package:fpg_flutter/public/widgets/image.dart';
-import 'package:fpg_flutter/public/widgets/table-cell.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
 import 'package:oktoast/oktoast.dart';
@@ -21,13 +13,12 @@ class RequestStartReportPage extends StatefulWidget {
   const RequestStartReportPage({super.key});
 
   @override
-  _RequestStartReportPageState createState() => _RequestStartReportPageState();
+  RequestStartReportPageState createState() => RequestStartReportPageState();
 }
 
-class _RequestStartReportPageState extends State<RequestStartReportPage>
+class RequestStartReportPageState extends State<RequestStartReportPage>
     with TickerProviderStateMixin {
   AnimationController? animationController;
-  late RequestDetailController _controller;
   bool isExtension = false;
   bool isChecked = false;
   // List<TabIconData> tabIconsList = TabIconData.tabIconsList;
@@ -37,7 +28,6 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
     isExtension = (Get.parameters['isExtension'] ?? '0') == '1';
-    _controller = RequestDetailController();
     super.initState();
   }
 
@@ -57,7 +47,7 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
               SubPageAppBar(
                 titleText: isExtension ? '延長報告' : '開始報告',
               ),
-              Divider(
+              const Divider(
                 height: 1,
                 color: AppTheme.mainLightGrey,
               ),
@@ -83,7 +73,7 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
                             children: [
                               SizedBox(height: Dimens.gap_dp30),
                               CustomDropdownMenu(
-                                items: [
+                                items: const [
                                   '15分',
                                   '30分',
                                   '45分',
@@ -147,7 +137,7 @@ class _RequestStartReportPageState extends State<RequestStartReportPage>
               Expanded(
                 child: Column(
                   children: [
-                    Spacer(),
+                    const Spacer(),
                     Align(
                         alignment: Alignment.bottomCenter,
                         child: Padding(

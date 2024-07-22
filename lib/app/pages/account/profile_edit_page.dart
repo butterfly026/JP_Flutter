@@ -1,25 +1,19 @@
-import 'dart:convert';
 
 import 'package:customizable_datetime_picker/sources/i18n/date_picker_i18n.dart';
 import 'package:customizable_datetime_picker/sources/model/date_picker_divider_theme.dart';
 import 'package:customizable_datetime_picker/sources/model/date_picker_theme.dart';
 import 'package:customizable_datetime_picker/sources/widget/customizable_date_picker_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:fpg_flutter/app/pages/notices/components/notice_item.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/public/define/request_info.dart';
-import 'package:fpg_flutter/public/models/notice.dart';
 import 'package:fpg_flutter/public/models/province.dart';
 import 'package:fpg_flutter/public/router/router.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
 import 'package:fpg_flutter/public/widgets/button.dart';
 import 'package:fpg_flutter/public/widgets/checkbox_text.dart';
-import 'package:fpg_flutter/public/widgets/date_input_formatter.dart';
 import 'package:fpg_flutter/public/widgets/dropdown.dart';
-import 'package:fpg_flutter/public/widgets/labeled_rich_text.dart';
 import 'package:fpg_flutter/public/widgets/mini_textfield.dart';
 import 'package:fpg_flutter/public/widgets/number_formatter.dart';
-import 'package:fpg_flutter/public/widgets/phone_number_formatter.dart';
 import 'package:fpg_flutter/public/widgets/text_info_title.dart';
 import 'package:fpg_flutter/public/widgets/top_labeled_textfield.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
@@ -134,7 +128,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                   itemHeight: Dimens.gap_dp60,
                   pickerHeight: Dimens.gap_dp300,
                   dividerTheme: DatePickerDividerTheme(
-                      dividerColor: Color(0xFF00A962),
+                      dividerColor: const Color(0xFF00A962),
                       thickness: Dimens.gap_dp4,
                       height: Dimens.gap_dp4)),
               onChange: (dateTime, selectedIndex) {
@@ -145,7 +139,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('キャンセル'),
+              child: const Text('キャンセル'),
             ),
             TextButton(
               onPressed: () {
@@ -157,7 +151,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                 });
                 Navigator.pop(context);
               },
-              child: Text('設定'),
+              child: const Text('設定'),
             ),
           ],
         );
@@ -176,7 +170,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
               SubPageAppBar(
                 titleText: '個人情報編集',
               ),
-              Divider(
+              const Divider(
                 height: 1,
                 color: AppTheme.mainLightGrey,
               ),
@@ -187,7 +181,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                TextInfoTitle(
+                                const TextInfoTitle(
                                     title: '基本情報',
                                     type: RequestInfo.SECTION_TITLE),
                                 SizedBox(height: Dimens.gap_dp14),
@@ -214,12 +208,12 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                 SizedBox(height: Dimens.gap_dp14),
                                 Text('氏名(カタカナ)', style: AppTheme.body2),
                                 Row(children: [
-                                  Expanded(
+                                  const Expanded(
                                     child:
                                         MiniTextField(hintText: '姓', value: ''),
                                   ),
                                   SizedBox(width: Dimens.gap_dp10),
-                                  Expanded(
+                                  const Expanded(
                                     child:
                                         MiniTextField(hintText: '名', value: ''),
                                   ),
@@ -228,7 +222,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                 Text('性別', style: AppTheme.body2),
                                 SizedBox(height: Dimens.gap_dp8),
                                 CustomDropdownMenu(
-                                  items: ['男', '女', 'その他'],
+                                  items: const ['男', '女', 'その他'],
                                   selectedItem: null,
                                   height: Dimens.gap_dp50,
                                   width: width3_2,
@@ -241,7 +235,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                 SizedBox(height: Dimens.gap_dp14),
                                 Text('生年月日', style: AppTheme.body2),
                                 SizedBox(height: Dimens.gap_dp8),
-                                Container(
+                                SizedBox(
                                     width: width3_2,
                                     child: Row(
                                       children: [
@@ -308,7 +302,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                 Text('住所', style: AppTheme.body2),
                                 Row(
                                   children: [
-                                    Expanded(
+                                    const Expanded(
                                         child: MiniTextField(
                                             hintText: '郵便番号', value: '')),
                                     SizedBox(width: Dimens.gap_dp10),
@@ -337,7 +331,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                 SizedBox(height: Dimens.gap_dp8),
                                 SizedBox(
                                     width: width3_2,
-                                    child: Row(
+                                    child: const Row(
                                       children: [
                                         Expanded(
                                             child: MiniTextField(
@@ -347,9 +341,9 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                 SizedBox(height: Dimens.gap_dp14),
                                 Text('建物名・部屋番号など', style: AppTheme.body2),
                                 SizedBox(height: Dimens.gap_dp8),
-                                Container(
+                                SizedBox(
                                     width: width3_2,
-                                    child: Row(
+                                    child: const Row(
                                       children: [
                                         Expanded(
                                             child: MiniTextField(
@@ -360,7 +354,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                 Text('学生or社会人', style: AppTheme.body2),
                                 SizedBox(height: Dimens.gap_dp8),
                                 CustomDropdownMenu(
-                                  items: [
+                                  items: const [
                                     '学生',
                                     '社会人',
                                   ],
@@ -373,54 +367,54 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                     setState(() {});
                                   },
                                 ),
-                                Container(
+                                SizedBox(
                                     width: width3_2,
-                                    child: Row(
+                                    child: const Row(
                                       children: [
                                         Expanded(
                                             child: TopLabeledTextField(
                                                 label: '所属大学', value: '')),
                                       ],
                                     )),
-                                Container(
+                                SizedBox(
                                     width: width3_2,
-                                    child: Row(
+                                    child: const Row(
                                       children: [
                                         Expanded(
                                             child: TopLabeledTextField(
                                                 label: '所属学部', value: '')),
                                       ],
                                     )),
-                                Container(
+                                SizedBox(
                                     width: width3_2,
-                                    child: Row(
+                                    child: const Row(
                                       children: [
                                         Expanded(
                                             child: TopLabeledTextField(
                                                 label: '交通手段', value: '')),
                                       ],
                                     )),
-                                Container(
+                                SizedBox(
                                     width: width3_2,
-                                    child: Row(
+                                    child: const Row(
                                       children: [
                                         Expanded(
                                             child: TopLabeledTextField(
                                                 label: '可動範囲（分）', value: '')),
                                       ],
                                     )),
-                                Container(
+                                SizedBox(
                                     width: width3_2,
-                                    child: Row(
+                                    child: const Row(
                                       children: [
                                         Expanded(
                                             child: TopLabeledTextField(
                                                 label: '最寄駅', value: '')),
                                       ],
                                     )),
-                                Container(
+                                SizedBox(
                                     width: width3_2,
-                                    child: Row(
+                                    child: const Row(
                                       children: [
                                         Expanded(
                                             child: TopLabeledTextField(
@@ -466,7 +460,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                         Text(item, style: AppTheme.body2),
                                         SizedBox(height: Dimens.gap_dp8),
                                         CustomDropdownMenu(
-                                          items: ['午前', '午後', '終日', '不可能'],
+                                          items: const ['午前', '午後', '終日', '不可能'],
                                           selectedItem: null,
                                           height: Dimens.gap_dp50,
                                           width: width3_2,
@@ -480,9 +474,9 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                 SizedBox(height: Dimens.gap_dp50),
                                 Text('口座情報', style: AppTheme.body2),
                                 SizedBox(height: Dimens.gap_dp8),
-                                Container(
+                                SizedBox(
                                     width: width3_2,
-                                    child: Row(
+                                    child: const Row(
                                       children: [
                                         Expanded(
                                             child: TopLabeledTextField(
@@ -493,7 +487,7 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                 Text('支店番号', style: AppTheme.body2),
                                 SizedBox(height: Dimens.gap_dp8),
                                 CustomDropdownMenu(
-                                  items: [
+                                  items: const [
                                     '',
                                   ],
                                   selectedItem: null,
@@ -506,9 +500,9 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                   },
                                 ),
                                 SizedBox(height: Dimens.gap_dp8),
-                                Container(
+                                SizedBox(
                                     width: width3_2,
-                                    child: Row(
+                                    child: const Row(
                                       children: [
                                         Expanded(
                                             child: TopLabeledTextField(
@@ -516,9 +510,9 @@ class _ProfileEditPageState extends State<ProfileEditPage>
                                       ],
                                     )),
                                 SizedBox(height: Dimens.gap_dp8),
-                                Container(
+                                SizedBox(
                                     width: width3_2,
-                                    child: Row(
+                                    child: const Row(
                                       children: [
                                         Expanded(
                                             child: TopLabeledTextField(

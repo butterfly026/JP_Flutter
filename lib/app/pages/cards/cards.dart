@@ -7,19 +7,19 @@ import 'package:fpg_flutter/public/define/request_info.dart';
 import 'package:fpg_flutter/public/models/card/card_info.dart';
 import 'package:fpg_flutter/public/router/router.dart';
 import 'package:fpg_flutter/public/tools/app_tool.dart';
-import 'package:fpg_flutter/public/widgets/table-cell.dart';
 import 'package:fpg_flutter/public/widgets/text_info_title.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
-import 'package:table_calendar/table_calendar.dart';
 
 class CardsPage extends StatefulWidget {
+  const CardsPage({super.key});
+
   @override
-  _CardsPageState createState() => _CardsPageState();
+  CardsPageState createState() => CardsPageState();
 }
 
-class _CardsPageState extends State<CardsPage> {
+class CardsPageState extends State<CardsPage> {
   final AuthController authController = Get.find();
   DateTime _focusedDay = DateTime.now();
 
@@ -62,9 +62,9 @@ class _CardsPageState extends State<CardsPage> {
                                 children: [
                                   Row(
                                     children: [
-                                      Spacer(),
+                                      const Spacer(),
                                       IconButton(
-                                        icon: Icon(Icons.chevron_left),
+                                        icon: const Icon(Icons.chevron_left),
                                         color: AppTheme.mainDark,
                                         onPressed: () {
                                           setState(() {
@@ -75,18 +75,18 @@ class _CardsPageState extends State<CardsPage> {
                                           });
                                         },
                                       ),
-                                      Spacer(),
+                                      const Spacer(),
                                       Text(
                                         DateFormat.yMMMM('ja_JP').format(
                                             _focusedDay), // Display month and year in Japanese
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 20,
                                             color: AppTheme.mainDark,
                                             fontWeight: FontWeight.bold),
                                       ),
-                                      Spacer(),
+                                      const Spacer(),
                                       IconButton(
-                                        icon: Icon(Icons.chevron_right),
+                                        icon: const Icon(Icons.chevron_right),
                                         color: AppTheme.mainDark,
                                         onPressed: () {
                                           setState(() {
@@ -97,10 +97,10 @@ class _CardsPageState extends State<CardsPage> {
                                           });
                                         },
                                       ),
-                                      Spacer(),
+                                      const Spacer(),
                                     ],
                                   ),
-                                  Divider(
+                                  const Divider(
                                     height: 1,
                                     color: AppTheme.lightGreyBack,
                                   ),
@@ -123,7 +123,7 @@ class _CardsPageState extends State<CardsPage> {
                                             '円',
                                             style: AppTheme.body2,
                                           ),
-                                          Spacer(),
+                                          const Spacer(),
                                           Column(children: [
                                             Container(
                                               padding: EdgeInsets.all(
@@ -161,7 +161,7 @@ class _CardsPageState extends State<CardsPage> {
                                           ]),
                                         ],
                                       )),
-                                  Divider(
+                                  const Divider(
                                     height: 1,
                                     color: AppTheme.lightGreyBack,
                                   ),
@@ -251,7 +251,7 @@ class _CardsPageState extends State<CardsPage> {
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  TextInfoTitle(
+                                  const TextInfoTitle(
                                       title: '【依頼一覧】',
                                       type: RequestInfo.SUB_TITLE),
                                   for (var item in cards)
@@ -296,7 +296,7 @@ class _CardsPageState extends State<CardsPage> {
                                                     padding: EdgeInsets.only(
                                                         left: Dimens.gap_dp10,
                                                         right: 8.0),
-                                                    child: Icon(
+                                                    child: const Icon(
                                                       Icons.arrow_forward_ios,
                                                       color: AppTheme.mainDark,
                                                       size: 14,

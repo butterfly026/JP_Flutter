@@ -48,7 +48,6 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
 
   @override
   Widget build(BuildContext context) {
-    final tabData = _tabs[controller.currentTabIndex.value];    
     backgroundColor = Colors.white.withOpacity(0.75);
     return Container(
       height: Dimens.gap_dp60,
