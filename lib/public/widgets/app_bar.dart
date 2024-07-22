@@ -19,7 +19,7 @@ class CustomAppBar extends AppBar {
   }) : super(
           actions: _buildActions(actions),
           shadowColor: Colors.transparent,
-          systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: AppTheme.white),
+          systemOverlayStyle: const SystemUiOverlayStyle(statusBarColor: AppTheme.white),
           surfaceTintColor: Colors.transparent
         );
 
@@ -33,7 +33,7 @@ class CustomAppBar extends AppBar {
       ws.add(
         Container(
           alignment: Alignment.center,
-          padding: EdgeInsets.only(right: AppTheme.margin),
+          padding: const EdgeInsets.only(right: AppTheme.margin),
           child: element,
         ),
       );
@@ -52,7 +52,7 @@ class SubPageAppBar extends CustomAppBar {
     super.actions,
     super.titleSpacing,
     Widget? leading,
-    PreferredSizeWidget? bottom,
+    super.bottom,
   }) : super(
             title: Align(
               alignment: Alignment.centerLeft,
@@ -75,7 +75,6 @@ class SubPageAppBar extends CustomAppBar {
                 Get.back();
               },
             ),
-            bottom: bottom,
             backgroundColor: AppTheme.white,
             centerTitle: false);
   String? titleText;

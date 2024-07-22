@@ -8,17 +8,17 @@ class LabeledRichText extends StatefulWidget {
   final ValueChanged<String>? onChanged;
 
   const LabeledRichText({
-    Key? key,
+    super.key,
     required this.label,
     required this.value,
     this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
-  _LabeledRichTextState createState() => _LabeledRichTextState();
+  LabeledRichTextState createState() => LabeledRichTextState();
 }
 
-class _LabeledRichTextState extends State<LabeledRichText> {
+class LabeledRichTextState extends State<LabeledRichText> {
   late TextEditingController _controller;
 
   @override
@@ -43,37 +43,35 @@ class _LabeledRichTextState extends State<LabeledRichText> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            widget.label,
-            style: AppTheme.body2,
-          ),
-          SizedBox(height: Dimens.gap_dp10),
-          Center(
-            child: SizedBox(
-              height: Dimens.gap_dp150,
-              child: TextField(
-                controller: _controller,
-                textAlign: TextAlign.start,
-                textAlignVertical: TextAlignVertical.top,
-                maxLines: null,
-                expands: true,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: AppTheme.light_grey,
-                      width: 1.0,
-                    ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          widget.label,
+          style: AppTheme.body2,
+        ),
+        SizedBox(height: Dimens.gap_dp10),
+        Center(
+          child: SizedBox(
+            height: Dimens.gap_dp150,
+            child: TextField(
+              controller: _controller,
+              textAlign: TextAlign.start,
+              textAlignVertical: TextAlignVertical.top,
+              maxLines: null,
+              expands: true,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: AppTheme.light_grey,
+                    width: 1.0,
                   ),
                 ),
               ),
             ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }

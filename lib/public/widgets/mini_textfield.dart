@@ -26,19 +26,15 @@ class MiniTextField extends StatefulWidget {
       this.isReadonly = false,
       this.isPassword = false});
   @override
-  _MiniTextFieldState createState() => _MiniTextFieldState();
+  MiniTextFieldState createState() => MiniTextFieldState();
 }
 
-class _MiniTextFieldState extends State<MiniTextField> {
+class MiniTextFieldState extends State<MiniTextField> {
   TextEditingController? controller;
   String? value;
   FocusNode? _focusNode;
-  static void _defaultOnTap() {
-    // Function body
-  }
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller = widget.controller;
     value = widget.value;
@@ -78,12 +74,12 @@ class _MiniTextFieldState extends State<MiniTextField> {
               fillColor: AppTheme.white,
               contentPadding: EdgeInsets.symmetric(
                   horizontal: Dimens.gap_dp10, vertical: Dimens.gap_dp10),
-              enabledBorder: OutlineInputBorder(
+              enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
                       color: AppTheme.lightGreyText,
                       width: 1.0,
                       style: BorderStyle.solid)),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
                       color: AppTheme.lightGreyText,
                       width: 1.0,

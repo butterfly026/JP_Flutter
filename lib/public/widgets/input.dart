@@ -12,8 +12,8 @@ class Input extends StatelessWidget {
   final Color borderColor;
   final bool isPassword;
 
-  Input(
-      {this.placeholder = '',
+  const Input(
+      {super.key, this.placeholder = '',
       this.suffixIcon,
       this.prefixIcon,
       this.onTap,
@@ -34,7 +34,7 @@ class Input extends StatelessWidget {
         obscureText: isPassword,
         enableSuggestions: !isPassword,
         autocorrect: !isPassword,
-        style: TextStyle(
+        style: const TextStyle(
             height: 1.0,
             fontSize: 14.0,
             color: AppTheme.mainDark,
@@ -43,7 +43,7 @@ class Input extends StatelessWidget {
         decoration: InputDecoration(
             filled: true,
             fillColor: AppTheme.white,
-            hintStyle: TextStyle(
+            hintStyle: const TextStyle(
               color: AppTheme.mainGrey,
             ),
             suffixIcon: suffixIcon,

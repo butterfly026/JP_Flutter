@@ -14,7 +14,7 @@ class CustomDropdownMenu extends StatefulWidget {
   final double? borderRadius;
 
   const CustomDropdownMenu({
-    Key? key,
+    super.key,
     required this.items,
     this.selectedItem,
     this.height,
@@ -24,7 +24,7 @@ class CustomDropdownMenu extends StatefulWidget {
     this.borderColor,
     this.valueFieldName,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   State<CustomDropdownMenu> createState() => _CustomDropdownMenuState();

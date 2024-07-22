@@ -52,6 +52,7 @@ class AppSvgWidget extends HookWidget {
         );
         try {
           svgContent.value = manipulatedSvgString;
+        // ignore: empty_catches
         } catch(e) {
           
         }
@@ -63,7 +64,7 @@ class AppSvgWidget extends HookWidget {
     }, [svgPath]);
 
     if (svgContent.value == null) {
-      return SizedBox();
+      return const SizedBox();
       // return Center(child: CircularProgressIndicator());
     }
 

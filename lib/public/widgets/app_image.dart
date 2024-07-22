@@ -7,7 +7,7 @@ class AppImage {
    static Widget asset(String path,
       {double? width, double? height, BoxFit? fit, Color? color}) {
     return Image.asset(
-      'assets/images/${path}',
+      'assets/images/$path',
       width: width,
       height: height,
       fit: fit,
@@ -50,7 +50,7 @@ class AppImage {
       Color? color,
       BoxFit fit = BoxFit.contain}) {
     return SvgPicture.asset(
-      "assets/svg/${path}",
+      "assets/svg/$path",
       width: width,
       height: height,
       fit: fit,
@@ -71,7 +71,7 @@ class AppImage {
     return Transform.rotate(
         angle: angle!, // radians equivalent to 180 degrees
         child: SvgPicture.asset(
-          "assets/svg/${path}",
+          "assets/svg/$path",
           width: width,
           height: height,
           fit: fit,

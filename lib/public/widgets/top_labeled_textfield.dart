@@ -14,13 +14,10 @@ class TopLabeledTextField extends StatefulWidget {
       this.hintText,
       this.isPassword = false});
   @override
-  _TopLabeledTextFieldState createState() => _TopLabeledTextFieldState();
+  TopLabeledTextFieldState createState() => TopLabeledTextFieldState();
 }
 
-class _TopLabeledTextFieldState extends State<TopLabeledTextField> {
-  static void _defaultOnTap() {
-    // Function body
-  }
+class TopLabeledTextFieldState extends State<TopLabeledTextField> {
 
   @override
   Widget build(BuildContext context) {
@@ -41,12 +38,12 @@ class _TopLabeledTextFieldState extends State<TopLabeledTextField> {
                 hintText: widget.hintText,
                 contentPadding: EdgeInsets.symmetric(
                     horizontal: Dimens.gap_dp10, vertical: Dimens.gap_dp10),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
                         color: AppTheme.lightGreyText,
                         width: 1.0,
                         style: BorderStyle.solid)),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
                         color: AppTheme.lightGreyText,
                         width: 1.0,

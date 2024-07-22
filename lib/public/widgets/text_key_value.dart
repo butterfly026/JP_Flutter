@@ -6,13 +6,10 @@ class TextKeyValue extends StatefulWidget {
   final String value;
   const TextKeyValue({super.key, required this.label, required this.value});
   @override
-  _TextKeyValueState createState() => _TextKeyValueState();
+  TextKeyValueState createState() => TextKeyValueState();
 }
 
-class _TextKeyValueState extends State<TextKeyValue> {
-  static void _defaultOnTap() {
-    // Function body
-  }
+class TextKeyValueState extends State<TextKeyValue> {
 
   @override
   Widget build(BuildContext context) {

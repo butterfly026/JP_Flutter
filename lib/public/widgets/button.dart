@@ -14,8 +14,8 @@ class Button extends StatelessWidget {
   final bool isFullToWidth;
   final bool disabled;
 
-  Button(
-      {this.text = '',
+  const Button(
+      {super.key, this.text = '',
       this.onPressed,
       this.backgroundColor = AppTheme.mainDark,
       this.textColor = AppTheme.white,
@@ -25,53 +25,6 @@ class Button extends StatelessWidget {
       this.paddingVertical = -1,
       this.disabled = false,
       this.isFullToWidth = false});
-  Widget _getButtonContainer() {
-    if (isFullToWidth) {
-      return Container(
-        constraints: BoxConstraints(
-            minWidth: minWidth), // Adjust the minimum width as needed
-        alignment: Alignment.center,
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-              vertical:
-                  paddingVertical == -1 ? Dimens.gap_dp8 : paddingVertical,
-              horizontal: paddingHorizontal == -1
-                  ? Dimens.gap_dp12
-                  : paddingHorizontal),
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: Dimens.font_sp20,
-              fontFamily: 'NotoSansJP',
-              color: disabled ? AppTheme.buttonDisabledText : textColor,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      );
-    }
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-          minWidth: minWidth), // Adjust the minimum width as needed
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-            vertical: paddingVertical == -1 ? Dimens.gap_dp8 : paddingVertical,
-            horizontal:
-                paddingHorizontal == -1 ? Dimens.gap_dp12 : paddingHorizontal),
-        child: Center(
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: Dimens.font_sp20,
-              fontFamily: 'NotoSansJP',
-              color: textColor,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {

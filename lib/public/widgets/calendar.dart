@@ -13,10 +13,10 @@ class CustomCalendar extends StatefulWidget {
       {super.key, this.selectedDay, this.onChagned, this.events = const {}});
 
   @override
-  _CustomCalendarState createState() => _CustomCalendarState();
+  CustomCalendarState createState() => CustomCalendarState();
 }
 
-class _CustomCalendarState extends State<CustomCalendar> {
+class CustomCalendarState extends State<CustomCalendar> {
   CalendarFormat _calendarFormat = CalendarFormat.month;
   DateTime _focusedDay = DateTime.now();
   DateTime? _selectedDay;
@@ -50,14 +50,14 @@ class _CustomCalendarState extends State<CustomCalendar> {
         Text(
           DateFormat.yMMMM('ja_JP')
               .format(_focusedDay), // Display month and year in Japanese
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: AppTheme.mainDark),
         ),
-        Spacer(),
+        const Spacer(),
         IconButton(
-          icon: Icon(Icons.chevron_left),
+          icon: const Icon(Icons.chevron_left),
           color: AppTheme.mainDark,
           onPressed: () {
             setState(() {
@@ -67,7 +67,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
           },
         ),
         IconButton(
-          icon: Icon(Icons.chevron_right),
+          icon: const Icon(Icons.chevron_right),
           color: AppTheme.mainDark,
           onPressed: () {
             setState(() {
@@ -83,22 +83,22 @@ class _CustomCalendarState extends State<CustomCalendar> {
   CalendarStyle getCalendarStyle() {
     return CalendarStyle(
       outsideDaysVisible: true,
-      tableBorder: TableBorder(
+      tableBorder: const TableBorder(
           bottom: BorderSide(color: Colors.black),
           left: BorderSide(color: Colors.black),
           horizontalInside: BorderSide(color: Colors.black),
           verticalInside: BorderSide(color: Colors.black),
           right: BorderSide(color: Colors.black)),
-      cellMargin: EdgeInsets.all(0.0),
-      cellPadding: EdgeInsets.all(0.0),
-      outsideTextStyle: TextStyle(color: Colors.transparent),
-      disabledTextStyle: TextStyle(color: Colors.transparent),
+      cellMargin: const EdgeInsets.all(0.0),
+      cellPadding: const EdgeInsets.all(0.0),
+      outsideTextStyle: const TextStyle(color: Colors.transparent),
+      disabledTextStyle: const TextStyle(color: Colors.transparent),
       disabledDecoration: BoxDecoration(
         border: Border.all(
             color: Colors.black, width: borderWidth), // Border for default days
         shape: BoxShape.rectangle,
       ),
-      weekendTextStyle: TextStyle(color: AppTheme.black),
+      weekendTextStyle: const TextStyle(color: AppTheme.black),
       defaultDecoration: BoxDecoration(
         color: Colors.transparent,
         border: Border.all(
@@ -128,15 +128,15 @@ class _CustomCalendarState extends State<CustomCalendar> {
       markerSize: Dimens.gap_dp60,
       markerDecoration: CustomDecoration(),
       selectedDecoration: BoxDecoration(
-        color: Color(0x88FF00FF),
+        color: const Color(0x88FF00FF),
         border: Border.all(
             color: Colors.black, width: borderWidth), // Border for weekends
         shape: BoxShape.rectangle, // Border for selected day
       ),
       cellAlignment: Alignment.topCenter,
-      defaultTextStyle: TextStyle(color: AppTheme.mainDark),
-      selectedTextStyle: TextStyle(color: AppTheme.black),
-      todayTextStyle: TextStyle(color: AppTheme.black),
+      defaultTextStyle: const TextStyle(color: AppTheme.mainDark),
+      selectedTextStyle: const TextStyle(color: AppTheme.black),
+      todayTextStyle: const TextStyle(color: AppTheme.black),
     );
   }
 
@@ -181,7 +181,7 @@ class _CustomCalendarState extends State<CustomCalendar> {
             },
             daysOfWeekStyle: DaysOfWeekStyle(
               weekdayStyle:
-                  TextStyle(fontWeight: FontWeight.bold, color: AppTheme.black),
+                  const TextStyle(fontWeight: FontWeight.bold, color: AppTheme.black),
               decoration: BoxDecoration(
                 border: Border.all(
                     color: Colors.black, width: 1.0), // Border for default days

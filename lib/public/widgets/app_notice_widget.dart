@@ -16,7 +16,7 @@ class AppNoticeWidget extends StatelessWidget {
         SizedBox(
           width: 10.w,
         ),
-        Text('${title}'),
+        Text('$title'),
       ],
     );
   }

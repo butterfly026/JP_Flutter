@@ -15,14 +15,14 @@ class DateInputFormatter extends TextInputFormatter {
       return oldValue;
     }
 
-    newValue.text.runes.forEach((int rune) {
+    for (var rune in newValue.text.runes) {
       if (rune >= 48 && rune <= 57) {
         formatted += String.fromCharCode(rune);
       }
-    });
+    }
 
     // Handle the case when the last character is a backslash
-    formatted = formatted.replaceAllMapped(new RegExp(r'(\d{4})(\d{2})(\d{2})'), (Match m) => "${m[1]}/${m[2]}/${m[3]}");
+    formatted = formatted.replaceAllMapped(RegExp(r'(\d{4})(\d{2})(\d{2})'), (Match m) => "${m[1]}/${m[2]}/${m[3]}");
 
     return newValue.copyWith(
       text: formatted,

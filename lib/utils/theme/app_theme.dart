@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_colors.dart';
+// ignore: depend_on_referenced_packages
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppTheme extends ChangeNotifier {
@@ -25,7 +26,9 @@ class AppTheme extends ChangeNotifier {
   static const Color white = Color(0xFFFFFFFF);
   static const Color nearlyBlack = Color(0xFF213333);
   static const Color grey = Color(0xFF3A5160);
+  // ignore: constant_identifier_names
   static const Color dark_grey = Color(0xFF313A44);
+  // ignore: constant_identifier_names
   static const Color light_grey = Color.fromARGB(255, 166, 167, 168);
 
   static const Color darkText = Color(0xFF253840);
