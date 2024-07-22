@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fpg_flutter/main_bindings.dart';
@@ -32,7 +32,7 @@ void main() async {
   initializeDateFormatting().then((_) => runApp(
         ChangeNotifierProvider(
           create: (_) => AppTheme(),
-          child: MyApp(),
+          child: const MyApp(),
         ),
       ));
 }

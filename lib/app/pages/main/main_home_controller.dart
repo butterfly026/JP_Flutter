@@ -29,23 +29,19 @@ class MainHomeController extends GetxController {
   ]);
   var currentTabIndex = 0.obs;
 
-  @override
-  void onReady() async {
-    super.onReady();
-  }
 
   Widget getCurrentPage() {
     switch (currentTabIndex.value) {
       case 0:
         return const RequestListPage();
       case 1:
-        return ChatPage();
+        return const ChatPage();
       case 2:
-        return CardsPage();      
+        return const CardsPage();      
       case 3:
-        return ProfilePage();
+        return const ProfilePage();
       default:
-        return ProfilePage();
+        return const ProfilePage();
     }
   }
 

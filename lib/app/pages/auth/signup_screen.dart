@@ -27,7 +27,7 @@ class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
   @override
-  State createState() => new RegisterScreenState();
+  State createState() => RegisterScreenState();
 }
 
 class RegisterScreenState extends State<SignUpPage> {
@@ -86,7 +86,7 @@ class RegisterScreenState extends State<SignUpPage> {
                         isPassword: true,
                         onChanged: (value) {
                           setState(() {
-                            userName = value ?? '';
+                            userName = value;
                           });
                         },
                       ),
@@ -101,7 +101,7 @@ class RegisterScreenState extends State<SignUpPage> {
                         isPassword: true,
                         onChanged: (value) {
                           setState(() {
-                            password = value ?? '';
+                            password = value;
                           });
                         },
                       ),

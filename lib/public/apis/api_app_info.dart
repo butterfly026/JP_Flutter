@@ -62,6 +62,7 @@ class ApiAppInfo {
             domainCallback?.call(curDomain, appInfo.checkPackageDomains);
           }
         }
+      // ignore: empty_catches
       } catch (error) {
       }
     }

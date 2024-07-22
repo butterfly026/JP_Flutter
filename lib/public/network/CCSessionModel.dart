@@ -1,4 +1,3 @@
-// Import necessary packages if needed
 // ResponseObject class
 class ResponseObject<T> {
   String? cookieStr;
@@ -136,12 +135,12 @@ class CCSessionModel<T> {
 
 void main() {
   // Example usage
-  var model = CCSessionModel<String>(
-    url: 'https://example.com/api',
-    params: {'param1': 'value1'},
-    cipherParams: {'secret': 'abcdef'},
-    uniKey: 'uniqueKey123',
-  );
+  // var model = CCSessionModel<String>(
+  //   url: 'https://example.com/api',
+  //   params: {'param1': 'value1'},
+  //   cipherParams: {'secret': 'abcdef'},
+  //   uniKey: 'uniqueKey123',
+  // );
 
   // Example asynchronous method call using static method
   CCSessionModel.getParams({'asyncParam': () => Future.value('asyncValue')}).then((params) {

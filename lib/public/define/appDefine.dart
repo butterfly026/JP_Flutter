@@ -11,8 +11,11 @@ class AppDefine {
   static int TAB_PROFILE_INDEX = 3;
 
   //Define about widget type
+  // ignore: non_constant_identifier_names
   static String WIDGET_LABEL = 'Label';
+  // ignore: non_constant_identifier_names
   static String WIDGET_RICH_TEXT = 'RichText';
+  // ignore: non_constant_identifier_names
   static String WIDGET_LIST_CHECKBOX = 'ListCheckbox';
 
 }

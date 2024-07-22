@@ -5,7 +5,7 @@ import 'package:fpg_flutter/utils/theme/app_theme.dart';
 class TableCellSettings extends StatelessWidget {
   final String title;
   final void Function()? onTap;
-  TableCellSettings({this.title = '', this.onTap = _defaultOnTap});
+  const TableCellSettings({super.key, this.title = '', this.onTap = _defaultOnTap});
 
   static void _defaultOnTap() {
     // Function body
@@ -22,8 +22,8 @@ class TableCellSettings extends StatelessWidget {
             Expanded(
               child: Text(title, style: AppTheme.body2),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 8.0),
+            const Padding(
+              padding: EdgeInsets.only(right: 8.0),
               child: Icon(Icons.arrow_forward_ios,
                   color: AppTheme.mainDark, size: 14),
             )

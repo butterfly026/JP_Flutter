@@ -14,7 +14,6 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> with TickerProviderStateMixin {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 

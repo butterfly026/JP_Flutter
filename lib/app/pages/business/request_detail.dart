@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:fpg_flutter/app/pages/business/components/request_confirmed_detail.dart';
 import 'package:fpg_flutter/app/pages/business/components/request_new_detail.dart';
-import 'package:fpg_flutter/app/pages/business/controllers/request_detail_controller.dart';
 import 'package:fpg_flutter/public/models/business/request_list_data.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';

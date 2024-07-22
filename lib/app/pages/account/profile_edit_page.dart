@@ -24,19 +24,19 @@ class ProfileEditPage extends StatefulWidget {
   const ProfileEditPage({super.key});
 
   @override
-  _ProfileEditPageState createState() => _ProfileEditPageState();
+  ProfileEditPageState createState() => ProfileEditPageState();
 }
 
-class _ProfileEditPageState extends State<ProfileEditPage>
+class ProfileEditPageState extends State<ProfileEditPage>
     with TickerProviderStateMixin {
   final Map<String, String> bodies = {};
   String title = '';
   bool isNewUser = false;
   DateTime? _birthDate;
 
-  FocusNode _focusNode1 = FocusNode();
-  FocusNode _focusNode2 = FocusNode();
-  FocusNode _focusNode3 = FocusNode();
+  final FocusNode _focusNode1 = FocusNode();
+  final FocusNode _focusNode2 = FocusNode();
+  final FocusNode _focusNode3 = FocusNode();
   final TextEditingController _birthDtController = TextEditingController();
   final List<String> japaneseMonths = [
     '1月',

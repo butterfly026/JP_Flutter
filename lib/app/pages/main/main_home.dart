@@ -5,7 +5,6 @@ import 'package:fpg_flutter/app/pages/main/main_home_controller.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
 import 'package:fpg_flutter/public/widgets/app_image.dart';
-import 'package:fpg_flutter/utils/theme/app_colors.dart';
 import 'package:fpg_flutter/utils/theme/app_theme.dart';
 import 'package:get/get.dart';
 
@@ -32,7 +31,6 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
-    final appThemeColor = Theme.of(context).extension<AppColors>();
     return Scaffold(
         appBar: CustomAppBar(
           titleSpacing: 0,
@@ -46,6 +44,7 @@ class _MainPageState extends State<MainPage> with WidgetsBindingObserver {
                   child: Text(
                     // ignore: invalid_use_of_protected_member
                     _controller.bottomNavs
+                        // ignore: invalid_use_of_protected_member
                         .value[_controller.currentTabIndex.value].name,
                     style: AppTheme.headline,
                   ),

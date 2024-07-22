@@ -1,14 +1,14 @@
 class RequestBase {
-  Map<String, dynamic> _properties = {};
+  Map<String, dynamic> properties = {};
 
-  RequestBase(this._properties);
+  RequestBase(this.properties);
 
   String get path {
     return '';
   }
 
   String get queries {
-    return _properties.entries
+    return properties.entries
         .map((entry) => '${entry.key}=${entry.value}')
         .join('&');
   }
@@ -19,14 +19,14 @@ class RequestBase {
       'queries': queries,
       'body': body
     };
-    _properties.entries.map((entry) => {
+    properties.entries.map((entry) => {
       data[entry.key] = entry.value
     });
     return data;
   }
 
   Map<String, dynamic> get body {
-    return _properties;
+    return properties;
   }
 }
 

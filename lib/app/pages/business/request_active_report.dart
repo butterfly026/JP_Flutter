@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fpg_flutter/app/controllers/global_controller.dart';
-import 'package:fpg_flutter/app/pages/business/controllers/request_detail_controller.dart';
 import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/public/define/appDefine.dart';
 import 'package:fpg_flutter/public/define/request_info.dart';

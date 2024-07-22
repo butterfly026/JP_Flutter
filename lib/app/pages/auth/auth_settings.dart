@@ -13,10 +13,10 @@ class AuthSettingsPage extends StatefulWidget {
   const AuthSettingsPage({super.key});
 
   @override
-  _AuthSettingsPageState createState() => _AuthSettingsPageState();
+  AuthSettingsPageState createState() => AuthSettingsPageState();
 }
 
-class _AuthSettingsPageState extends State<AuthSettingsPage>
+class AuthSettingsPageState extends State<AuthSettingsPage>
     with TickerProviderStateMixin {
   @override
   void initState() {
@@ -29,10 +29,6 @@ class _AuthSettingsPageState extends State<AuthSettingsPage>
     return true;
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +63,7 @@ class _AuthSettingsPageState extends State<AuthSettingsPage>
                             Expanded(
                                 child: Column(
                               children: [
-                                Spacer(),
+                                const Spacer(),
                                 Align(
                                     alignment: Alignment.bottomCenter,
                                     child: Padding(

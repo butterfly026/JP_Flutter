@@ -2,12 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:fpg_flutter/public/config/dimens.dart';
 import 'package:fpg_flutter/public/event/android_webview_redirect_event.dart';
 import 'package:fpg_flutter/public/global/global.dart';
 import 'package:fpg_flutter/public/tools/app_tool.dart';
 import 'package:fpg_flutter/public/widgets/app_bar.dart';
-import 'package:fpg_flutter/public/widgets/web/app_webview.dart';
 import 'package:fpg_flutter/public/widgets/web/webview_option.dart';
 import 'package:fpg_flutter/utils/device.dart';
 import 'package:get/get.dart';
@@ -100,7 +98,7 @@ class _WebViewPageState extends State<WebViewPage> {
                 ),
                 onProgressChanged: (controller, newProgress) {
                   
-                        print(newProgress);
+                        // print(newProgress);
                   setState(() {
                     progress =
                         newProgress / 100; 

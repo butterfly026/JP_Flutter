@@ -3,12 +3,11 @@ import 'package:fpg_flutter/public/models/notice.dart';
 
 class NoticeItemView extends StatelessWidget {
   const NoticeItemView(
-      {Key? key,
+      {super.key,
       this.noticeData,
       this.animationController,
       this.animation,
-      this.onPressItem})
-      : super(key: key);
+      this.onPressItem});
 
   final VoidCallback? onPressItem;
   final Notice? noticeData;
@@ -22,7 +21,7 @@ class NoticeItemView extends StatelessWidget {
       onTap: onPressItem,
       child: Container(
         decoration: const BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(16.0)),
+          borderRadius: BorderRadius.all(Radius.circular(16.0)),
         ),
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(16.0)),

@@ -42,7 +42,7 @@ class ChatMessagePageState extends State<ChatMessagePage>
               ),
               const Spacer(),
               
-                                ChatInputWidget(),
+                                const ChatInputWidget(),
               // Expanded(
               //     child: SingleChildScrollView(
               //         child: Padding(

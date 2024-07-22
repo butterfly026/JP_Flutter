@@ -7,7 +7,7 @@ class AuthMiddleware extends GetMiddleware {
   RouteSettings? redirect(String? route) {
     final authController = Get.find<AuthController>();
     if (!authController.isAuthenticated.value) {
-      return RouteSettings(name: '/login');
+      return const RouteSettings(name: '/login');
     }
     return null; // Allow access if authenticated
   }
